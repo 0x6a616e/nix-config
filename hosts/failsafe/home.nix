@@ -4,16 +4,17 @@
   imports = [
   ];
 
-  home.username = "jan";
-  home.homeDirectory = "/home/jan";
+  home = {
+    username = "jan";
+    homeDirectory = "/home/jan";
+    stateVersion = "24.05";
+  };
 
   programs.git = {
     enable = true;
     userEmail = "jan.reyes.contact@gmail.com";
     userName = "jan";
   };
-
-  home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
 }
