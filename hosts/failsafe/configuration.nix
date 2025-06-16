@@ -77,11 +77,14 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
-    xkb = {
-      layout = "us";
-      variant = "";
+  services = {
+    displayManager.sddm.enable = true;
+    xserver = {
+      videoDrivers = [ "nvidia" ];
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
     };
   };
 
