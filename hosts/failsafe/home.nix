@@ -16,7 +16,10 @@
     userName = "jan";
   };
 
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    font.name = "JetBrains Mono Nerd Font";
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
