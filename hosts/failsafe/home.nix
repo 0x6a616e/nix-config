@@ -4,10 +4,15 @@
   imports = [
   ];
 
+  fonts.fontconfig.enable = true;
+
   home = {
     username = "jan";
     homeDirectory = "/home/jan";
     stateVersion = "24.05";
+    packages = [
+      (pkgs.nerdfonts.override { fonts = [ "JetBrains Mono" ]; })
+    ];
   };
 
   programs.git = {
@@ -18,10 +23,7 @@
 
   programs.kitty = {
     enable = true;
-    font = {
-      name = "JetBrains Mono Nerd Font";
-      package = pkgs.nerd-fonts.jetbrains-mono;
-    };
+    font.name = "JetBrains Mono Nerd Font";
   };
 
   wayland.windowManager.hyprland = {
