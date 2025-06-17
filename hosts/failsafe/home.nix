@@ -6,14 +6,14 @@
 
   fonts = {
     fontconfig.enable = true;
-    packages = [
-      pkgs.nerd-fonts.jetbrains-mono
-    ];
   };
 
   home = {
     username = "jan";
     homeDirectory = "/home/jan";
+    packages = [
+      pkgs.nerd-fonts.jetbrains-mono
+    ];
     stateVersion = "24.05";
   };
 
