@@ -16,8 +16,17 @@
     userName = "jan";
   };
 
-  programs.kitty.enable = true; # required for the default Hyprland config
-  wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  programs.kitty.enable = true;
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+      "$mod" = "SUPER";
+      bind = [
+        "$mod, Q, exec, kitty"
+      ];
+    };
+  };
 
   programs.home-manager.enable = true;
 }
