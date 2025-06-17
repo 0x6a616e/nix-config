@@ -4,15 +4,17 @@
   imports = [
   ];
 
-  fonts.fontconfig.enable = true;
+  fonts = {
+    fontconfig.enable = true;
+    packages = [
+      pkgs.nerd-fonts.jetbrains-mono
+    ];
+  };
 
   home = {
     username = "jan";
     homeDirectory = "/home/jan";
     stateVersion = "24.05";
-    packages = [
-      (pkgs.nerdfonts.override { fonts = [ "JetBrains Mono" ]; })
-    ];
   };
 
   programs.git = {
