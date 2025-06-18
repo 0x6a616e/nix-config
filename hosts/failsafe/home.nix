@@ -2,18 +2,13 @@
 {
   imports = [
     ./fonts.nix
+    ./git.nix
   ];
 
   home = {
     username = "jan";
     homeDirectory = "/home/jan";
     stateVersion = "24.05";
-  };
-
-  programs.git = {
-    enable = true;
-    userEmail = "jan.reyes.contact@gmail.com";
-    userName = "jan";
   };
 
   programs.kitty = {
