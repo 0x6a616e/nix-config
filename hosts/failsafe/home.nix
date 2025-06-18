@@ -12,6 +12,7 @@
   catppuccin = {
     enable = true;
     flavor = "mocha";
+    accent = "red";
   };
 
   home = {
