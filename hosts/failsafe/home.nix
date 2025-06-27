@@ -9,7 +9,7 @@
     inputs.catppuccin.homeModules.catppuccin
   ];
 
-  catppuccin = {
+  catppuccin.kitty = {
     enable = true;
     flavor = "mocha";
   };
