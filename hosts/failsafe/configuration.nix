@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, catppuccin, ... }:
+{ pkgs, inputs, config, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -38,7 +38,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs catppuccin; };
+    extraSpecialArgs = { inherit inputs; };
     users.jan = import ./home.nix;
   };
 
