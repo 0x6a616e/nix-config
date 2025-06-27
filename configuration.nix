@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,6 +9,18 @@
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
+    };
+  };
+
+  hardware = {
+    graphics = {
+      enable = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
 
@@ -36,9 +48,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services.xserver = {
+    videoDrivers = ["nvidia"];
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   system.stateVersion = "25.05";
