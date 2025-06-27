@@ -2,12 +2,18 @@
 
 {
   imports = [
-    ./fonts.nix
   ];
+
+  fonts = {
+    fontconfig.enable = true;
+  };
 
   home = {
     username = "jan";
     homeDirectory = "/home/jan";
+    packages = [
+      pkgs.nerd-fonts.jetbrains-mono
+    ];
     stateVersion = "24.05";
   };
 
