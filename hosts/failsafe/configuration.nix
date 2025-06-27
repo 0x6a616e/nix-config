@@ -78,10 +78,7 @@
   };
 
   services = {
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
+    displayManager.sddm.enable = true;
     xserver = {
       videoDrivers = [ "nvidia" ];
       xkb = {
