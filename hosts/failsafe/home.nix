@@ -33,7 +33,7 @@
   };
 
   # --- Kitty ---
-  catppuccin.kitty = {
+  catppuccin = {
     enable = true;
     flavor = "mocha";
   };
