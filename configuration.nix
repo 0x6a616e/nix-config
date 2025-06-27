@@ -1,10 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -50,11 +49,6 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.jan = import ./home.nix;
-  };
 
   system.stateVersion = "25.05";
 }
