@@ -15,10 +15,12 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.jan = import ./home.nix;
+  networking = {
+    hostName = "failsafe";
+    networkmanager.enable = true;
   };
+
+  time.timeZone = "America/Monterrey";
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -35,27 +37,25 @@
     };
   };
 
-  networking = {
-    hostName = "failsafe";
-    networkmanager.enable = true;
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nixpkgs.config.allowUnfree = true;
-
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-
-  system.stateVersion = "25.05";
-
-  time.timeZone = "America/Monterrey";
 
   users.users.jan = {
     isNormalUser = true;
     description = "Jan";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.jan = import ./home.nix;
+  };
+
+  system.stateVersion = "25.05";
 }
