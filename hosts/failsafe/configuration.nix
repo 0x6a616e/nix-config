@@ -15,6 +15,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+
   networking = {
     hostName = "failsafe";
     networkmanager.enable = true;
