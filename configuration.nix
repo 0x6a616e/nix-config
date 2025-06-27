@@ -30,7 +30,6 @@
   networking = {
     hostName = "failsafe";
     networkmanager.enable = true;
-    wireless.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
