@@ -18,10 +18,7 @@
 
   programs.kitty = {
     enable = true;
-    font = {
-      name = "JetBrains Mono Nerd Font";
-      package = pkgs.nerd-fonts.jetbrains-mono;
-    };
+    font.name = "JetBrains Mono Nerd Font";
   };
 
   wayland.windowManager.hyprland = {
