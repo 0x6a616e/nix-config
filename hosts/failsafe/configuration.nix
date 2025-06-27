@@ -1,11 +1,8 @@
 { pkgs, inputs, config, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

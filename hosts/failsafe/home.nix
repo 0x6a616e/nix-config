@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }:
+{ catppuccin, pkgs, ... }:
 {
   import = [
-    inputs.catppuccin.homeModules.catppuccin
+    catppuccin.homeModules.catppuccin
   ];
 
   # --- Fonts ---
@@ -33,7 +33,7 @@
   };
 
   # --- Kitty ---
-  catppuccin = {
+  catppuccin.kitty = {
     enable = true;
     flavor = "mocha";
   };
