@@ -8,10 +8,8 @@
   outputs = { self, nixpkgs, ... } @ inputs: {
     nixosConfigurations = {
       failsafe = nixpkgs.lib.nixosSystem {
+        modules = [ ./hosts/failsafe ];
         specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-        ];
       };
     };
   };
