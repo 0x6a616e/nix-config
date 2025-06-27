@@ -14,13 +14,12 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, ... } @ inputs: {
+  outputs = { self, nixpkgs, ... } @ inputs: {
     nixosConfigurations = {
       failsafe = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.catppuccin
+          inputs.catppuccin.nixosModules.catppuccin
           ./hosts/failsafe/configuration.nix
         ];
       };
