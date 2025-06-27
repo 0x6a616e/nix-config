@@ -9,10 +9,7 @@
     inputs.catppuccin.homeModules.catppuccin
   ];
 
-  catppuccin.kitty = {
-    enable = true;
-    flavor = "mocha";
-  };
+  catppuccin.kitty.enable = true;
 
   home = {
     username = "jan";
