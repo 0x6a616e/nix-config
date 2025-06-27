@@ -1,18 +1,11 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
     ./fonts.nix
     ./git.nix
     ./hyprland.nix
     ./kitty.nix
-
-    inputs.catppuccin.homeModules.catppuccin
   ];
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-  };
 
   home = {
     username = "jan";
