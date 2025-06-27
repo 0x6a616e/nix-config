@@ -1,5 +1,14 @@
-{ ... }:
+{ inputs, ... }:
 {
+  import = [
+    inputs.catppuccin.homeModules.catppuccin
+  ];
+
+  catppuccin.kitty = {
+    enable = true;
+    flavor = "mocha";
+  };
+
   programs.kitty = {
     enable = true;
     font = {
