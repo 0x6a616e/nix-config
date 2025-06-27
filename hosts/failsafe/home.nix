@@ -6,7 +6,7 @@
     ./hyprland.nix
     ./kitty.nix
 
-    inputs.catppuccin.homeModules.catppuccin
+    inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
   home = {
