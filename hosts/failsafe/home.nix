@@ -1,10 +1,10 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
     ./fonts.nix
     ./git.nix
     ./hyprland.nix
-    (import ./kitty.nix { inherit inputs; })
+    ./kitty.nix
   ];
 
   home = {
