@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ./fonts.nix
     ./sddm.nix
     ./hyprland.nix
   ];
