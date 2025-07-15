@@ -19,7 +19,7 @@
 
     homeConfigurations = {
       "jan@failsafe" = home-manager.lib.homeManagerConfiguration {
-        modules = [ ];
+        modules = [ ./home/jan/failsafe.nix ];
         speacialArgs = { };
       };
     };
