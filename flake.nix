@@ -17,12 +17,5 @@
         specialArgs = { inherit inputs; };
       };
     };
-
-    homeConfigurations = {
-      "jan@failsafe" = home-manager.lib.homeManagerConfiguration {
-        modules = [ ./home/jan/failsafe.nix ];
-        speacialArgs = { };
-      };
-    };
   };
 }

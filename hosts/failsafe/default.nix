@@ -28,6 +28,8 @@
     };
   };
 
+  home-manager.users.jan = import ../../home/jan/failsafe.nix;
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
