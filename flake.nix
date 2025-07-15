@@ -13,7 +13,10 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: {
     nixosConfigurations = {
       failsafe = nixpkgs.lib.nixosSystem {
-        modules = [ ./hosts/failsafe ];
+        modules = [ 
+          ./hosts/failsafe
+          home-manager.nixOsModules.home-manager
+        ];
         specialArgs = { inherit inputs; };
       };
     };
