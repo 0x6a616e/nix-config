@@ -2,6 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+
+    ./niri.nix
   ];
 
   boot = {
