@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ./sddm.nix
     ./niri.nix
   ];
 
