@@ -1,3 +1,6 @@
 { ... }:
 {
+    imports = [
+        ./features/kitty.nix
+    ];
 }
