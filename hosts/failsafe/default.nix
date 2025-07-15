@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
 
     ./sddm.nix
+    ./hyprland.nix
   ];
 
   boot = {
