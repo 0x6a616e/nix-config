@@ -4,7 +4,7 @@
         enable = true;
         font = {
             name = "JetBrains Mono";
-            size = 20;
+            size = "20";
         };
     };
 }
