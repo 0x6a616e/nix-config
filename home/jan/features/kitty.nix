@@ -6,7 +6,7 @@
             name = "JetBrains Mono";
             size = 11.25;
         };
-        keybinds = {
+        keybindings = {
             "ctrl+shift+t" = "new_tab_with_cwd";
         };
         settings = {
