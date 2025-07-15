@@ -15,7 +15,7 @@
       failsafe = nixpkgs.lib.nixosSystem {
         modules = [ 
           ./hosts/failsafe
-          home-manager.nixOsModules.home-manager
+          home-manager.nixosModules.home-manager
         ];
         specialArgs = { inherit inputs; };
       };
