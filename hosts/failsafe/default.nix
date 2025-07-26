@@ -8,6 +8,8 @@
     ./hyprland.nix
   ];
 
+  inputs.catppuccin.accent = "red";
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {

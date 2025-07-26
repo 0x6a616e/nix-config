@@ -1,7 +1,6 @@
 { ... }:
 {
     catppuccin.kitty = {
-        accent = "red";
         enable = true;
         flavor = "mocha";
     };
