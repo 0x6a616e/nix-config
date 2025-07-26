@@ -1,7 +1,7 @@
 { ... }:
 {
     catppuccin.fzf = {
-        accent = "red";
+        accent = "yellow";
         enable = true;
         flavor = "mocha";
     };
