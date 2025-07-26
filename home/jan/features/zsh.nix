@@ -16,7 +16,7 @@
         '';
         sessionVariables = {
             EDITOR = "nvim";
-            NEWLINE = "\n";
+            NEWLINE = "\\n";
         };
         setOptions = [
             "prompt_subst"
