@@ -1,4 +1,4 @@
-{ pkgs, config, catppuccin, ... }:
+{ pkgs, config, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -33,7 +33,7 @@
     useUserPackages = true;
     users.jan = {
       imports = [
-        catppuccin.homeManagerModules.catppuccin
+        inputs.catppuccin.homeManagerModules.catppuccin
         ../../home/jan/failsafe.nix
       ];
     };
