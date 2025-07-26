@@ -33,7 +33,7 @@
     useUserPackages = true;
     users.jan = {
       imports = [
-        inputs.catppuccin.homeManagerModules.catppuccin
+        inputs.catppuccin.homeModules.catppuccin
         ../../home/jan/failsafe.nix
       ];
     };
