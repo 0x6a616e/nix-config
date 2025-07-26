@@ -3,7 +3,7 @@
     programs.zsh = {
         enable = true;
         initContent = ''
-            $PS1 = "%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f";
+            PS1='%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f';
         '';
         sessionVariables = {
             NEWLINE = "\n";
