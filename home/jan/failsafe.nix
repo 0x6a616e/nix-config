@@ -1,7 +1,6 @@
-{ catppuccin, ... }:
+{ ... }:
 {
     imports = [
-        catppuccin.homeManagerModules.catppuccin
         ./features/kitty.nix
     ];
 

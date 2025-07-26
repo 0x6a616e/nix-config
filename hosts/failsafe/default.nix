@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, catppuccin, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -31,7 +31,12 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.jan = import ../../home/jan/failsafe.nix;
+    users.jan = {
+      imports = [
+        catppuccin.homeManagerModules.catppuccin
+        ../../home/jan/failsafe.nix
+      ];
+    };
   };
 
   i18n = {
