@@ -13,6 +13,7 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs: {
     nixosConfigurations = {
       failsafe = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [ 
           ./hosts/failsafe
           home-manager.nixosModules.home-manager
