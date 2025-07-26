@@ -1,10 +1,5 @@
 { ... }:
 {
-    catppuccin.zsh-syntax-highlighting = {
-        enable = true;
-        flavor = "mocha";
-    };
-
     programs.zsh = {
         autosuggestion.enable = true;
         enable = true;
