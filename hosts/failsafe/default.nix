@@ -30,7 +30,7 @@
 
   home-manager = {
     useGlobalPkgs = true;
-    useUserPkgs = true;
+    useUserPackages = true;
     users.jan = import ../../home/jan/failsafe.nix;
   };
 
