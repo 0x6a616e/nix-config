@@ -28,7 +28,11 @@
     };
   };
 
-  home-manager.users.jan = import ../../home/jan/failsafe.nix;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPkgs = true;
+    users.jan = import ../../home/jan/failsafe.nix;
+  };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
