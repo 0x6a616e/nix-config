@@ -9,8 +9,13 @@
     wayland.windowManager.hyprland = {
         enable = true;
         settings = {
-            "monitor" = ",preferred,auto,auto";
+            monitor = ",preferred,auto,auto";
+            "$mod" = "SUPER";
             "$terminal" = "kitty";
+
+            bind = [
+                "$mod, Q, exec, $terminal"
+            ];
         };
     };
 # $terminal = kitty
