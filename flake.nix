@@ -18,7 +18,7 @@
         modules = [ 
           ./hosts/failsafe
           home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
         ];
         specialArgs = { inherit inputs; };
       };
