@@ -1,6 +1,7 @@
 { ... }:
 {
     imports = [
+        ./features/fzf.nix
         ./features/git.nix
         ./features/kitty.nix
         ./features/zsh.nix
