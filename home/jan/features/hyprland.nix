@@ -10,18 +10,9 @@
         enable = true;
         settings = {
             "monitor" = ",preferred,auto,auto";
+            "$terminal" = "kitty";
         };
     };
-# # monitor=,preferred,auto,auto
-# 
-# 
-# ###################
-# ### MY PROGRAMS ###
-# ###################
-# 
-# # See https://wiki.hyprland.org/Configuring/Keywords/
-# 
-# # Set programs that you use
 # $terminal = kitty
 # $menu = rofi -show drun
 # $lockscreen = hyprlock
