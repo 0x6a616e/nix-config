@@ -10,13 +10,13 @@
             "ctrl+shift+t" = "new_tab_with_cwd";
         };
         settings = {
+            font-features = "+liga";
             tab_bar_min_tabs = 1;
             tab_bar_style = "powerline";
             tab_powerline_style = "slanted";
             window_padding_width = 5;
         };
         extraConfig = ''
-            font-features +liga
             # vim:ft=kitty
 
             ## name:     Catppuccin Kitty Mocha
