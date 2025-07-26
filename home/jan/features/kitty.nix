@@ -1,5 +1,13 @@
 { ... }:
 {
+    xdg.configFile = {
+        "TEST" = {
+            text = ''
+                This is a test
+            '';
+        };
+    };
+
     programs.kitty = {
         enable = true;
         font = {
