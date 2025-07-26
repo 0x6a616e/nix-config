@@ -1,6 +1,7 @@
 { ... }:
 {
     imports = [
+        ./features/git.nix
         ./features/kitty.nix
     ];
 
