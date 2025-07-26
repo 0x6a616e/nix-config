@@ -1,10 +1,5 @@
 { ... }:
 {
-    catppuccin.kitty = {
-        enable = true;
-        flavor = "mocha";
-    };
-
     programs.kitty = {
         enable = true;
         font = {
@@ -20,5 +15,6 @@
             tab_powerline_style = "slanted";
             window_padding_width = 5;
         };
+        themeFile = "Catppuccin-Mocha";
     };
 }
