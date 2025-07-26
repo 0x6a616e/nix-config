@@ -54,7 +54,17 @@
     networkmanager.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1w";
+    };
+    settings = {
+      auto-optimize-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
 
