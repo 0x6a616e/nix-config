@@ -16,6 +16,7 @@
             window_padding_width = 5;
         };
         extraConfig = ''
+            font-features +liga
             # vim:ft=kitty
 
             ## name:     Catppuccin Kitty Mocha
