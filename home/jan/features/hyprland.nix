@@ -10,29 +10,24 @@
         enable = true;
         settings = {
             monitor = ",preferred,auto,auto";
+
+            "$menu" = "rofi -show drun";
             "$mod" = "SUPER";
             "$terminal" = "kitty";
 
             bind = [
                 "$mod, Q, exec, $terminal"
+                "$mod, W, exec, $menu"
             ];
         };
     };
-# $terminal = kitty
-# $menu = rofi -show drun
 # $lockscreen = hyprlock
 # $browser = firefox
 # 
 # 
-# #################
-# ### AUTOSTART ###
-# #################
-# 
 # # Autostart necessary processes (like notifications daemons, status bars, etc.)
 # # Or execute your favorite apps at launch like this:
 # 
-# # exec-once = [workspace 1 silent] $browser
-# # exec-once = [workspace special silent] $terminal
 # exec-once = nwg-look -a
 # exec-once = hyprctl setcursor rose-pine-hyprcursor
 # exec-once = hyprpaper
@@ -165,7 +160,6 @@
 # bind = , Print, exec, grim -g "$(slurp -d)" - | wl-copy
 # 
 # bind = $mainMod, Q, exec, $terminal
-# bind = $mainMod, W, exec, $menu
 # bind = $mainMod, E, exec, passmenu
 # bind = $mainMod, R, exec, powermenu
 # bind = $mainMod, C, killactive,
