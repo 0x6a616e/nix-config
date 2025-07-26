@@ -1,6 +1,6 @@
 { ... }:
 {
-    catppuccin.zsh-syntax-highlightning = {
+    catppuccin.zsh-syntax-highlighting = {
         enable = true;
         flavor = "mocha";
     };
