@@ -86,8 +86,8 @@
   time.timeZone = "America/Monterrey";
 
   users.users.jan = {
-    isNormalUser = true;
     description = "Jan";
     extraGroups = [ "networkmanager" "wheel" ];
+    isNormalUser = true;
   };
 }
