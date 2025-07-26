@@ -4,7 +4,7 @@
         ./features/kitty.nix
     ];
 
-    xdg.enable = "true";
+    xdg.enable = true;
 
     home = {
         homeDirectory = "/home/jan";
