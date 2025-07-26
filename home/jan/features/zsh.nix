@@ -15,6 +15,7 @@
             PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
         '';
         sessionVariables = {
+            EDITOR = "nvim";
             NEWLINE = "\n";
         };
         setOptions = [
