@@ -4,5 +4,9 @@
         ./features/kitty.nix
     ];
 
-    home.stateVersion = "25.05";
+    home = {
+        homeDirectory = "/home/jan";
+        stateVersion = "25.05";
+        username = "jan";
+    };
 }
