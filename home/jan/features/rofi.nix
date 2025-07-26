@@ -5,5 +5,13 @@
         flavor = "mocha";
     };
 
-    programs.rofi.enable = true;
+    programs.rofi = {
+        enable = true;
+        extraConfig = {
+            icon-theme = "Oranchelo";
+        };
+        modes = [
+            "drun"
+        ];
+    };
 }
