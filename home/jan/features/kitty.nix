@@ -1,6 +1,9 @@
 { ... }:
 {
-    catppuccin.kitty.enable = true;
+    catppuccin.kitty = {
+        enable = true;
+        flavor = "mocha";
+    };
 
     programs.kitty = {
         enable = true;
