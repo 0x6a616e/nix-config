@@ -4,8 +4,9 @@
     ./hardware-configuration.nix
 
     ./fonts.nix
-    ./sddm.nix
     ./hyprland.nix
+    ./sddm.nix
+    ./zsh.nix
   ];
 
   boot = {
