@@ -3,6 +3,7 @@
     imports = [
         ./features/git.nix
         ./features/kitty.nix
+        ./features/zsh.nix
     ];
 
     xdg.enable = true;
