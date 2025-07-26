@@ -14,5 +14,6 @@
         modes = [
             "drun"
         ];
+        terminal = "kitty";
     };
 }
