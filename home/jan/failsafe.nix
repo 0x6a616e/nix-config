@@ -3,6 +3,7 @@
     imports = [
         ./features/fzf.nix
         ./features/git.nix
+        ./features/hyprland.nix
         ./features/kitty.nix
         ./features/zoxide.nix
         ./features/zsh.nix
