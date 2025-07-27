@@ -12,27 +12,17 @@
         };
     };
 
-    home.file = {
-        "wallpapers/main.gif" = {
+    xdg.dataFile = {
+        "powermenu.sh" = {
+            executable = true;
+            source = ../../../assets/powermenu.sh;
+        };
+        "wallpaper.gif" = {
             source = ../../../assets/wallpaper.gif;
         };
-        "scripts/powermenu.sh" = {
+        "wifimenu.sh" = {
             executable = true;
-            text = ''
-                #!/bin/sh
-
-                # Power menu script using rofi
-
-                CHOSEN=$(printf "Suspend\nReboot\nShutdown\nLog Out" | rofi -dmenu -i -p "Power Menu:")
-
-                case "$CHOSEN" in
-                    "Suspend") systemctl suspend-then-hibernate ;;
-                    "Reboot") reboot ;;
-                    "Shutdown") poweroff ;;
-                    "Log Out") hyprctl dispatch exit ;;
-                    *) exit 1 ;;
-                esac
-            '';
+            source = ../../../assets/wifimenu.sh;
         };
     };
 
@@ -54,7 +44,7 @@
                     };
                     "custom/power" = {
                         tooltip = false;
-                        on-click = "${config.home.homeDirectory}/scripts/powermenu.sh";
+                        on-click = "${config.xdg.dataHome}/powermenu.sh";
                         format = "";
                     };
                     "hyprland/workspaces" = {
@@ -75,7 +65,7 @@
                     ];
                     network = {
                         format = "󰤨 {essid}";
-                        on-click = "wifimenu";
+                        on-click = "${config.xdg.dataHome}/wifimenu";
                         tooltip = false;
                     };
                     position = "bottom";
@@ -198,7 +188,7 @@
             ];
 
             exec-once = [
-                "swww img ${config.home.homeDirectory}/wallpapers/main.gif"
+                "swww img ${config.xdg.dataHome}/wallpaper.gif"
                 "waybar"
             ];
 
