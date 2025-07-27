@@ -16,11 +16,43 @@
             enable = true;
             settings = {
                 mainBar = {
+                    clock = {
+                        format = "󰥔 {:%H:%M   %d/%m/%Y}";
+                        timezone = "America/Monterrey";
+                        tooltip = false;
+                    };
+                    "custom/lock" = {
+                        format = "";
+                        on-click = "sh -c 'hyprlock'";
+                        tooltip = false;
+                    };
+                    "custom/power" = {
+                        tooltip = false;
+                        on-click = "powermenu";
+                        format = "";
+                    };
+                    "hyprland/workspaces" = {
+                        format = " {icon} ";
+                        format-icons = {
+                            default = "";
+                        };
+                    };
                     layer = "top";
-                    position = "bottom";
                     modules-left = [
                         "hyprland/workspaces"
                     ];
+                    modules-right = [
+                        "network"
+                        "clock"
+                        "custom/lock"
+                        "custom/power"
+                    ];
+                    network = {
+                        format = "󰤨 {essid}";
+                        on-click = "wifimenu";
+                        tooltip = false;
+                    };
+                    position = "bottom";
                 };
             };
         };
