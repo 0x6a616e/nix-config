@@ -62,7 +62,10 @@
                 "HYPRCURSOR_SIZE,40"
             ];
 
-            exec-once = "swww img ~/wallpapers/main.gif";
+            exec-once = [
+                "swww img ~/wallpapers/main.gif"
+                "waybar"
+            ];
 
             monitor = ",preferred,auto,auto";
         };
