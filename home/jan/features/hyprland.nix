@@ -10,7 +10,9 @@
         source = ../../../assets/wallpaper.gif;
     };
 
-    programs = {
+    programs.hyprlock.enable = true;
+
+    services = {
         hypridle = {
             enable = true;
             settings = {
@@ -37,10 +39,8 @@
                 ];
             };
         };
-        hyprlock.enable = true;
+        swww.enable = true;
     };
-
-    services.swww.enable = true;
 
     wayland.windowManager.hyprland = {
         enable = true;
