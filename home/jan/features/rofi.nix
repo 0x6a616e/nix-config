@@ -9,7 +9,7 @@
         enable = true;
         extraConfig = {
             # disable-history = false;
-            # display-drun = "   Apps ";
+            display-drun = "   Apps ";
             # display-network = " 󰤨  Network";
             # display-run = "   Run ";
             # display-window = " 󰕰  Window";
@@ -19,7 +19,7 @@
             show-icons = true;
             # sidebar-mode = true;
         };
-        font = "JetBrainsMono Nerd Font";
+        font = "JetBrainsMono Nerd Font 12";
         modes = [
             "drun"
         ];
