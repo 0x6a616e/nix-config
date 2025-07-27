@@ -54,7 +54,7 @@
                     };
                     "custom/power" = {
                         tooltip = false;
-                        on-click = "powermenu";
+                        on-click = "${config.home.homeDirectory}/scripts/powermenu.sh";
                         format = "";
                     };
                     "hyprland/workspaces" = {
