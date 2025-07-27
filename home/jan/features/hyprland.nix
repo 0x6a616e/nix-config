@@ -6,6 +6,10 @@
         flavor = "mocha";
     };
 
+    home.file."wallpapers/main.gif" = {
+        source = ../../../assets/wallpaper.gif;
+    };
+
     programs.hyprlock.enable = true;
 
     services.swww.enable = true;
