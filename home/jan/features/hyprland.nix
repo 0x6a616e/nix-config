@@ -15,8 +15,10 @@
         waybar = {
             enable = true;
             settings = {
-                layer = "top";
-                position = "bottom";
+                mainBar = {
+                    layer = "top";
+                    position = "bottom";
+                };
             };
         };
     };
