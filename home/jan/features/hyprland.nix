@@ -14,10 +14,12 @@
         hyprlock.enable = true;
         waybar = {
             enable = true;
-            settings = {
-                layer = "top";
-                position = "bottom";
-            };
+            settings = [
+                {
+                    layer = "top";
+                    position = "bottom";
+                }
+            ];
         };
     };
 
