@@ -10,7 +10,35 @@
         source = ../../../assets/wallpaper.gif;
     };
 
-    programs.hyprlock.enable = true;
+    programs = {
+        hypridle = {
+            enable = true;
+            settings = {
+                general = {
+                    after_sleep_cmd = "hyprctl dispatch dpms on";
+                    before_sleep_cmd = "loginctl lock-session";
+                    lock_cmd = "pidof hyprlock || hyprlock";
+                };
+
+                listener = [
+                    {
+                        on-timeout = "loginctl lock-session";
+                        timeout = 300;
+                    }
+                    {
+                        on-timeout = "hyprctl dispatch dpms off";
+                        on-resume = "hyprctl dispatch dpms on";
+                        timeout = 330;
+                    }
+                    {
+                        on-timeout = "systemctl suspend";
+                        timeout = 1800;
+                    }
+                ];
+            };
+        };
+        hyprlock.enable = true;
+    };
 
     services.swww.enable = true;
 
@@ -36,7 +64,6 @@
             monitor = ",preferred,auto,auto";
         };
     };
-# exec-once = hyprpaper
 # exec-once = hypridle
 # exec-once = waybar
 # exec-once = kanshi
