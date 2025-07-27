@@ -1,7 +1,7 @@
 { ... }:
 {
     catppuccin.rofi = {
-        enable = true;
+        # enable = true;
         flavor = "mocha";
     };
 
