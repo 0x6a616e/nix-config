@@ -15,8 +15,8 @@
             # display-window = " 󰕰  Window";
             # drun-display-format = "{icon} {name}";
             # hide-scrollbar = true;
-            # icon-theme = "Oranchelo";
-            # show-icons = true;
+            icon-theme = "Oranchelo";
+            show-icons = true;
             # sidebar-mode = true;
         };
         font = "JetBrainsMono Nerd Font";
