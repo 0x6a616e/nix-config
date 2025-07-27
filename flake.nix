@@ -9,6 +9,11 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, catppuccin, ... } @ inputs: {

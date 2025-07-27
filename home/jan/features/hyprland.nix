@@ -23,13 +23,6 @@
             ];
         };
     };
-# $lockscreen = hyprlock
-# $browser = firefox
-# 
-# 
-# # Autostart necessary processes (like notifications daemons, status bars, etc.)
-# # Or execute your favorite apps at launch like this:
-# 
 # exec-once = nwg-look -a
 # exec-once = hyprctl setcursor rose-pine-hyprcursor
 # exec-once = hyprpaper
