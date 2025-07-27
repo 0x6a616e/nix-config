@@ -31,6 +31,8 @@
                 "HYPRCURSOR_SIZE,40"
             ];
 
+            exec-once = "swww img ~/wallpapers/main.gif";
+
             monitor = ",preferred,auto,auto";
         };
     };
