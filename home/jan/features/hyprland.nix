@@ -10,7 +10,10 @@
         source = ../../../assets/wallpaper.gif;
     };
 
-    programs.hyprlock.enable = true;
+    programs = {
+        hyprlock.enable = true;
+        waybar.enable = true;
+    };
 
     services = {
         hypridle = {
@@ -64,7 +67,6 @@
             monitor = ",preferred,auto,auto";
         };
     };
-# exec-once = hypridle
 # exec-once = waybar
 # exec-once = kanshi
 # 
