@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     catppuccin = {
         hyprland = {
@@ -178,7 +178,7 @@
             ];
 
             exec-once = [
-                "swww img ~/wallpapers/main.gif"
+                "swww img ${config.home.homeDirectory}/wallpapers/main.gif"
                 "waybar"
             ];
 
