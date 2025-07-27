@@ -20,7 +20,10 @@
                 "$mod, W, exec, $menu"
             ];
 
-            env = "HYPRCURSOR_THEME,rose-pine-hyprcursor";
+            env = [
+                "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+                "HYPRCURSOR_SIZE,40"
+            ];
 
             monitor = ",preferred,auto,auto";
         };
