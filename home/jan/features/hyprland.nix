@@ -11,8 +11,6 @@
     wayland.windowManager.hyprland = {
         enable = true;
         settings = {
-            monitor = ",preferred,auto,auto";
-
             "$menu" = "rofi -show drun";
             "$mod" = "SUPER";
             "$terminal" = "kitty";
@@ -21,6 +19,10 @@
                 "$mod, Q, exec, $terminal"
                 "$mod, W, exec, $menu"
             ];
+
+            env = "HYPRCURSOR_THEME,rose-pine-hyprcursor";
+
+            monitor = ",preferred,auto,auto";
         };
     };
 # exec-once = nwg-look -a
