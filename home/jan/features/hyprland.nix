@@ -1,9 +1,15 @@
 { ... }:
 {
-    catppuccin.hyprland = {
-        accent = "red";
-        enable = true;
-        flavor = "mocha";
+    catppuccin = {
+        hyprland = {
+            accent = "red";
+            enable = true;
+            flavor = "mocha";
+        };
+        waybar = {
+            enable = true;
+            flavor = "mocha";
+        };
     };
 
     home.file."wallpapers/main.gif" = {
@@ -55,6 +61,72 @@
                     position = "bottom";
                 };
             };
+            style = ''
+                * {
+                    font-family: "JetBrains Mono Nerd Font";
+                    font-size: 15px;
+                    min-height: 0;
+                }
+
+            #waybar {
+                background: @base;
+                color: @text;
+                margin: 5px 5px;
+            }
+
+            #workspaces {
+                margin: 5px;
+            }
+
+            #workspaces button {
+                color: @lavender;
+            }
+
+            #workspaces button.active {
+                color: @red;
+            }
+
+            #workspaces button:hover {
+                color: @red;
+            }
+
+            #network,
+            #clock,
+            #battery,
+            #custom-lock,
+            #custom-power {
+                padding: 0.5rem 1rem;
+                margin: 6px 0;
+            }
+
+            #network {
+                color: @teal;
+            }
+
+            #clock {
+                color: @blue;
+            }
+
+            #battery {
+                color: @green;
+            }
+
+            #battery.charging {
+                color: @green;
+            }
+
+            #battery.warning:not(.charging) {
+                color: @red;
+            }
+
+            #custom-lock {
+                color: @pink;
+            }
+
+            #custom-power {
+                color: @red;
+            }
+            '';
         };
     };
 
