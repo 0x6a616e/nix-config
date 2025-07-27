@@ -65,7 +65,7 @@
                     ];
                     network = {
                         format = "󰤨 {essid}";
-                        on-click = "${config.xdg.dataHome}/wifimenu";
+                        on-click = "${config.xdg.dataHome}/wifimenu.sh";
                         tooltip = false;
                     };
                     position = "bottom";
