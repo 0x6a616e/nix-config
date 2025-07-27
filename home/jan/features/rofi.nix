@@ -13,7 +13,7 @@
             # display-network = " 󰤨  Network";
             # display-run = "   Run ";
             # display-window = " 󰕰  Window";
-            # drun-display-format = "{icon} {name}";
+            drun-display-format = "{icon} {name}";
             # hide-scrollbar = true;
             icon-theme = "Oranchelo";
             show-icons = true;
