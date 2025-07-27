@@ -12,7 +12,12 @@
 
     programs = {
         hyprlock.enable = true;
-        waybar.enable = true;
+        waybar = {
+            enable = true;
+            settings = {
+                layer = "top";
+                position = "bottom";
+            };
     };
 
     services = {
