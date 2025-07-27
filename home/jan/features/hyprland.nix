@@ -68,64 +68,64 @@
                     min-height: 0;
                 }
 
-            #waybar {
-                background: @base;
-                color: @text;
-                margin: 5px 5px;
-            }
+                #waybar {
+                    background: @base;
+                    color: @text;
+                    margin: 5px 5px;
+                }
 
-            #workspaces {
-                margin: 5px;
-            }
+                #workspaces {
+                    margin: 5px;
+                }
 
-            #workspaces button {
-                color: @lavender;
-            }
+                #workspaces button {
+                    color: @lavender;
+                }
 
-            #workspaces button.active {
-                color: @red;
-            }
+                #workspaces button.active {
+                    color: @red;
+                }
 
-            #workspaces button:hover {
-                color: @red;
-            }
+                #workspaces button:hover {
+                    color: @red;
+                }
 
-            #network,
-            #clock,
-            #battery,
-            #custom-lock,
-            #custom-power {
-                padding: 0.5rem 1rem;
-                margin: 6px 0;
-            }
+                #network,
+                #clock,
+                #battery,
+                #custom-lock,
+                #custom-power {
+                    padding: 0.5rem 1rem;
+                    margin: 6px 0;
+                }
 
-            #network {
-                color: @teal;
-            }
+                #network {
+                    color: @teal;
+                }
 
-            #clock {
-                color: @blue;
-            }
+                #clock {
+                    color: @blue;
+                }
 
-            #battery {
-                color: @green;
-            }
+                #battery {
+                    color: @green;
+                }
 
-            #battery.charging {
-                color: @green;
-            }
+                #battery.charging {
+                    color: @green;
+                }
 
-            #battery.warning:not(.charging) {
-                color: @red;
-            }
+                #battery.warning:not(.charging) {
+                    color: @red;
+                }
 
-            #custom-lock {
-                color: @pink;
-            }
+                #custom-lock {
+                    color: @pink;
+                }
 
-            #custom-power {
-                color: @red;
-            }
+                #custom-power {
+                    color: @red;
+                }
             '';
         };
     };
