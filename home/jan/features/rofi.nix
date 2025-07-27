@@ -14,7 +14,7 @@
             # display-run = "   Run ";
             # display-window = " 󰕰  Window";
             drun-display-format = "{icon} {name}";
-            hide-scrollbar = true;
+            # hide-scrollbar = true;
             icon-theme = "Oranchelo";
             show-icons = true;
             sidebar-mode = true;
