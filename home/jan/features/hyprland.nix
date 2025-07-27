@@ -18,6 +18,7 @@
                 layer = "top";
                 position = "bottom";
             };
+        };
     };
 
     services = {
