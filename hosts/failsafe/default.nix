@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ./cursors.nix
     ./fonts.nix
     ./hyprland.nix
     ./sddm.nix
