@@ -8,6 +8,8 @@
 
     programs.hyprlock.enable = true;
 
+    services.swww.enable = true;
+
     wayland.windowManager.hyprland = {
         enable = true;
         settings = {
@@ -28,8 +30,6 @@
             monitor = ",preferred,auto,auto";
         };
     };
-# exec-once = nwg-look -a
-# exec-once = hyprctl setcursor rose-pine-hyprcursor
 # exec-once = hyprpaper
 # exec-once = hypridle
 # exec-once = waybar
