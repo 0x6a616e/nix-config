@@ -207,6 +207,11 @@
                 rounding = 0;
             };
 
+            dwindle = {
+                preserve_split = true;
+                pseudotile = true;
+            };
+
             env = [
                 "HYPRCURSOR_SIZE,40"
                 "HYPRCURSOR_THEME,rose-pine-hyprcursor"
