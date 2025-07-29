@@ -204,8 +204,8 @@
                 "$mod, L, layoutmsg, focusmater master"
                 "$mod, P, fullscreen, 1"
 
-                "$mod, SHIFT, J, layoutmsg, swapnext"
-                "$mod, SHIFT, K, layoutmsg, swapprev"
+                "$mod SHIFT, J, layoutmsg, swapnext"
+                "$mod SHIFT, K, layoutmsg, swapprev"
 
                 "$mod, 1, workspace, 1"
                 "$mod, 2, workspace, 2"
