@@ -2,6 +2,7 @@
 {
     imports = [
         ./features/bat.nix
+        ./features/btop.nix
         ./features/fzf.nix
         ./features/git.nix
         ./features/hyprland.nix
