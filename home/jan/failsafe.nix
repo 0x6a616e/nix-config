@@ -5,6 +5,7 @@
         ./features/git.nix
         ./features/hyprland.nix
         ./features/kitty.nix
+        ./features/lazygit.nix
         ./features/pass.nix
         ./features/rofi.nix
         ./features/zoxide.nix
