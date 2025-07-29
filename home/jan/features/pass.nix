@@ -11,9 +11,12 @@
         rofi.pass.enable = true;
     };
 
-    services.pass-secret-service = {
-        enable = true;
-        storePath = "${config.home.homeDirectory}/.password-store";
+    services = {
+        gpg-agent.enable = true;
+        pass-secret-service = {
+            enable = true;
+            storePath = "${config.home.homeDirectory}/.password-store";
+        };
     };
 
 }
