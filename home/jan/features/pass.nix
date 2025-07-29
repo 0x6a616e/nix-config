@@ -10,7 +10,6 @@
                 PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.password-store";
             };
         };
-        rofi.pass.enable = true;
     };
 
     services = {
