@@ -167,6 +167,7 @@
                 ];
             };
         };
+        hyprpolkitagent.enable = true;
         swww.enable = true;
     };
 
