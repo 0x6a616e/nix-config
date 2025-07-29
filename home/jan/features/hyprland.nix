@@ -193,6 +193,8 @@
             ];
 
             general = {
+                border_size = 3;
+                "col.active_border" = "$red";
                 gaps_in = 0;
                 gaps_out = 0;
             };
@@ -201,12 +203,6 @@
         };
     };
 # general { 
-#     gaps_in = 0
-#     gaps_out = 0
-# 
-#     border_size = 3
-# 
-#     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
 #     col.active_border = $red
 #     col.inactive_border = $base
 # 
