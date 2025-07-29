@@ -1,5 +1,13 @@
-{ config, ... }:
+{ config, pkgs, ... }:
+let
+    pinentry = {
+        packages = [ pkgs.pinentry-curses ];
+        name = "curses";
+    };
+in
 {
+    home.packages = pinentry.packages;
+
     programs = {
         gpg.enable = true;
         password-store = {
@@ -12,7 +20,10 @@
     };
 
     services = {
-        gpg-agent.enable = true;
+        gpg-agent = {
+            enable = true;
+            pinentryFlavor = pinentry.name;
+        };
         pass-secret-service = {
             enable = true;
             storePath = "${config.home.homeDirectory}/.password-store";
