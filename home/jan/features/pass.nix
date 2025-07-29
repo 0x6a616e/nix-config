@@ -22,7 +22,7 @@ in
     services = {
         gpg-agent = {
             enable = true;
-            pinentryFlavor = pinentry.name;
+            pinentryPackage = pinentry.name;
         };
         pass-secret-service = {
             enable = true;
