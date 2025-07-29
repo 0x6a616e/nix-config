@@ -1,7 +1,7 @@
 { ... }:
 {
     catppuccin.lazygit = {
-        accent = "yellow";
+        accent = "red";
         enable = true;
         flavor = "mocha";
     };
