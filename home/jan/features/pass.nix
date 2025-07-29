@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
-let
-    pinentry = {
-        packages = [ pkgs.pinentry-curses ];
-        name = "curses";
-    };
-in
 {
-    home.packages = pinentry.packages;
+    home.packages = [ pkgs.gcr ];
 
     programs = {
         gpg.enable = true;
@@ -22,7 +16,7 @@ in
     services = {
         gpg-agent = {
             enable = true;
-            pinentryPackage = pinentry.name;
+            pinentry.package = pkgs.pinentry-gnome3;
         };
         pass-secret-service = {
             enable = true;
