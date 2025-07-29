@@ -20,6 +20,10 @@
         "lockscreen.jpg" = {
             source = ../../../assets/lockscreen.jpg;
         };
+        "passmenu.sh" = {
+            executable = true;
+            source = ../../../assets/passmenu.sh;
+        };
         "powermenu.sh" = {
             executable = true;
             source = ../../../assets/powermenu.sh;
@@ -260,6 +264,7 @@
 
             bind = [
                 "$mod, C, killactive"
+                "$mod, E, exec, ${config.xdg.dataHome}/passmenu.sh"
                 "$mod, M, exit"
                 "$mod, Q, exec, $terminal"
                 "$mod, R, exec, ${config.xdg.dataHome}/powermenu.sh"
