@@ -191,8 +191,45 @@
             };
 
             bind = [
+                "$mod, C, killactive"
+                "$mod, M, exit"
                 "$mod, Q, exec, $terminal"
+                "$mod, R, exec, ${config.xdg.dataHome}/powermenu.sh"
                 "$mod, W, exec, $menu"
+
+                "ALT, Tab, focuscurrentorlast"
+                "$mod, H, layoutmsg, swapwithmaster"
+                "$mod, J, layoutmsg, cyclenext"
+                "$mod, K, layoutmsg, cycleprev"
+                "$mod, L, layoutmsg, focusmater master"
+                "$mod, P, fullscreen, 1"
+
+                "$mod, SHIFT, J, layoutmsg, swapnext"
+                "$mod, SHIFT, K, layoutmsg, swapprev"
+
+                "$mod, 1, workspace, 1"
+                "$mod, 2, workspace, 2"
+                "$mod, 3, workspace, 3"
+                "$mod, 4, workspace, 4"
+                "$mod, 5, workspace, 5"
+                "$mod, 6, workspace, 6"
+                "$mod, 7, workspace, 7"
+                "$mod, 8, workspace, 8"
+                "$mod, 9, workspace, 9"
+                "$mod, 0, workspace, 10"
+                "$mod, S, togglespecialworkspace, special"
+
+                "$mod SHIFT, 1, movetoworkspace, 1"
+                "$mod SHIFT, 2, movetoworkspace, 2"
+                "$mod SHIFT, 3, movetoworkspace, 3"
+                "$mod SHIFT, 4, movetoworkspace, 4"
+                "$mod SHIFT, 5, movetoworkspace, 5"
+                "$mod SHIFT, 6, movetoworkspace, 6"
+                "$mod SHIFT, 7, movetoworkspace, 7"
+                "$mod SHIFT, 8, movetoworkspace, 8"
+                "$mod SHIFT, 9, movetoworkspace, 9"
+                "$mod SHIFT, 0, movetoworkspace, 10"
+                "$mod SHIFT, S, movetoworkspace, special"
             ];
 
             decoration = {
@@ -255,6 +292,8 @@
             };
 
             monitor = ", preferred, auto, auto";
+
+            windowrulev2 = "suppressevent maximize, class:.*";
         };
     };
 # # https://wiki.hyprland.org/Configuring/Variables/#decoration
