@@ -183,8 +183,8 @@
             ];
 
             env = [
-                "HYPRCURSOR_THEME,rose-pine-hyprcursor"
                 "HYPRCURSOR_SIZE,40"
+                "HYPRCURSOR_THEME,rose-pine-hyprcursor"
             ];
 
             exec-once = [
@@ -192,30 +192,14 @@
                 "waybar"
             ];
 
+            general = {
+                gaps_in = 0;
+                gaps_out = 0;
+            };
+
             monitor = ",preferred,auto,auto";
         };
     };
-# exec-once = waybar
-# exec-once = kanshi
-# 
-# 
-# #############################
-# ### ENVIRONMENT VARIABLES ###
-# #############################
-# 
-# # See https://wiki.hyprland.org/Configuring/Environment-variables/
-# 
-# env = XCURSOR_SIZE,30
-# env = HYPRCURSOR_SIZE,30
-# 
-# 
-# #####################
-# ### LOOK AND FEEL ###
-# #####################
-# 
-# # Refer to https://wiki.hyprland.org/Configuring/Variables/
-# 
-# # https://wiki.hyprland.org/Configuring/Variables/#general
 # general { 
 #     gaps_in = 0
 #     gaps_out = 0
