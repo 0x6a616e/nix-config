@@ -233,6 +233,12 @@
                 resize_on_border = false;
             };
 
+            master = {
+                mfact = 0.7;
+                new_on_top = true;
+                new_status = "inherit";
+            };
+
             monitor = ", preferred, auto, auto";
         };
     };
