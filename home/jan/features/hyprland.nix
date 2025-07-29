@@ -182,6 +182,18 @@
                 "$mod, W, exec, $menu"
             ];
 
+            decoration = {
+                active_opacity = 1.0;
+                blur = {
+                    enabled = true;
+                    passes = 1;
+                    size = 3;
+                    vibrancy = 0.1696;
+                };
+                inactive_opacity = 1.0;
+                rounding = 0;
+            };
+
             env = [
                 "HYPRCURSOR_SIZE,40"
                 "HYPRCURSOR_THEME,rose-pine-hyprcursor"
@@ -203,7 +215,7 @@
                 resize_on_border = false;
             };
 
-            monitor = ",preferred,auto,auto";
+            monitor = ", preferred, auto, auto";
         };
     };
 # # https://wiki.hyprland.org/Configuring/Variables/#decoration
