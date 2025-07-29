@@ -194,7 +194,7 @@
 
             general = {
                 border_size = 3;
-                "col.active_border" = "$red";
+                "col.active_border" = "$yellow";
                 gaps_in = 0;
                 gaps_out = 0;
             };
