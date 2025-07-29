@@ -3,6 +3,7 @@
     imports = [
         ./features/bat.nix
         ./features/btop.nix
+        ./features/firefox.nix
         ./features/fzf.nix
         ./features/git.nix
         ./features/hyprland.nix
