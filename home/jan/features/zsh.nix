@@ -29,3 +29,8 @@
         syntaxHighlighting.enable = true;
     };
 }
+
+# Start tmux session if not already inside a tmux session
+# if [[ -z $TMUX ]]; then
+#     tmux new -As jan  # Start new tmux session named 'jan'
+# fi
