@@ -193,28 +193,19 @@
             ];
 
             general = {
+                allow_tearing = false;
                 border_size = 3;
-                "col.active_border" = "$yellow";
+                "col.active_border" = "$red";
+                "col.inactive_border" = "$base";
                 gaps_in = 0;
                 gaps_out = 0;
+                layout = "master";
+                resize_on_border = false;
             };
 
             monitor = ",preferred,auto,auto";
         };
     };
-# general { 
-#     col.active_border = $red
-#     col.inactive_border = $base
-# 
-#     # Set to true enable resizing windows by clicking and dragging on borders and gaps
-#     resize_on_border = false 
-# 
-#     # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-#     allow_tearing = false
-# 
-#     layout = master
-# }
-# 
 # # https://wiki.hyprland.org/Configuring/Variables/#decoration
 # decoration {
 #     rounding = 0
