@@ -17,6 +17,9 @@
     };
 
     xdg.dataFile = {
+        "lockscreen.jpg" = {
+            source = ../../../assets/lockscreen.jpg;
+        };
         "powermenu.sh" = {
             executable = true;
             source = ../../../assets/powermenu.sh;
@@ -31,7 +34,67 @@
     };
 
     programs = {
-        hyprlock.enable = true;
+        hyprlock = {
+            enable = true;
+            settings = {
+                "$accent" = "$red";
+                "$accentAlpha" = "$redAlpha";
+                "$font" = "JetBrainsMono Nerd Font";
+
+                background = {
+                    blur_passes = 0;
+                    color = "$base";
+                    path = "${config.xdg.dataHome}/lockscreen.jpg";
+                };
+
+                general = {
+                    disable_loading_bar = true;
+                    hide_cursor = true;
+                };
+
+                input-field = {
+                    capslock_color = "$yellow";
+                    check_color = "$accent";
+                    dots_center = true;
+                    dots_size = 0.2;
+                    dots_spacing = 0.2;
+                    fade_on_empty = false;
+                    fail_color = "$red";
+                    fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+                    font_color = "$text";
+                    halign = "center";
+                    hide_input = false;
+                    inner_color = "$surface0";
+                    outer_color = "$accent";
+                    outline_thickness = 4;
+                    placeholder_text = "<span foreground='##$textAlpha'><i>󰌾 Logged in as </i><span foreground='##$accentAlpha'>$USER</span></span>";
+                    position = "0, -47";
+                    size = "300, 60";
+                    valign = "center";
+                };
+
+                label = [
+                    {
+                        color = "$text";
+                        text = "$TIME";
+                        font_family = "$font";
+                        font_size = 90;
+                        halign = "right";
+                        position = "-30, 0";
+                        valign = "top";
+                    }
+                    {
+                        color = "$text";
+                        font_family = "$font";
+                        font_size = "25";
+                        halign = "right";
+                        position = "-30, -150";
+                        text = "cmd[update:43200000] date +'%A, %d %B %Y'";
+                        valign = "top";
+                    }
+                ];
+            };
+        };
         waybar = {
             enable = true;
             settings = {
