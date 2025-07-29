@@ -201,7 +201,7 @@
                 "$mod, H, layoutmsg, swapwithmaster"
                 "$mod, J, layoutmsg, cyclenext"
                 "$mod, K, layoutmsg, cycleprev"
-                "$mod, L, layoutmsg, focusmater master"
+                "$mod, L, layoutmsg, focusmaster master"
                 "$mod, P, fullscreen, 1"
 
                 "$mod SHIFT, J, layoutmsg, swapnext"
