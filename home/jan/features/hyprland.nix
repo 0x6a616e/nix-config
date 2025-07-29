@@ -233,6 +233,21 @@
                 resize_on_border = false;
             };
 
+            input = {
+                accel_profile = "flat";
+                follow_mouse = 1;
+                force_no_accel = false;
+                kb_layout = "us";
+                kb_options = "compose:rctrl";
+                natural_scroll = false;
+                scroll_button = 274;
+                scroll_method = "on_button_down";
+                sensitivity = 0;
+                touchpad = {
+                    natural_scroll = true;
+                };
+            };
+
             master = {
                 mfact = 0.7;
                 new_on_top = true;
