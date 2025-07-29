@@ -1,6 +1,7 @@
 { ... }:
 {
     imports = [
+        ./features/bat.nix
         ./features/fzf.nix
         ./features/git.nix
         ./features/hyprland.nix
