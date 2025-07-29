@@ -6,6 +6,10 @@
             enable = true;
             flavor = "mocha";
         };
+        hyprlock = {
+            enable = true;
+            flavor = "mocha";
+        };
         waybar = {
             enable = true;
             flavor = "mocha";
