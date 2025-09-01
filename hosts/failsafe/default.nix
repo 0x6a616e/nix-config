@@ -10,8 +10,6 @@
 		./zsh.nix
 	];
 
-	inputs.git-example.url = "git+file:/home/jan/git/password-store.git";
-
 	boot = {
 		loader = {
 			efi.canTouchEfiVariables = true;
