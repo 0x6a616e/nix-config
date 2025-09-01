@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
     imports = [
         ./features/bat.nix
@@ -13,8 +13,6 @@
         ./features/zoxide.nix
         ./features/zsh.nix
     ];
-
-    inputs.git-example = "git+file:/home/jan/git/password-store.git";
 
     xdg.enable = true;
 
