@@ -58,6 +58,7 @@
 	services = {
 		openssh = {
 			enable = true;
+			settings.PasswordAuthentication = false;
 		};
 		xserver.xkb = {
 			layout = "us";
