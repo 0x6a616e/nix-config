@@ -55,9 +55,14 @@
 
 	nixpkgs.config.allowUnfree = true;
 
-	services.xserver.xkb = {
-		layout = "us";
-		variant = "";
+	services = {
+		openssh = {
+			enable = true;
+		};
+		xserver.xkb = {
+			layout = "us";
+			variant = "";
+		};
 	};
 
 	system.stateVersion = "25.05";
@@ -68,6 +73,9 @@
 		description = "Jan";
 		extraGroups = [ "networkmanager" "wheel" ];
 		isNormalUser = true;
+		openssh.authorizedKeys.keys = [
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkjK160oBMA9G4A/MrlQUezZdBNOB03WLXrMApBR5tv"
+		];
 		shell = pkgs.zsh;
 	};
 }
