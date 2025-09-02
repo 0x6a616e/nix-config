@@ -15,6 +15,8 @@
         ./features/zsh.nix
     ];
 
+    services.ssh-agent.enable = true;
+
     xdg.enable = true;
 
     home = {
