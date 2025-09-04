@@ -54,10 +54,18 @@
 
 	nixpkgs.config.allowUnfree = true;
 
+	security.rtkit.enable = true;
+
 	services = {
 		openssh = {
 			enable = true;
 			settings.PasswordAuthentication = false;
+		};
+		pipewire = {
+			alsa.enable = true;
+			alsa.support32Bit = true;
+			enable = true;
+			pulse.enable = true;
 		};
 		xserver.xkb = {
 			layout = "us";
