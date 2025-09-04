@@ -359,7 +359,7 @@
             };
 
             master = {
-                mfact = 0.7;
+                mfact = 0.55;
                 new_on_top = true;
                 new_status = "inherit";
             };
