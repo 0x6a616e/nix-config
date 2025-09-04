@@ -17,6 +17,10 @@
 		};
 	};
 
+	environment.systemPackages = [
+		pkgs.pavucontrol
+	];
+
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;
