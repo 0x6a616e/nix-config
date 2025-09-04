@@ -2,7 +2,9 @@
 {
 	programs.nvf = {
 		enable = true;
-		settings = {
-		};
+                settings = {
+                        vim = {
+                        };
+                };
 	};
 }
