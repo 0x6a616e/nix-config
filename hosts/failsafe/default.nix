@@ -32,6 +32,7 @@
 		users.jan = {
 			imports = [
 				inputs.catppuccin.homeModules.catppuccin
+				inputs.nvf.homeManagerModules.default
 				../../home/jan/failsafe.nix
 			];
 		};
