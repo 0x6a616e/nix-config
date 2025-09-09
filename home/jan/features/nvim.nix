@@ -131,12 +131,19 @@
                         action = "vim.cmd.UndotreeToggle";
                         lua = true;
                     }
+                    {
+                        mode = "n";
+                        key = "-";
+                        action = "vim.cmd.Oil";
+                        lua = true;
+                    }
                 ];
                 languages = {
                     enableTreesitter = true;
                     nix.enable = true;
                 };
                 lsp.enable = true;
+                mini.icons.enable = true;
                 options = {
                     breakindent = true;
                     completeopt = "menuone,noselect";
@@ -197,7 +204,18 @@
                         scope = "line";
                     };
                 };
-                utility.undotree.enable = true;
+                utility = {
+                    oil-nvim = {
+                        enable = true;
+                        setupOpts = {
+                            columns = [ "icon" ];
+                            view_options = {
+                                show_hidden = true;
+                            };
+                        };
+                    };
+                    undotree.enable = true;
+                };
             };
         };
     };
