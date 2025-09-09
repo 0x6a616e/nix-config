@@ -139,7 +139,6 @@
                 lsp.enable = true;
                 options = {
                     breakindent = true;
-                    colorcolumn = "80";
                     completeopt = "menuone,noselect";
                     conceallevel = 2;
                     expandtab = true;
@@ -191,6 +190,13 @@
                     style = "mocha";
                 };
                 treesitter.context.enable = true;
+                ui.smartcolumn = {
+                    enable = true;
+                    setupOpts = {
+                        colorcolumn = "80";
+                        scope = "line";
+                    };
+                };
                 utility.undotree.enable = true;
             };
         };
