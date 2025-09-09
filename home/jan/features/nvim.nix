@@ -120,6 +120,28 @@
                 statusline.lualine.enable = true;
                 telescope = {
                     enable = true;
+                    mappings = {
+                        buffers = null;
+                        diagnostics = null;
+                        findFiles = "<leader>ff";
+                        findProjects = null;
+                        gitBranches = null;
+                        gitBufferCommits = null;
+                        gitCommits = null;
+                        gitStash = null;
+                        gitStatus = null;
+                        helpTags = null;
+                        liveGrep = "<leader>fg";
+                        lspDefinitions = null;
+                        lspDocumentSymbols = null;
+                        lspImplementations = null;
+                        lspReferences = null;
+                        lspTypeDefinitions = null;
+                        lspWorkspaceSymbols = null;
+                        open = "<leader>ft";
+                        resume = null;
+                        treesitter = null;
+                    };
                 };
                 theme = {
                     enable = true;
