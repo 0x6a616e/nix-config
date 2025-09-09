@@ -125,6 +125,12 @@
                         action = "vim.lsp.buf.hover";
                         lua = true;
                     }
+                    {
+                        mode = "n";
+                        key = "<leader>u";
+                        action = "vim.cmd.UndotreeToggle";
+                        lua = true;
+                    }
                 ];
                 languages = {
                     enableTreesitter = true;
@@ -184,6 +190,7 @@
                     name = "catppuccin";
                     style = "mocha";
                 };
+                utility.undotree.enable = true;
             };
         };
     };
