@@ -110,6 +110,18 @@
                         key = "<leader>gb";
                         action = ":Gitsigns blame<CR>";
                     }
+                    {
+                        mode = "n";
+                        key = "<leader>rn";
+                        action = "vim.lsp.buf.rename";
+                        lua = true;
+                    }
+                    {
+                        mode = "n";
+                        key = "K";
+                        action = "vim.lsp.buf.hover";
+                        lua = true;
+                    }
                 ];
                 languages = {
                     enableTreesitter = true;
