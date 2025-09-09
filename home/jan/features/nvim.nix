@@ -190,6 +190,7 @@
                     name = "catppuccin";
                     style = "mocha";
                 };
+                treesitter.context.enable = true;
                 utility.undotree.enable = true;
             };
         };
