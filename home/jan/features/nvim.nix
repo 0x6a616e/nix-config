@@ -18,6 +18,22 @@
                 ];
                 autocomplete.nvim-cmp.enable = true;
                 augroups = [ { name = "YankHighlight"; } ];
+                git = {
+                    enable = true;
+                    git-conflict.enable = false;
+                    gitlinker-nvim.enable = false;
+                    gitsigns.setupOpts = {
+                        signs = {
+                            add = { text = "+"; };
+                            change = { text = "~"; };
+                            delete = { text = "_";};
+                            topdelete = { text = "‾"; };
+                            changedelete = { text = "~"; };
+                        };
+                    };
+                    hunk-nvim.enable = false;
+                    vim-fugitive.enable = false;
+                };
                 globals = {
                     mapleader = " ";
                     maplocalleader = " ";
@@ -88,6 +104,11 @@
                         key = "<leader>q";
                         action = "vim.diagnostic.setloclist";
                         lua = true;
+                    }
+                    {
+                        mode = "n";
+                        key = "<leader>gb";
+                        action = ":Gitsigns blame<CR>";
                     }
                 ];
                 languages = {
