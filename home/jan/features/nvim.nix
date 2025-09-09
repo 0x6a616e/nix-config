@@ -16,7 +16,10 @@
                         '';
                     }
                 ];
-                autocomplete.nvim-cmp.enable = true;
+                autocomplete.nvim-cmp = {
+                    enable = true;
+                    mappings.confirm = "<C-CR>";
+                };
                 augroups = [ { name = "YankHighlight"; } ];
                 git = {
                     enable = true;
