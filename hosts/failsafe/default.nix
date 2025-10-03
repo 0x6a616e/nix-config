@@ -15,6 +15,7 @@
 			efi.canTouchEfiVariables = true;
 			systemd-boot.enable = true;
 		};
+        supportedFilesystems = [ "ntfs" ];
 	};
 
 	environment.systemPackages = [
@@ -32,7 +33,7 @@
 		users.jan = {
 			imports = [
 				inputs.catppuccin.homeModules.catppuccin
-				inputs.nvf.homeManagerModules.default
+				inputs.nixvim.homeModules.nixvim
 				../../home/jan/failsafe.nix
 			];
 		};
@@ -49,7 +50,7 @@
 		gc = {
 			automatic = true;
 			dates = "weekly";
-			options = "--delete-older-than 1w";
+			options = "--delete-older-than 7d";
 		};
 		settings = {
 			auto-optimise-store = true;

@@ -9,9 +9,9 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nvf = {
+    nixvim = {
+    	url = "github:nix-community/nixvim";
 	inputs.nixpkgs.follows = "nixpkgs";
-    	url = "github:NotAShelf/nvf";
     };
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
@@ -19,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, nvf, ... } @ inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, nixvim, ... } @ inputs: {
     nixosConfigurations = {
       failsafe = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
