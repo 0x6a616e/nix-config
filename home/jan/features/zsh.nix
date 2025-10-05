@@ -1,8 +1,8 @@
 { ... }:
 {
     programs.zsh = {
-        autosuggestion.enable = true;
         enable = true;
+        autosuggestion.enable = true;
         history = {
             append = true;
             ignoreAllDups = true;
@@ -14,19 +14,16 @@
         initContent = ''
             PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
         '';
-	profileExtra = ''
-		if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-			exec Hyprland
-		fi
-
-	'';
+        profileExtra = ''
+            if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+                exec Hyprland
+            fi
+        '';
         sessionVariables = {
             EDITOR = "nvim";
             NEWLINE = "\n";
         };
-        setOptions = [
-            "prompt_subst"
-        ];
+        setOptions = [ "prompt_subst" ];
         shellAliases = {
             c = "clear";
             grep = "grep --color=auto";
@@ -35,8 +32,3 @@
         syntaxHighlighting.enable = true;
     };
 }
-
-# Start tmux session if not already inside a tmux session
-# if [[ -z $TMUX ]]; then
-#     tmux new -As jan  # Start new tmux session named 'jan'
-# fi
