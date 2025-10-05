@@ -63,10 +63,10 @@
 	security.rtkit.enable = true;
 
 	services = {
-		openssh = {
-			enable = true;
-			settings.PasswordAuthentication = false;
-		};
+		# openssh = {
+		# 	enable = true;
+		# 	settings.PasswordAuthentication = false;
+		# };
 		pipewire = {
 			alsa.enable = true;
 			alsa.support32Bit = true;
@@ -87,9 +87,9 @@
 		description = "Jan";
 		extraGroups = [ "networkmanager" "wheel" ];
 		isNormalUser = true;
-		openssh.authorizedKeys.keys = [
-			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkjK160oBMA9G4A/MrlQUezZdBNOB03WLXrMApBR5tv"
-		];
+		# openssh.authorizedKeys.keys = [
+		# 	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkjK160oBMA9G4A/MrlQUezZdBNOB03WLXrMApBR5tv"
+		# ];
 		shell = pkgs.zsh;
 	};
 }
