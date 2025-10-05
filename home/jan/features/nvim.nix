@@ -227,6 +227,7 @@
             treesitter-context.enable = true;
             undotree.enable = true;
             web-devicons.enable = true;
+            which-key.enable = true;
         };
         lsp.servers = {
             nil_ls.enable = true;
