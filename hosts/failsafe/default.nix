@@ -6,7 +6,7 @@
 		./cursors.nix
 		./fonts.nix
 		./hyprland.nix
-		./tailscale.nix
+		# ./tailscale.nix
 		./zsh.nix
 	];
 
