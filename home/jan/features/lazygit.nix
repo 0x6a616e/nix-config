@@ -1,9 +1,9 @@
 { ... }:
 {
     catppuccin.lazygit = {
-        accent = "red";
         enable = true;
         flavor = "mocha";
+        accent = "red";
     };
 
     programs.lazygit.enable = true;

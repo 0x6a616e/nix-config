@@ -172,45 +172,29 @@
             };
             gitblame = {
                 enable = true;
-                settings = {
-                    display_virtual_text = false;
-                };
+                settings.display_virtual_text = false;
             };
             gitsigns = {
                 enable = true;
                 settings = {
                     signs = {
-                        add = {
-                            text = "+";
-                        };
-                        change = {
-                            text = "~";
-                        };
-                        delete = {
-                            text = "_";
-                        };
-                        topdelete = {
-                            text = "‾";
-                        };
-                        changedelete = {
-                            text = "~";
-                        };
+                        add.text = "+";
+                        change.text = "~";
+                        delete.text = "_";
+                        topdelete.text = "‾";
+                        changedelete.text = "~";
                     };
                 };
             };
             lspconfig.enable = true;
             lualine = {
                 enable = true;
-                settings = {
-                    sections = {
-                        lualine_c = [
-                            {
-                                __unkeyed-1.__raw = "require('gitblame').get_current_blame_text";
-                                cond.__raw = "require('gitblame').is_blame_text_available";
-                            }
-                        ];
-                    };
-                };
+                settings.sections.lualine_c = [
+                    {
+                        __unkeyed-1.__raw = "require('gitblame').get_current_blame_text";
+                        cond.__raw = "require('gitblame').is_blame_text_available";
+                    }
+                ];
             };
             oil = {
                 enable = true;

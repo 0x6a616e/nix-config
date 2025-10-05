@@ -18,8 +18,6 @@
             show-icons = true;
         };
         font = "JetBrainsMono Nerd Font 12";
-        modes = [
-            "drun"
-        ];
+        modes = [ "drun" ];
     };
 }
