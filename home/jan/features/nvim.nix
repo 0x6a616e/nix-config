@@ -187,12 +187,8 @@
                     sections = {
                         lualine_c = [
                             {
-                                __unkeyed-1 = {
-                                    __raw = "require('gitblame').get_current_blame_text";
-                                };
-                                cond = {
-                                    __raw = "require('gitblame').is_blame_text_available";
-                                };
+                                __unkeyed-1.__raw = "require('gitblame').get_current_blame_text";
+                                cond.__raw = "require('gitblame').is_blame_text_available";
                             }
                         ];
                     };
@@ -201,12 +197,8 @@
             oil = {
                 enable = true;
                 settings = {
-                    view_options = {
-                        show_hidden = true;
-                    };
-                    win_options = {
-                        signcolumn = "yes:2";
-                    };
+                    view_options.show_hidden = true;
+                    win_options.signcolumn = "yes:2";
                 };
             };
             oil-git-status.enable = true;
