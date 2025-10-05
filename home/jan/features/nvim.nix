@@ -4,12 +4,12 @@
         enable = true;
 		autoCmd = [
 			{
+				event = [ "TextYankPost" ];
 				callback.__raw = ''
                     function()
 					    vim.highlight.on_yank()
 					end
 				'';
-				event = [ "TextYankPost" ];
 				pattern = [ "*" ];
 			}
 		];
@@ -128,6 +128,24 @@
                 mode = "n";
                 key = "-";
                 action.__raw = "vim.cmd.Oil";
+            }
+            {
+                mode = "t";
+                key = "<esc><esc>";
+                action = "<C-\\><C-n>";
+            }
+            {
+                mode = "n";
+                key = "<leader>st";
+                action.__raw = ''
+                    function()
+                        vim.cmd.vnew()
+                        vim.cmd.terminal()
+                        vim.cmd.wincmd("J")
+                        vim.api.nvim_win_set_height(0, 15)
+                        vim.cmd.startinsert()
+                    end
+                '';
             }
 		];
         colorschemes.catppuccin = {
