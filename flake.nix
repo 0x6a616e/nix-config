@@ -2,7 +2,6 @@
     description = "Nixos config flake";
 
     inputs = {
-        catppuccin.url = "github:catppuccin/nix";
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -19,12 +18,11 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, catppuccin, nixvim, ... } @ inputs: {
+    outputs = { self, nixpkgs, home-manager, nixvim, ... } @ inputs: {
         nixosConfigurations = {
             failsafe = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 modules = [ 
-                    catppuccin.nixosModules.catppuccin
                     home-manager.nixosModules.home-manager
                     ./hosts/failsafe
                 ];

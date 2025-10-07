@@ -1,5 +1,21 @@
 { config, ... }:
 {
+    catppuccin = {
+        hyprland = {
+            accent = "red";
+            enable = true;
+            flavor = "mocha";
+        };
+        hyprlock = {
+            enable = true;
+            flavor = "mocha";
+        };
+        waybar = {
+            enable = true;
+            flavor = "mocha";
+        };
+    };
+
     xdg.dataFile = {
         "lockscreen.jpg" = {
             source = ../../../assets/lockscreen.jpg;
@@ -25,13 +41,13 @@
         hyprlock = {
             enable = true;
             settings = {
-                "$accent" = "#f38ba8";
-                "$accentAlpha" = "#f38ba8";
+                "$accent" = "$red";
+                "$accentAlpha" = "$redAlpha";
                 "$font" = "JetBrainsMono Nerd Font";
 
                 background = {
                     blur_passes = 0;
-                    color = "#1e1e2e";
+                    color = "$base";
                     path = "${config.xdg.dataHome}/lockscreen.jpg";
                 };
 
@@ -41,20 +57,21 @@
                 };
 
                 input-field = {
-                    capslock_color = "#f9e2af";
-                    check_color = "#f9e2af";
+                    capslock_color = "$yellow";
+                    check_color = "$accent";
                     dots_center = true;
                     dots_size = 0.2;
                     dots_spacing = 0.2;
                     fade_on_empty = false;
-                    fail_color = "#f38ba8";
+                    fail_color = "$red";
                     fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-                    font_color = "#cdd6f4";
+                    font_color = "$text";
                     halign = "center";
                     hide_input = false;
-                    inner_color = "#313244";
-                    outer_color = "#f9e2af";
+                    inner_color = "$surface0";
+                    outer_color = "$accent";
                     outline_thickness = 4;
+                    placeholder_text = "<span foreground='##$textAlpha'><i>󰌾 Logged in as </i><span foreground='##$accentAlpha'>$USER</span></span>";
                     position = "0, -47";
                     size = "300, 60";
                     valign = "center";
@@ -62,7 +79,7 @@
 
                 label = [
                     {
-                        color = "#cdd6f4";
+                        color = "$text";
                         text = "$TIME";
                         font_family = "$font";
                         font_size = 90;
@@ -71,7 +88,7 @@
                         valign = "top";
                     }
                     {
-                        color = "#cdd6f4";
+                        color = "$text";
                         font_family = "$font";
                         font_size = "25";
                         halign = "right";
@@ -133,8 +150,8 @@
                 }
 
                 #waybar {
-                    background: #1e1e2e;
-                    color: #cdd6f4;
+                    background: @base;
+                    color: @text;
                     margin: 5px 5px;
                 }
 
@@ -143,15 +160,15 @@
                 }
 
                 #workspaces button {
-                    color: #b4befe;
+                    color: @lavender;
                 }
 
                 #workspaces button.active {
-                    color: #f38ba8;
+                    color: @red;
                 }
 
                 #workspaces button:hover {
-                    color: #f38ba8;
+                    color: @red;
                 }
 
                 #network,
@@ -164,31 +181,31 @@
                 }
 
                 #network {
-                    color: #94e2d5;
+                    color: @teal;
                 }
 
                 #clock {
-                    color: #89b4fa;
+                    color: @blue;
                 }
 
                 #battery {
-                    color: #a6e3a1;
+                    color: @green;
                 }
 
                 #battery.charging {
-                    color: #a6e3a1;
+                    color: @green;
                 }
 
                 #battery.warning:not(.charging) {
-                    color: #f38ba8;
+                    color: @red;
                 }
 
                 #custom-lock {
-                    color: #f5c2e7;
+                    color: @pink;
                 }
 
                 #custom-power {
-                    color: #f38ba8;
+                    color: @red;
                 }
             '';
         };
@@ -318,8 +335,8 @@
             general = {
                 allow_tearing = false;
                 border_size = 3;
-                "col.active_border" = "0xf38ba8";
-                "col.inactive_border" = "0x1e1e2e";
+                "col.active_border" = "$red";
+                "col.inactive_border" = "$base";
                 gaps_in = 0;
                 gaps_out = 0;
                 layout = "master";

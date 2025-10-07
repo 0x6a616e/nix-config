@@ -30,7 +30,6 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         users.jan.imports = [
-            inputs.catppuccin.homeModules.catppuccin
             inputs.nixvim.homeModules.nixvim
             ../../home/jan/failsafe.nix
         ];
