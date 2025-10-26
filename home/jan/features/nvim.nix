@@ -139,11 +139,27 @@
                 key = "<leader>st";
                 action.__raw = ''
                     function()
-                        vim.cmd.vnew()
-                        vim.cmd.terminal()
-                        vim.cmd.wincmd("J")
-                        vim.api.nvim_win_set_height(0, 15)
-                        vim.cmd.startinsert()
+                        if _G.mini_term_buf and vim.api.nvim_buf_is_valid(_G.mini_term_buf) then
+                            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                                local buf = vim.api.nvim_win_get_buf(win)
+                                if buf == _G.mini_term_buf then
+                                    vim.api.nvim_win_hide(win)
+                                    return
+                                end
+                            end
+                            vim.cmd.vsplit()
+                            vim.api.nvim_win_set_buf(0, _G.mini_term_buf)
+                            vim.cmd.wincmd("J")
+                            vim.api.nvim_win_set_height(0, 15)
+                            vim.cmd.startinsert()
+                        else
+                            vim.cmd.vnew()
+                            vim.cmd.terminal()
+                            vim.cmd.wincmd("J")
+                            vim.api.nvim_win_set_height(0, 15)
+                            vim.cmd.startinsert()
+                            _G.mini_term_buf = vim.api.nvim_get_current_buf()
+                        end
                     end
                 '';
             }
@@ -224,6 +240,7 @@
                 grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
                     nix
                     lua
+                    cpp
                 ];
             };
             treesitter-context.enable = true;
@@ -234,6 +251,7 @@
         lsp.servers = {
             nil_ls.enable = true;
             lua_ls.enable = true;
+            clangd.enable = true;
         };
 	};
 }
