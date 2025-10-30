@@ -240,7 +240,6 @@
                 grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
                     nix
                     lua
-                    cpp
                 ];
             };
             treesitter-context.enable = true;
@@ -251,7 +250,6 @@
         lsp.servers = {
             nil_ls.enable = true;
             lua_ls.enable = true;
-            clangd.enable = true;
         };
 	};
 }
