@@ -6,6 +6,8 @@
         ./cursors.nix
         ./fonts.nix
         ./hyprland.nix
+        ./sops.nix
+        ./tailscale.nix
         ./zsh.nix
     ];
 
