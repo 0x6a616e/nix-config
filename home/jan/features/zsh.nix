@@ -28,6 +28,7 @@
             c = "clear";
             grep = "grep --color=auto";
             ls = "ls --color=auto";
+            ssh = "kitten ssh";
         };
         syntaxHighlighting.enable = true;
     };
