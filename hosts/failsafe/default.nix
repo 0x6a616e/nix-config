@@ -42,22 +42,16 @@
         networkmanager.enable = true;
     };
 
-    nix = {
-        settings = {
-            auto-optimise-store = true;
-            experimental-features = [ "nix-command" "flakes" ];
-        };
+    nix.settings = {
+        auto-optimise-store = true;
+        experimental-features = [ "nix-command" "flakes" ];
     };
 
     nixpkgs.config.allowUnfree = true;
 
-    security.rtkit.enable = true;
-
-    services = {
-        xserver.xkb = {
-            layout = "us";
-            variant = "";
-        };
+    services.xserver.xkb = {
+        layout = "us";
+        variant = "";
     };
 
     system.stateVersion = "25.05";
