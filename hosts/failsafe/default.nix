@@ -10,6 +10,7 @@
         ../features/nh.nix
         ../features/sops.nix
         ../features/tailscale.nix
+        ../features/sound.nix
     ];
 
     boot = {
