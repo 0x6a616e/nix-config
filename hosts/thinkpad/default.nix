@@ -4,6 +4,7 @@
         ./hardware-configuration.nix
 
         ../features/zsh.nix
+        ../features/sops.nix
     ];
 #     imports = [
 #         ./hardware-configuration.nix
