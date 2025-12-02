@@ -1,8 +1,9 @@
 keys:
   - &failsafe age1hvcusdalp5x58m8lmm39hah3qpcmr4fac587yjz4qukcfuhdafmqchsc5f
+  - &thinkpad age1jk77zljegdd5l74nw3yf6hexsx770ud3n32ceadsqg07zxfy852qts8wum
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
         - *failsafe
-age1jk77zljegdd5l74nw3yf6hexsx770ud3n32ceadsqg07zxfy852qts8wum
+        - *thinkpad
