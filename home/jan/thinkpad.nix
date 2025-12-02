@@ -1,5 +1,9 @@
 { ... }:
 {
+    imports = [
+        ./features/zsh.nix
+        ./features/git.nix
+    ];
     # imports = [
     #     ./features/bat.nix
     #     ./features/btop.nix
