@@ -16,8 +16,6 @@
         ./features/zsh.nix
     ];
 
-    programs.ripgrep.enable = true;
-
     services.ssh-agent.enable = true;
 
     xdg.enable = true;
