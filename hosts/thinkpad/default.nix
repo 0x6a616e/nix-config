@@ -5,18 +5,12 @@
 
         ../features/zsh.nix
         ../features/sops.nix
+        ../features/fonts.nix
+        ../features/cursors.nix
+        ../features/hyprland.nix
+        ../features/nh.nix
+        ../features/tailscale.nix
     ];
-#     imports = [
-#         ./hardware-configuration.nix
-#
-#         ./features/fonts.nix
-#         ./features/cursors.nix
-#         ./features/zsh.nix
-#         ./features/hyprland.nix
-#         ./features/nh.nix
-#         ./features/sops.nix
-#         ./features/tailscale.nix
-#     ];
 
     boot = {
         loader = {
