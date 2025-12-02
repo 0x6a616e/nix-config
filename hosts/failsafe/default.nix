@@ -3,13 +3,13 @@
     imports = [
         ./hardware-configuration.nix
 
-        ./cursors.nix
-        ./fonts.nix
-        ./hyprland.nix
-        ./nh.nix
-        ./sops.nix
-        ./tailscale.nix
-        ./zsh.nix
+        ./features/fonts.nix
+        ./features/cursors.nix
+        ./features/zsh.nix
+        ./features/hyprland.nix
+        ./features/nh.nix
+        ./features/sops.nix
+        ./features/tailscale.nix
     ];
 
     boot = {
@@ -19,10 +19,6 @@
         };
         supportedFilesystems = [ "ntfs" ];
     };
-
-    environment.systemPackages = [
-        pkgs.pavucontrol
-    ];
 
     hardware.graphics = {
         enable = true;
@@ -57,12 +53,6 @@
     security.rtkit.enable = true;
 
     services = {
-        pipewire = {
-            enable = true;
-            alsa.enable = true;
-            alsa.support32Bit = true;
-            pulse.enable = true;
-        };
         xserver.xkb = {
             layout = "us";
             variant = "";

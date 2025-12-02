@@ -32,6 +32,15 @@
                 ];
                 specialArgs = { inherit inputs; };
             };
+            thinkpad = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = [ 
+                    home-manager.nixosModules.home-manager
+                    sops-nix.nixosModules.sops
+                    ./hosts/thinkpad
+                ];
+                specialArgs = { inherit inputs; };
+            };
         };
     };
 }
