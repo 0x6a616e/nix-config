@@ -194,14 +194,12 @@
             };
             gitsigns = {
                 enable = true;
-                settings = {
-                    signs = {
-                        add.text = "+";
-                        change.text = "~";
-                        delete.text = "_";
-                        topdelete.text = "‾";
-                        changedelete.text = "~";
-                    };
+                settings.signs = {
+                    add.text = "+";
+                    change.text = "~";
+                    delete.text = "_";
+                    topdelete.text = "‾";
+                    changedelete.text = "~";
                 };
             };
             lspconfig.enable = true;
@@ -242,6 +240,7 @@
                 grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
                     nix
                     lua
+                    go
                 ];
             };
             treesitter-context.enable = true;
@@ -252,6 +251,7 @@
         lsp.servers = {
             nil_ls.enable = true;
             lua_ls.enable = true;
+            gopls.enable = true;
         };
 	};
 }
