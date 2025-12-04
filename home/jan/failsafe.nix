@@ -14,6 +14,7 @@
         ./features/rofi.nix
         ./features/zoxide.nix
         ./features/zsh.nix
+        ./features/nix-direnv.nix
     ];
 
     services.ssh-agent.enable = true;
