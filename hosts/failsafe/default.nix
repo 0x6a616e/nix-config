@@ -11,6 +11,7 @@
         ../features/sops.nix
         ../features/tailscale.nix
         ../features/sound.nix
+        ../features/virt-manager.nix
     ];
 
     boot = {
