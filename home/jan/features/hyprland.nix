@@ -352,7 +352,7 @@
                 ", preferred, auto, auto"
             ];
 
-            windowrulev2 = "suppressevent maximize, class:.*";
+            # windowrulev2 = "suppressevent maximize, class:.*";
         };
     };
 }
