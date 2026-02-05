@@ -347,7 +347,10 @@
                 new_status = "inherit";
             };
 
-            monitor = ", preferred, auto, auto";
+            monitor = [
+                "HDMI-A-1, 2560x1440@120, auto, 1.25"
+                ", preferred, auto, auto"
+            ];
 
             windowrulev2 = "suppressevent maximize, class:.*";
         };
