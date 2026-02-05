@@ -1,8 +1,9 @@
-{ ... }:
+{ config, ... }:
 {
     programs.zsh = {
         enable = true;
         autosuggestion.enable = true;
+        dotDir = config.home.homeDirectory;
         history = {
             append = true;
             ignoreAllDups = true;
