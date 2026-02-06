@@ -348,7 +348,7 @@
             };
 
             monitor = [
-                "HDMI-A-1, 2560x1440@120, auto, 1.25"
+                "HDMI-A-1, preferred, auto, 1.25"
                 ", preferred, auto, auto"
             ];
 
