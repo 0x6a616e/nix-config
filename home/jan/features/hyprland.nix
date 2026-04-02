@@ -312,7 +312,7 @@
 
             exec-once = [
                 "awww-daemon"
-                "awww img ${config.xdg.dataHome}/wallpaper.gif"
+                "awww img ${config.xdg.dataHome}/wallpaper.jpg"
                 "waybar"
             ];
 
