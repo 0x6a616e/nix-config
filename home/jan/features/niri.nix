@@ -31,6 +31,9 @@
         "wallpaper.gif" = {
             source = ../../../assets/wallpaper.gif;
         };
+        "wallpaper.jpg" = {
+            source = ../../../assets/wallpaper.jpg;
+        };
         "wifimenu.sh" = {
             executable = true;
             source = ../../../assets/wifimenu.sh;
