@@ -12,6 +12,9 @@
             executable = true;
             source = ../../../assets/powermenu.sh;
         };
+        "wallpaper.jpg" = {
+            source = ../../../assets/wallpaper.jpg;
+        };
         "wallpaper.gif" = {
             source = ../../../assets/wallpaper.gif;
         };
