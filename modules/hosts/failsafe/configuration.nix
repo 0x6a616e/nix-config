@@ -6,6 +6,7 @@
 		self.nixosModules.git
 		self.nixosModules.nh
 		self.nixosModules.zsh
+		self.nixosModules.cursors
         ];
 
         boot = {
