@@ -8,6 +8,7 @@
 		self.nixosModules.zsh
 		self.nixosModules.fonts
 		self.nixosModules.ssh
+		self.nixosModules.sops
         ];
 
         boot = {
@@ -50,10 +51,22 @@
 
         nixpkgs.config.allowUnfree = true;
 
-        services.xserver.xkb = {
-            layout = "us";
-            variant = "";
-        };
+	security.rtkit.enable = true;
+
+	services = {
+		pipewire = {
+			enable = true;
+			alsa = {
+				enable = true;
+				support32Bit = true;
+			};
+			pulse.enable = true;
+		};
+		xserver.xkb = {
+			layout = "us";
+			variant = "";
+		};
+	};
 
         system.stateVersion = "25.05";
 
