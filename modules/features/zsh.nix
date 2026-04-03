@@ -1,5 +1,9 @@
 { self, inputs, ... }: {
 	flake.nixosModules.zsh = { pkgs, ... }: {
+		imports = [
+			self.nixosModules.fzf
+		];
+
 		programs.zsh = {
 			enable = true;
 			autosuggestions.enable = true;
@@ -10,6 +14,7 @@
 			'';
 			interactiveShellInit = ''
 				EDITOR="nvim";
+				source <(fzf --zsh)
 			'';
 			# profileExtra = ''
 			# 	if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then

@@ -6,9 +6,9 @@
 		self.nixosModules.git
 		self.nixosModules.nh
 		self.nixosModules.zsh
-		self.nixosModules.fonts
 		self.nixosModules.ssh
 		self.nixosModules.sops
+		self.nixosModules.tailscale
         ];
 
         boot = {
