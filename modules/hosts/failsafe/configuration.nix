@@ -7,6 +7,7 @@
 		self.nixosModules.nh
 		self.nixosModules.zsh
 		self.nixosModules.fonts
+		self.nixosModules.ssh
         ];
 
         boot = {
