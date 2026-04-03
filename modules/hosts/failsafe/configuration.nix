@@ -1,10 +1,11 @@
 { self, ... }: {
-    flake.nixosModules.failsafeConfiguration = { ... }: {
+    flake.nixosModules.failsafeConfiguration = { pkgs, ... }: {
         imports = [
             self.nixosModules.failsafeHardware
 
 		self.nixosModules.git
 		self.nixosModules.nh
+		self.nixosModules.zsh
         ];
 
         boot = {
