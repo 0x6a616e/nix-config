@@ -4,6 +4,7 @@
             self.nixosModules.failsafeHardware
 
 		self.nixosModules.git
+		self.nixosModules.nh
         ];
 
         boot = {
