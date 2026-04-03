@@ -61,6 +61,7 @@
             isNormalUser = true;
             description = "Jan";
             extraGroups = [ "networkmanager" "wheel" ];
+		shell = pkgs.zsh;
         };
     };
 }

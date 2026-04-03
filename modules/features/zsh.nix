@@ -5,9 +5,11 @@
 			autosuggestions.enable = true;
 			enableCompletion = true;
 			histSize = 10000;
+			promptInit = ''
+				PS1="%B%T%b %F{cyan}%0~%f"$'\n'"%F{cyan}~>%f ";
+			'';
 			interactiveShellInit = ''
 				EDITOR="nvim";
-				PS1="%B%T%b %F{cyan}%0~%f\\n%F{cyan}~>%f ";
 			'';
 			# profileExtra = ''
 			# 	if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -15,7 +17,7 @@
 			# 	fi
 			# '';
 			setOptions = [
-				"prompt_subst"
+				"PROMPT_SUBST"
 
 				"APPEND_HISTORY"
 				"EXTENDED_HISTORY"
