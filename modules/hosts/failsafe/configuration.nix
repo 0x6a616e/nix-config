@@ -8,8 +8,7 @@
 		self.nixosModules.nh
 		self.nixosModules.zsh
 		self.nixosModules.tailscale
-		# self.nixosModules.fonts
-		# self.nixosModules.rofi
+		self.nixosModules.fonts
         ];
 
         boot = {
