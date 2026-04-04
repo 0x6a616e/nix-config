@@ -3,6 +3,8 @@
 		imports = [
 			self.nixosModules.sops
 		];
+		
+		sops.secrets."tailscale/authKey" = { };
 
 		services.tailscale = {
 			enable = true;

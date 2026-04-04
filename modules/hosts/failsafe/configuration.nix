@@ -7,8 +7,7 @@
 
 		self.nixosModules.nh
 		self.nixosModules.zsh
-		# self.nixosModules.ssh
-		# self.nixosModules.tailscale
+		self.nixosModules.tailscale
 		# self.nixosModules.fonts
 		# self.nixosModules.rofi
         ];

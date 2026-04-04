@@ -7,7 +7,6 @@
 		sops = {
 			defaultSopsFile = ../../secrets/secrets.yaml;
 			age.keyFile = "${config.users.users.jan.home}/.sops/age/keys.txt";
-			secrets."tailscale/authKey" = { };
 		};
 	};
 }
