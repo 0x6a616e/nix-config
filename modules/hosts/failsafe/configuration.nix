@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.failsafeConfiguration = { pkgs, ... }: {
+    flake.nixosModules.failsafeConfiguration = { pkgs, config, ... }: {
         imports = [
             	self.nixosModules.failsafeHardware
 
