@@ -1,15 +1,15 @@
 { self, inputs, ... }: {
     flake.nixosModules.failsafeConfiguration = { pkgs, config, ... }: {
         imports = [
-            	self.nixosModules.failsafeHardware
+            self.nixosModules.failsafeHardware
 
-		inputs.home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
 
-		self.nixosModules.nh
-		self.nixosModules.zsh
-		self.nixosModules.tailscale
-		self.nixosModules.fonts
-		self.nixosModules.hyprland
+            self.nixosModules.nh
+            self.nixosModules.zsh
+            # self.nixosModules.tailscale
+            self.nixosModules.fonts
+            self.nixosModules.hyprland
         ];
 
         boot = {
