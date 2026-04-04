@@ -1,14 +1,16 @@
-{ self, ... }: {
+{ self, inputs, ... }: {
     flake.nixosModules.failsafeConfiguration = { pkgs, ... }: {
         imports = [
             self.nixosModules.failsafeHardware
+		inputs.home-manager.nixosModules.home-manager
 
-		self.nixosModules.git
+		# self.nixosModules.git
 		self.nixosModules.nh
-		self.nixosModules.zsh
-		self.nixosModules.ssh
-		self.nixosModules.tailscale
-		self.nixosModules.fonts
+		# self.nixosModules.zsh
+		# self.nixosModules.ssh
+		# self.nixosModules.tailscale
+		# self.nixosModules.fonts
+		# self.nixosModules.rofi
         ];
 
         boot = {
@@ -23,6 +25,12 @@
             enable = true;
             enable32Bit = true;
         };
+
+	home-manager = {
+		useGlobalPkgs = true;
+		useUserPackages = true;
+		users.jan.imports = [ self.homeModules.jan ];
+	};
 
 	i18n = {
 		defaultLocale = "en_US.UTF-8";
@@ -76,7 +84,6 @@
             isNormalUser = true;
             description = "Jan";
             extraGroups = [ "networkmanager" "wheel" ];
-		shell = pkgs.zsh;
         };
     };
 }
