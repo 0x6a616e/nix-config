@@ -2,6 +2,7 @@
 	flake.homeModules.jan = { pkgs, ... }: {
 		imports = [
 			self.homeModules.git
+			self.homeModules.zsh
 		];
 
 		home = {

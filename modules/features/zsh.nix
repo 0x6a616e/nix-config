@@ -1,45 +1,44 @@
 { self, inputs, ... }: {
 	flake.nixosModules.zsh = { pkgs, ... }: {
+		programs.zsh.enable = true;
+	};
+
+	flake.homeModules.zsh = { pkgs, config, ... }: {
 		imports = [
-			self.nixosModules.fzf
-			self.nixosModules.zoxide
+			self.homeModules.fzf
+			self.homeModules.zoxide
 		];
-
-		programs.zoxide.enableZshIntegration = true;
-
-		programs.zsh = {
-			enable = true;
-			autosuggestions.enable = true;
-			enableCompletion = true;
-			histSize = 10000;
-			promptInit = ''
-				PS1="%B%T%b %F{cyan}%0~%f"$'\n'"%F{cyan}~>%f ";
-			'';
-			interactiveShellInit = ''
-				EDITOR="nvim";
-				source <(fzf --zsh)
-			'';
-			# profileExtra = ''
-			# 	if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-			# 		exec start-hyprland
-			# 	fi
-			# '';
-			setOptions = [
-				"PROMPT_SUBST"
-
-				"APPEND_HISTORY"
-				"EXTENDED_HISTORY"
-				"HIST_IGNORE_DUPS"
-				"HIST_IGNORE_SPACE"
-				"SHARE_HISTORY"
-			];
-			shellAliases = {
-				c = "clear";
-				grep = "grep --color=auto";
-				ls = "ls --color=auto";
-				ssh = "kitten ssh";
+		programs = {
+			fzf.enableZshIntegration = true;
+			zoxide.enableZshIntegration = true;
+			zsh = {
+				enable = true;
+				autosuggestion.enable = true;
+				dotDir = config.home.homeDirectory;
+				history = {
+					append = true;
+					ignoreAllDups = true;
+					ignoreSpace = true;
+					save = 10000;
+					share = true;
+					size = 10000;
+				};
+				initContent = ''
+					PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
+				'';
+				sessionVariables = {
+					EDITOR = "nvim";
+					NEWLINE = "\n";
+				};
+				setOptions = [ "prompt_subst" ];
+				shellAliases = {
+					c = "clear";
+					grep = "grep --color=auto";
+					ls = "ls --color=auto";
+					ssh = "kitten ssh";
+				};
+				syntaxHighlighting.enable = true;
 			};
-			syntaxHighlighting.enable = true;
 		};
 	};
 }

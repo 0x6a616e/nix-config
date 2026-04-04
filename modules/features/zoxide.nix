@@ -1,8 +1,8 @@
 { self, inputs, ... }: {
-	flake.nixosModules.zoxide = { pkgs, ... }: {
+	flake.homeModules.zoxide = { pkgs, ... }: {
 		programs.zoxide = {
 			enable = true;
-			flags = [ "--cmd cd" ];
+			options = [ "--cmd cd" ];
 		};
 	};
 }

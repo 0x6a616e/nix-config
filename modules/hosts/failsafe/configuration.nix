@@ -1,12 +1,12 @@
 { self, inputs, ... }: {
     flake.nixosModules.failsafeConfiguration = { pkgs, ... }: {
         imports = [
-            self.nixosModules.failsafeHardware
+            	self.nixosModules.failsafeHardware
+
 		inputs.home-manager.nixosModules.home-manager
 
-		# self.nixosModules.git
 		self.nixosModules.nh
-		# self.nixosModules.zsh
+		self.nixosModules.zsh
 		# self.nixosModules.ssh
 		# self.nixosModules.tailscale
 		# self.nixosModules.fonts
@@ -84,6 +84,7 @@
             isNormalUser = true;
             description = "Jan";
             extraGroups = [ "networkmanager" "wheel" ];
+		shell = pkgs.zsh;
         };
     };
 }
