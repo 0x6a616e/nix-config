@@ -2,7 +2,10 @@
 	flake.nixosModules.zsh = { pkgs, ... }: {
 		imports = [
 			self.nixosModules.fzf
+			self.nixosModules.zoxide
 		];
+
+		programs.zoxide.enableZshIntegration = true;
 
 		programs.zsh = {
 			enable = true;
