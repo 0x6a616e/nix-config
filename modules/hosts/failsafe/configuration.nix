@@ -7,7 +7,6 @@
 		self.nixosModules.nh
 		self.nixosModules.zsh
 		self.nixosModules.ssh
-		self.nixosModules.sops
 		self.nixosModules.tailscale
         ];
 
