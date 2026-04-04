@@ -9,6 +9,7 @@
 		self.nixosModules.zsh
 		self.nixosModules.tailscale
 		self.nixosModules.fonts
+		self.nixosModules.hyprland
         ];
 
         boot = {
