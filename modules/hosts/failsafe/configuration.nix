@@ -10,6 +10,7 @@
             # self.nixosModules.tailscale
             self.nixosModules.fonts
             self.nixosModules.hyprland
+            self.nixosModules.impermanence
         ];
 
         boot = {
