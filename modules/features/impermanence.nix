@@ -25,7 +25,8 @@
                     { directory = ".ssh"; mode = "0700"; }
                     { directory = ".config/sops"; mode = "0700"; }
                     "nix-config"
-                    { directory = ".password-store"; mode = "0700"; }
+                    ".password-store"
+                    { directory = ".gnupg"; mode = "0700"; }
                 ];
             };
         };
