@@ -48,6 +48,7 @@
 
         networking = {
             hostName = "failsafe";
+		hostId = "56040765";
             networkmanager.enable = true;
         };
 
@@ -84,6 +85,7 @@
             description = "Jan";
             extraGroups = [ "networkmanager" "wheel" ];
 		shell = pkgs.zsh;
+		password = "1234";
         };
     };
 }
