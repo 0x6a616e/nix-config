@@ -7,10 +7,11 @@
 
             self.nixosModules.nh
             self.nixosModules.zsh
-            # self.nixosModules.tailscale
+            self.nixosModules.tailscale
             self.nixosModules.fonts
             self.nixosModules.hyprland
             self.nixosModules.impermanence
+            self.nixosModules.sops
         ];
 
         boot = {
@@ -81,12 +82,15 @@
 
         time.timeZone = "America/Monterrey";
 
+        sops.secrets."users/jan/password" = { };
+        sops.secrets."users/jan/password".neededForUsers = true;
+
         users.users.jan = {
             isNormalUser = true;
             description = "Jan";
             extraGroups = [ "networkmanager" "wheel" ];
 		shell = pkgs.zsh;
-		password = "1234";
+        hashedPasswordFile = config.sops.secrets."users/jan/password".path;
         };
     };
 }

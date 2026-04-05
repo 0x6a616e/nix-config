@@ -14,6 +14,7 @@
                 "/var/lib/systemd/coredump"
                 "/etc/NetworkManager/system-connections"
                 { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+                "/etc/sops/"
             ];
             files = [
                 "/etc/machine-id"
@@ -21,6 +22,8 @@
             users.jan = {
                 directories = [
                     { directory = ".ssh"; mode = "0700"; }
+                    { directory = ".config/sops"; mode = "0700"; }
+                    "nix-config"
                 ];
             };
         };

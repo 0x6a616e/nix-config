@@ -1,7 +1,9 @@
 keys:
-  - &failsafe age1hvcusdalp5x58m8lmm39hah3qpcmr4fac587yjz4qukcfuhdafmqchsc5f
+  - &user_jan age1hvcusdalp5x58m8lmm39hah3qpcmr4fac587yjz4qukcfuhdafmqchsc5f
+  - &host_failsafe age1w228xq0avemelx35jdq9muzesemvktcwma8kzsyunlwz96v7adjsgvk2ng
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
-        - *failsafe
+        - *user_jan
+        - *host_failsafe
