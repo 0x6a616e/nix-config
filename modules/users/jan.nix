@@ -5,7 +5,7 @@
 			self.homeModules.zsh
 			self.homeModules.pass
 			self.homeModules.nvim
-			self.homeModules.kitty
+            self.homeModules.gnome
 		];
 
 		xdg.enable = true;
