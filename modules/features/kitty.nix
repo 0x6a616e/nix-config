@@ -16,6 +16,7 @@
 		    tab_bar_style = "powerline";
 		    tab_powerline_style = "slanted";
 		    window_padding_width = 5;
+            hide_window_decorations = "yes";
 		};
 		shellIntegration = {
 			enableZshIntegration = osConfig.users.users.${user}.shell == pkgs.zsh;
