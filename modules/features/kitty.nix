@@ -7,7 +7,7 @@
 		enable = true;
 		font = {
 		    name = "JetBrainsMono Nerd Font";
-		    size = 11.25;
+		    size = 14;
 		};
 		keybindings = {
 		    "ctrl+shift+t" = "new_tab_with_cwd";
