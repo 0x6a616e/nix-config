@@ -18,8 +18,8 @@
 
     flake.homeModules.gnome = { pkgs, ... }: {
         imports = [
-            self.homeModuels.kitty
-            self.homeModuels.firefox
+            self.homeModules.kitty
+            self.homeModules.firefox
         ];
     };
 }
