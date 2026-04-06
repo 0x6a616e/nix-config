@@ -3,7 +3,6 @@
 		imports = [
 			self.homeModules.git
 			self.homeModules.zsh
-			self.homeModules.hyprland
 			self.homeModules.pass
 			self.homeModules.nvim
 		];

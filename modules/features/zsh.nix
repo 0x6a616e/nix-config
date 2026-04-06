@@ -24,11 +24,6 @@
 			initContent = ''
 				PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
 			'';
-			profileExtra = ''
-				if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-					exec start-hyprland
-				fi
-			'';
 			sessionVariables = {
 				EDITOR = "nvim";
 				NEWLINE = "\n";
