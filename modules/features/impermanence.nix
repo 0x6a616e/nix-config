@@ -16,6 +16,7 @@
                 { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
                 "/etc/sops/"
                 "var/lib/tailscale"
+                "/var/lib/power-profiles-daemon"
             ];
             files = [
                 "/etc/machine-id"
@@ -27,6 +28,11 @@
                     "nix-config"
                     ".password-store"
                     { directory = ".gnupg"; mode = "0700"; }
+                    ".local/state/wireplumber"
+                    ".local/share/zoxide"
+                ];
+                files = [
+                    ".zsh_history"
                 ];
             };
         };

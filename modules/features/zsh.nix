@@ -15,6 +15,7 @@
 			dotDir = config.home.homeDirectory;
 			history = {
 				append = true;
+                extended = true;
 				ignoreAllDups = true;
 				ignoreSpace = true;
 				save = 10000;
