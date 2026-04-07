@@ -38,6 +38,7 @@
             pkgs.resources # configure
             pkgs.showtime # configure
             pkgs.wl-clipboard # configure
+            pkgs.gnomeExtensions.caffeine # configure
         ];
 
         dconf = {
