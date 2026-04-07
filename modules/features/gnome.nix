@@ -73,6 +73,7 @@
                     application-id = "org.gnome.Nautilus.desktop";
                 };
                 "org/gnome/shell" = {
+                    enabled-extensions = [ "caffeine@patapon.info" ];
                     favorite-apps = [];
                 };
                 # wallpaper

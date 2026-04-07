@@ -15,7 +15,7 @@
                 "/etc/NetworkManager/system-connections"
                 { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
                 "/etc/sops/"
-                "var/lib/tailscale"
+                "/var/lib/tailscale"
                 "/var/lib/power-profiles-daemon"
             ];
             files = [
