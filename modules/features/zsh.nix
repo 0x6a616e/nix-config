@@ -12,9 +12,9 @@
 		programs.zsh = {
 			enable = true;
 			autosuggestion.enable = true;
-			dotDir = config.home.homeDirectory;
 			history = {
 				append = true;
+                path = "${config.home.homeDirectory}/.local/share/zsh/.zsh_history";
                 extended = true;
 				ignoreAllDups = true;
 				ignoreSpace = true;

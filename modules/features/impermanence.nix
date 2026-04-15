@@ -30,9 +30,7 @@
                     { directory = ".gnupg"; mode = "0700"; }
                     ".local/state/wireplumber"
                     ".local/share/zoxide"
-                ];
-                files = [
-                    ".zsh_history"
+                    ".local/share/zsh"
                 ];
             };
         };
