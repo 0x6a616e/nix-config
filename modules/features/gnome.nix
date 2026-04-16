@@ -25,19 +25,22 @@
             self.homeModules.firefox
         ];
 
-        home.packages = [
-            pkgs.collision # configure
-            pkgs.gnome-calendar # configure
-            pkgs.gnome-characters # configure
-            pkgs.gnome-disk-utility # configure
-            pkgs.gnome-logs # configure
-            pkgs.loupe # configure
-            pkgs.nautilus # configure
-            pkgs.resources # configure
-            pkgs.showtime # configure
-            pkgs.wl-clipboard # configure
-            pkgs.gnomeExtensions.caffeine # configure
-        ];
+        home = {
+            file."test1.xml".source = ../../assets/monitors.xml;
+            packages = [
+                pkgs.collision # configure
+                    pkgs.gnome-calendar # configure
+                    pkgs.gnome-characters # configure
+                    pkgs.gnome-disk-utility # configure
+                    pkgs.gnome-logs # configure
+                    pkgs.loupe # configure
+                    pkgs.nautilus # configure
+                    pkgs.resources # configure
+                    pkgs.showtime # configure
+                    pkgs.wl-clipboard # configure
+                    pkgs.gnomeExtensions.caffeine # configure
+            ];
+        };
 
         gtk = {
             enable = true;
