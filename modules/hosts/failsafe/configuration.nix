@@ -90,12 +90,16 @@
         sops.secrets."users/jan/password" = { };
         sops.secrets."users/jan/password".neededForUsers = true;
 
-        users.users.jan = {
-            isNormalUser = true;
-            description = "Jan";
-            extraGroups = [ "networkmanager" "wheel" ];
-		shell = pkgs.zsh;
-        hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+        users = {
+            mutableUsers = false;
+            users.jan = {
+                isNormalUser = true;
+                description = "Jan";
+                extraGroups = [ "networkmanager" "wheel" ];
+                shell = pkgs.zsh;
+                initialPassword = "12345678";
+                hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+            };
         };
     };
 }
