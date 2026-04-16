@@ -65,6 +65,7 @@
         rtkit.enable = true;
         sudo.extraConfig = ''
             Defaults pwfeedback
+            Defaults lecture=always
         '';
     };
 
