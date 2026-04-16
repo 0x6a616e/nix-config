@@ -61,7 +61,12 @@
 
         nixpkgs.config.allowUnfree = true;
 
-	security.rtkit.enable = true;
+	security = {
+        rtkit.enable = true;
+        sudo.extraConfig = ''
+            Defaults pwfeedback
+        '';
+    };
 
 	services = {
 		pipewire = {
