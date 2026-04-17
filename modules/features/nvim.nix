@@ -4,7 +4,7 @@
 			inputs.nixvim.homeModules.nixvim
 		];
 
-        stylix.targets.nixvim.enable = false;
+       stylix.targets.nixvim.enable = false;
 
 		programs.ripgrep.enable = true;
 

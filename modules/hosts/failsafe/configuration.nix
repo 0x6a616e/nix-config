@@ -8,7 +8,6 @@
             self.nixosModules.nh
             self.nixosModules.zsh
             self.nixosModules.tailscale
-            self.nixosModules.fonts
             self.nixosModules.impermanence
             self.nixosModules.sops
             self.nixosModules.gnome
