@@ -22,6 +22,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
         impermanence.url = "github:nix-community/impermanence";
+        stylix = {
+            url = "github:nix-community/stylix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 	};
 
 	outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {

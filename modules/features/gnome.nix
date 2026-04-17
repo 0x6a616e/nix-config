@@ -24,6 +24,7 @@
         imports = [
             self.homeModules.kitty
             self.homeModules.firefox
+            self.homeModules.stylix
         ];
 
         home = {
@@ -42,25 +43,25 @@
             ];
         };
 
-        gtk = {
-            enable = true;
-            cursorTheme = {
-                name = "BreezeX-RosePine-Linux";
-                package = pkgs.rose-pine-cursor;
-            };
-            gtk2.extraConfig = ''
-                gtk-application-prefer-dark-theme = 1;
-            '';
-            gtk3.extraConfig = {
-                gtk-application-prefer-dark-theme = 1;
-            };
-            gtk4 = {
-                theme = null;
-                extraConfig = {
-                    gtk-application-prefer-dark-theme = 1;
-                };
-            };
-        };
+        # gtk = {
+        #     enable = true;
+        #     cursorTheme = {
+        #         name = "BreezeX-RosePine-Linux";
+        #         package = pkgs.rose-pine-cursor;
+        #     };
+        #     gtk2.extraConfig = ''
+        #         gtk-application-prefer-dark-theme = 1;
+        #     '';
+        #     gtk3.extraConfig = {
+        #         gtk-application-prefer-dark-theme = 1;
+        #     };
+        #     gtk4 = {
+        #         theme = null;
+        #         extraConfig = {
+        #             gtk-application-prefer-dark-theme = 1;
+        #         };
+        #     };
+        # };
 
         dconf = {
             enable = true;
@@ -68,14 +69,14 @@
                 "org/gnome/desktop/app-folders" = {
                     folder-children = [ ];
                 };
-                "org/gnome/desktop/background" = {
-                    color-shading-type = "solid";
-                    picture-options = "zoom";
-                    picture-uri = "file://${wallpaper}";
-                    picture-uri-dark = "file://${wallpaper}";
-                    primary-color = "#000000";
-                    secondary-color = "#000000";
-                };
+                # "org/gnome/desktop/background" = {
+                #     color-shading-type = "solid";
+                #     picture-options = "zoom";
+                #     picture-uri = "file://${wallpaper}";
+                #     picture-uri-dark = "file://${wallpaper}";
+                #     primary-color = "#000000";
+                #     secondary-color = "#000000";
+                # };
                 "org/gnome/desktop/input-sources" = {
                     sources = [ (lib.hm.gvariant.mkTuple [ "xkb" "us" ]) ];
                     xkb-options = [ "compose:ralt" ];
@@ -91,13 +92,13 @@
                 "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
                     application-id = "org.gnome.Nautilus.desktop";
                 };
-                "org/gnome/desktop/screensaver" = {
-                    color-shading-type = "solid";
-                    picture-options = "zoom";
-                    picture-uri = "file://${wallpaper}";
-                    primary-color = "#000000";
-                    secondary-color = "#000000";
-                };
+                # "org/gnome/desktop/screensaver" = {
+                #     color-shading-type = "solid";
+                #     picture-options = "zoom";
+                #     picture-uri = "file://${wallpaper}";
+                #     primary-color = "#000000";
+                #     secondary-color = "#000000";
+                # };
                 "org/gnome/desktop/screen-time-limits" = {
                     daily-limit-enabled = false;
                     history-enabled = false;
