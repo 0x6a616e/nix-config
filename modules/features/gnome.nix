@@ -26,7 +26,7 @@
         ];
 
         home = {
-            file."test1.xml".source = ../../assets/monitors.xml;
+            file.".config/monitors.xml".source = ../../assets/monitors.xml;
             packages = [
                 pkgs.collision # configure
                     pkgs.gnome-calendar # configure
