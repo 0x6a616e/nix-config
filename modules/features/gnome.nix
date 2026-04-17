@@ -83,7 +83,7 @@
                     xkb-options = [ "compose:ralt" ];
                 };
                 "org/gnome/desktop/interface" = {
-                    # accent-color = "yellow";
+                    accent-color = "yellow";
                     # color-scheme = "prefer-dark";
                     clock-format = "24h";
                 };

@@ -7,9 +7,29 @@
         stylix = {
             enable = true;
             base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-            # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-            # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
             image = ../../assets/wallpaper.jpg;
+            cursor = {
+                name = "BreezeX-RosePine-Linux";
+                package = pkgs.rose-pine-cursor;
+                size = 40;
+            };
+            fonts = {
+                serif = {
+                    package = pkgs.dejavu_fonts;
+                    name = "DejaVu Serif";
+                };
+
+                sansSerif = {
+                    package = pkgs.dejavu_fonts;
+                    name = "DejaVu Sans";
+                };
+
+                monospace = {
+                    package = pkgs.nerd-fonts.jetbrains-mono;
+                    name = "JetBrainsMono Nerd Font";
+                };
+            };
+            polarity = "dark";
         };
     };
 }
