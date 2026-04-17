@@ -31,6 +31,7 @@
                     ".local/state/wireplumber"
                     ".local/share/zoxide"
                     ".local/share/zsh"
+                    "Downloads"
                 ];
             };
         };

@@ -19,6 +19,7 @@
     flake.homeModules.gnome = { pkgs, lib, ... }:
     let
         wallpaper = ../../assets/wallpaper.jpg;
+        monitors_file = ../../assets/monitors.xml;
     in {
         imports = [
             self.homeModules.kitty
@@ -26,7 +27,7 @@
         ];
 
         home = {
-            file.".config/monitors.xml".source = ../../assets/monitors.xml;
+            file.".config/monitors.xml".source = monitors_file;
             packages = [
                 pkgs.collision
                 pkgs.gnome-characters
