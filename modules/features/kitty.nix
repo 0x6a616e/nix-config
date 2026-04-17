@@ -5,10 +5,10 @@
 	in {
 	    programs.kitty = {
 		enable = true;
-		font = {
-		    name = "JetBrainsMono Nerd Font";
-		    size = 14;
-		};
+		# font = {
+		#     name = "JetBrainsMono Nerd Font";
+		#     size = 14;
+		# };
 		keybindings = {
 		    "ctrl+shift+t" = "new_tab_with_cwd";
 		};

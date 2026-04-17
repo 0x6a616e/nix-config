@@ -6,9 +6,17 @@
             initrd = {
                 availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
                 kernelModules = [ ];
-		postResumeCommands = lib.mkAfter ''
-			zfs rollback -r rpool/root@blank
-		'';
+                systemd.services.rollback-root = {
+                    description = "Rollback ZFS root dataset";
+                    wantedBy = [ "initrd.target" ];
+                    after = [ "zfs-import.target" ];
+                    before = [ "sysroot.mount" ];
+
+                    serviceConfig = {
+                        Type = "oneshot";
+                        ExecStart = "${pkgs.zfs}/bin/zfs rollback -r rpool/root@blank";
+                    };
+                };
             };
             kernelModules = [ "kvm-amd" ];
             extraModulePackages = [ ];

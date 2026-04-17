@@ -43,6 +43,7 @@
             ];
         };
 
+        gtk.gtk4.theme = null;
         # gtk = {
         #     enable = true;
         #     cursorTheme = {
@@ -82,8 +83,8 @@
                     xkb-options = [ "compose:ralt" ];
                 };
                 "org/gnome/desktop/interface" = {
-                    accent-color = "yellow";
-                    color-scheme = "prefer-dark";
+                    # accent-color = "yellow";
+                    # color-scheme = "prefer-dark";
                     clock-format = "24h";
                 };
                 "org/gnome/desktop/notifications" = {
