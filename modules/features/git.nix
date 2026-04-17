@@ -1,5 +1,13 @@
 { self, inputs, ... }: {
 	flake.homeModules.git = { pkgs, ... }: {
-		programs.git.enable = true;
+		programs.git = {
+            enable = true;
+            settings = {
+                user = {
+                    name = "jan";
+                    email = "jan.reyes.contact@gmail.com";
+                };
+            };
+        };
 	};
 }
