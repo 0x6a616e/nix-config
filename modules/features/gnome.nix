@@ -44,10 +44,10 @@
 
         gtk = {
             enable = true;
-            # cursorTheme = {
-            #     name = "rose-pine-cursor";
-            #     package = pkgs.rose-pine-cursor;
-            # };
+            cursorTheme = {
+                name = "BreezeX-RosePine-Linux";
+                package = pkgs.rose-pine-cursor;
+            };
             gtk2.extraConfig = ''
                 gtk-application-prefer-dark-theme = 1;
             '';
