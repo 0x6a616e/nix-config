@@ -28,17 +28,16 @@
         home = {
             file.".config/monitors.xml".source = ../../assets/monitors.xml;
             packages = [
-                pkgs.collision # configure
-                    pkgs.gnome-calendar # configure
-                    pkgs.gnome-characters # configure
-                    pkgs.gnome-disk-utility # configure
-                    pkgs.gnome-logs # configure
-                    pkgs.loupe # configure
-                    pkgs.nautilus # configure
-                    pkgs.resources # configure
-                    pkgs.showtime # configure
-                    pkgs.wl-clipboard # configure
-                    pkgs.gnomeExtensions.caffeine # configure
+                pkgs.collision
+                pkgs.gnome-characters
+                pkgs.gnome-disk-utility
+                pkgs.gnome-logs
+                pkgs.loupe
+                pkgs.nautilus
+                pkgs.resources
+                pkgs.showtime
+                pkgs.wl-clipboard
+                pkgs.gnomeExtensions.caffeine
             ];
         };
 
