@@ -6,7 +6,7 @@
             self.homeModules.fd
 		];
 
-       # stylix.targets.nixvim.enable = false;
+       stylix.targets.nixvim.enable = false;
 
     		programs.nixvim = {
         		enable = true;
