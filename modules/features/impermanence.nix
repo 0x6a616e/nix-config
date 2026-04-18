@@ -32,6 +32,7 @@
                     ".local/share/zoxide"
                     ".local/share/zsh"
                     "Downloads"
+                    ".mozilla/firefox/main"
                 ];
             };
         };
