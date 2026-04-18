@@ -1,8 +1,5 @@
 { self, inputs, ... }: {
-	flake.homeModules.kitty = { pkgs, config, osConfig, ... }:
-	let
-		user = config.home.username;
-	in {
+	flake.homeModules.kitty = { pkgs, config, osConfig, ... }: {
 	    programs.kitty = {
             enable = true;
             keybindings = {
@@ -13,9 +10,6 @@
                 tab_powerline_style = "slanted";
                 window_padding_width = 5;
                 hide_window_decorations = "yes";
-            };
-            shellIntegration = {
-                enableZshIntegration = osConfig.users.users.${user}.shell == pkgs.zsh;
             };
 	    };
 	};

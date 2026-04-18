@@ -14,10 +14,7 @@
         environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
     };
 
-    flake.homeModules.gnome = { pkgs, lib, ... }:
-    let
-        monitors_file = ../../assets/monitors.xml;
-    in {
+    flake.homeModules.gnome = { pkgs, lib, ... }: {
         imports = [
             self.homeModules.kitty
             self.homeModules.firefox
@@ -25,7 +22,7 @@
         ];
 
         home = {
-            file.".config/monitors.xml".source = monitors_file;
+            file.".config/monitors.xml".source = ../../assets/monitors.xml;
             packages = [
                 pkgs.collision
                 pkgs.gnome-characters
