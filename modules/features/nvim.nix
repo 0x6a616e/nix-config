@@ -2,11 +2,11 @@
 	flake.homeModules.nvim = { pkgs, ... }: {
 		imports = [
 			inputs.nixvim.homeModules.nixvim
+            self.homeModules.ripgrep
+            self.homeModules.fd
 		];
 
-       stylix.targets.nixvim.enable = false;
-
-		programs.ripgrep.enable = true;
+       # stylix.targets.nixvim.enable = false;
 
     		programs.nixvim = {
         		enable = true;
