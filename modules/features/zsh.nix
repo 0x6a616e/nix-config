@@ -3,7 +3,7 @@
         programs.zsh.enable = true;
     };
 
-    flake.homeModules.zsh = { config, ... }: {
+    flake.homeModules.zsh = { config, pkgs, ... }: {
         imports = [
             self.homeModules.fzf
             self.homeModules.zoxide
@@ -29,6 +29,7 @@
             sessionVariables = {
                 EDITOR = "nvim";
                 NEWLINE = "\n";
+                ZVM_SYSTEM_CLIPBOARD_ENABLED = true;
             };
             setOptions = [ "prompt_subst" ];
             shellAliases = {
@@ -38,6 +39,13 @@
                 ssh = "kitten ssh";
             };
             syntaxHighlighting.enable = true;
+            plugins = [
+                {
+                    name = "vi-mode";
+                    src = pkgs.zsh-vi-mode;
+                    file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+                }
+            ];
         };
     };
 }
