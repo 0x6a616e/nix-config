@@ -1,7 +1,7 @@
-{ ... }: {
-	flake.nixosModules.nh = { ... }: {
-		programs.nh = {
-			enable = true;
-		};
-	};
+_: {
+    flake.nixosModules.nh = _: {
+        programs.nh = {
+            enable = true;
+        };
+    };
 }

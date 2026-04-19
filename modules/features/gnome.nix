@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
     flake.nixosModules.gnome = { pkgs, ... }: {
         imports = [ ];
 
@@ -23,17 +23,17 @@
 
         home = {
             file.".config/monitors.xml".source = ../../assets/monitors.xml;
-            packages = [
-                pkgs.collision
-                pkgs.gnome-characters
-                pkgs.gnome-disk-utility
-                pkgs.gnome-logs
-                pkgs.loupe
-                pkgs.nautilus
-                pkgs.resources
-                pkgs.showtime
-                pkgs.wl-clipboard
-                pkgs.gnomeExtensions.caffeine
+            packages = with pkgs; [
+                collision
+                gnome-characters
+                gnome-disk-utility
+                gnome-logs
+                loupe
+                nautilus
+                resources
+                showtime
+                wl-clipboard
+                gnomeExtensions.caffeine
             ];
         };
 

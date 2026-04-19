@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
     flake.homeModules.stylix = { pkgs, ... }: {
         imports = [
             inputs.stylix.homeModules.stylix

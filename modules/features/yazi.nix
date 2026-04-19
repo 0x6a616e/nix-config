@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-    flake.homeModules.yazi = { pkgs, ... }: {
+_: {
+    flake.homeModules.yazi = _: {
         programs.yazi = {
             enable = true;
             shellWrapperName = "yy";

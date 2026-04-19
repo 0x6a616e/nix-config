@@ -1,8 +1,8 @@
-{ self, inputs, ... }: {
-	flake.homeModules.zoxide = { pkgs, config, osConfig, ... }: {
-		programs.zoxide = {
-			enable = true;
-			options = [ "--cmd cd" ];
-		};
-	};
+_: {
+    flake.homeModules.zoxide = _: {
+        programs.zoxide = {
+            enable = true;
+            options = [ "--cmd cd" ];
+        };
+    };
 }

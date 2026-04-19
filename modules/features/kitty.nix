@@ -1,6 +1,6 @@
-{ self, inputs, ... }: {
-	flake.homeModules.kitty = { pkgs, config, osConfig, ... }: {
-	    programs.kitty = {
+_: {
+    flake.homeModules.kitty = _: {
+        programs.kitty = {
             enable = true;
             keybindings = {
                 "ctrl+shift+t" = "new_tab_with_cwd";
@@ -11,6 +11,6 @@
                 window_padding_width = 5;
                 hide_window_decorations = "yes";
             };
-	    };
-	};
+        };
+    };
 }

@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.homeModules.nvim = { pkgs, lib, ... }: {
+    flake.homeModules.nvim = { lib, ... }: {
         imports = [
             inputs.nvf.homeManagerModules.default
             self.homeModules.ripgrep

@@ -1,7 +1,7 @@
-{ self, inputs, ... }: {
-	flake.homeModules.fzf = { pkgs, config, osConfig, ... }: {
-		programs.fzf = {
-			enable = true;
-		};
-	};
+_: {
+    flake.homeModules.fzf = _: {
+        programs.fzf = {
+            enable = true;
+        };
+    };
 }

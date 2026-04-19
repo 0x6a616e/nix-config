@@ -1,6 +1,6 @@
-{ self, inputs, ... }: {
-	flake.homeModules.git = { pkgs, ... }: {
-		programs.git = {
+_: {
+    flake.homeModules.git = _: {
+        programs.git = {
             enable = true;
             settings = {
                 user = {
@@ -9,5 +9,5 @@
                 };
             };
         };
-	};
+    };
 }

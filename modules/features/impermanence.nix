@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-    flake.nixosModules.impermanence = { pkgs, ... }: {
+{ inputs, ... }: {
+    flake.nixosModules.impermanence = _: {
         imports = [
             inputs.impermanence.nixosModules.impermanence
         ];

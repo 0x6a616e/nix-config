@@ -1,21 +1,21 @@
-{ self, inputs, ... }: {
-	flake.homeModules.jan = { pkgs, ... }: {
-		imports = [
-			self.homeModules.git
-			self.homeModules.zsh
-			self.homeModules.pass
-			self.homeModules.nvim
+{ self, ... }: {
+    flake.homeModules.jan = _: {
+        imports = [
+            self.homeModules.git
+            self.homeModules.zsh
+            self.homeModules.pass
+            self.homeModules.nvim
             self.homeModules.gnome
-		];
+        ];
 
-		xdg.enable = true;
+        xdg.enable = true;
 
-		home = {
-			username = "jan";
-			homeDirectory = "/home/jan";
-			stateVersion = "25.05";
-		};
+        home = {
+            username = "jan";
+            homeDirectory = "/home/jan";
+            stateVersion = "25.05";
+        };
 
-		services.ssh-agent.enable = true;
-	};
+        services.ssh-agent.enable = true;
+    };
 }

@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-    flake.homeModules.fd = { pkg, ... }: {
+_: {
+    flake.homeModules.fd = _: {
         programs.fd.enable = true;
     };
 }
