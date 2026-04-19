@@ -7,6 +7,7 @@
         imports = [
             self.homeModules.fzf
             self.homeModules.zoxide
+            self.homeModules.starship
         ];
 
         programs.zsh = {
