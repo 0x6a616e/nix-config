@@ -26,6 +26,10 @@
             url = "github:nix-community/stylix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nvf = {
+            url = "github:NotAShelf/nvf";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 	};
 
 	outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
