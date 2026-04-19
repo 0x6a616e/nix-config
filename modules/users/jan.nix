@@ -14,6 +14,9 @@
             username = "jan";
             homeDirectory = "/home/jan";
             stateVersion = "25.05";
+            file.".config/nix/nix.conf".text = ''
+                allow-unfree = true
+            '';
         };
 
         services.ssh-agent.enable = true;
