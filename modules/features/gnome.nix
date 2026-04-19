@@ -69,6 +69,12 @@
                 "org/gnome/desktop/session" = {
                     idle-delay = lib.hm.gvariant.mkUint32 300;
                 };
+                "org/gnome/desktop/wm/keybindings" = {
+                    cycle-windows = [];
+                    cycle-windows-backward = [];
+                    switch-group = [ "<Alt>Escape" ];
+                    switch-group-backward = [ "<Shift><Alt>Escape" ];
+                };
                 "org/gnome/settings-daemon/plugins/power" = {
                     sleep-inactive-ac-timeout = 900;
                 };
