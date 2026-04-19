@@ -33,6 +33,7 @@
                     ".local/share/zsh"
                     "Downloads"
                     ".mozilla/firefox/main"
+                    ".local/state/nvf/undo"
                 ];
             };
         };
