@@ -14,8 +14,8 @@
             username = "jan";
             homeDirectory = "/home/jan";
             stateVersion = "25.05";
-            file.".config/nix/nix.conf".text = ''
-                allow-unfree = true
+            file.".config/nixpkgs/config.nix".text = ''
+                { allowUnfree = true; }
             '';
         };
 
