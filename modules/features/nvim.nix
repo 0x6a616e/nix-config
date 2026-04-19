@@ -4,6 +4,7 @@
             inputs.nvf.homeManagerModules.default
             self.homeModules.ripgrep
             self.homeModules.fd
+            self.homeModules.yazi
         ];
 
         programs.nvf = {
@@ -101,15 +102,8 @@
                         ];
                     };
                     utility = {
-                        oil-nvim = {
-                            enable = true;
-                            setupOpts = {
-                                view_options.show_hidden = true;
-                                win_options.signcolumn = "yes:2";
-                            };
-                            gitStatus.enable = true;
-                        };
                         undotree.enable = true;
+                        yazi-nvim.enable = true;
                     };
                     ui.smartcolumn = {
                         enable = true;
@@ -225,12 +219,6 @@
                             mode = "n";
                             key = "<leader>u";
                             action = "vim.cmd.UndotreeToggle";
-                            lua = true;
-                        }
-                        {
-                            mode = "n";
-                            key = "-";
-                            action = "vim.cmd.Oil";
                             lua = true;
                         }
                         {
