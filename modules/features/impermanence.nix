@@ -34,6 +34,7 @@
                     "Downloads"
                     ".mozilla/firefox/main"
                     ".local/state/nvf/undo"
+                    ".local/share/direnv"
                 ];
             };
         };
