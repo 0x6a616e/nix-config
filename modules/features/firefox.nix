@@ -57,6 +57,15 @@ _: {
                             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                             definedAliases = [ "@ho" ];
                         };
+                        nvf-options = {
+                            name = "NVF options";
+                            urls = [{
+                                template = "https://nvf.notashelf.dev/search.html";
+                                params = [ { name = "q"; value = "{searchTerms}"; } ];
+                            }];
+                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                            definedAliases = [ "@nvf" ];
+                        };
                     };
                 };
             };
