@@ -6,8 +6,6 @@
             self.homeModules.fd
         ];
 
-        # stylix.targets.nvf.enable = false;
-        
         programs.nvf = {
             enable = true;
             settings = {
