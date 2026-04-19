@@ -2,9 +2,6 @@ _: {
     flake.homeModules.kitty = _: {
         programs.kitty = {
             enable = true;
-            keybindings = {
-                "ctrl+shift+t" = "new_tab_with_cwd";
-            };
             settings = {
                 tab_bar_style = "powerline";
                 tab_powerline_style = "slanted";
