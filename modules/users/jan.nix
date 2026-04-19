@@ -6,6 +6,7 @@
             self.homeModules.pass
             self.homeModules.nvim
             self.homeModules.gnome
+            self.homeModules.direnv
         ];
 
         xdg.enable = true;
