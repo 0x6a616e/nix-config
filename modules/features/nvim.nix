@@ -55,7 +55,7 @@
                     terminal = {
                         toggleterm = {
                             enable = true;
-                            mappings.open = "<leader>st";
+                            mappings.open = "<leader>tt";
                             setupOpts = {
                                 direction = "float";
                                 on_open = lib.generators.mkLuaInline ''
