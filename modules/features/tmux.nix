@@ -1,5 +1,5 @@
 _: {
-    flake.homeModules.tmux = { pkgs, ... }: {
+    flake.homeModules.tmux = _: {
         programs.tmux = {
             enable = true;
             baseIndex = 1;
