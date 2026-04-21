@@ -55,17 +55,6 @@
                     terminal = {
                         toggleterm = {
                             enable = true;
-                            mappings.open = "<leader>tt";
-                            setupOpts = {
-                                direction = "float";
-                                on_open = lib.generators.mkLuaInline ''
-                                    function()
-                                        vim.schedule(function()
-                                            vim.cmd("startinsert")
-                                        end)
-                                    end
-                                '';
-                            };
                             lazygit.enable = true;
                         };
                     };

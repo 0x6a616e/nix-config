@@ -7,6 +7,7 @@
         imports = [
             self.homeModules.fzf
             self.homeModules.zoxide
+            self.homeModules.tmux
         ];
 
         programs.zsh = {
@@ -25,6 +26,9 @@
             };
             initContent = ''
                 PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
+                if [[ -z $TMUX ]]; then
+                    tmux new -As jan
+                fi
             '';
             sessionVariables = {
                 EDITOR = "nvim";
