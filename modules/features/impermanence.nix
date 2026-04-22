@@ -35,6 +35,8 @@
                     ".mozilla/firefox/main"
                     ".local/state/nvf/undo"
                     ".local/share/direnv"
+                ];
+                files = [
                     ".config/lazygit/state.yml"
                 ];
             };
