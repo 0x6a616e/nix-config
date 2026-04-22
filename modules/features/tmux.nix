@@ -10,6 +10,13 @@ _: {
             shortcut = "a";
             terminal = "tmux-256color";
             extraConfig = ''
+                # rename starts empty
+                bind-key , command-prompt "rename-window '%%'"
+
+                # move trough windows with ctrl-tab
+                bind -n C-Tab next-window
+                bind -n C-S-Tab previous-window
+
                 # split panes using | and -
                 bind - split-window -v -c "#{pane_current_path}"
                 bind | split-window -h -c "#{pane_current_path}"
@@ -17,10 +24,10 @@ _: {
                 unbind %
 
                 # switch panes using Alt-arrow without prefix
-                bind -n M-h select-pane -L
-                bind -n M-l select-pane -R
-                bind -n M-k select-pane -U
-                bind -n M-j select-pane -D
+                bind -n M-h select-pane -L -Z
+                bind -n M-l select-pane -R -Z
+                bind -n M-k select-pane -U -Z
+                bind -n M-j select-pane -D -Z
 
                 # don't rename windows automatically
                 set-option -g allow-rename off
