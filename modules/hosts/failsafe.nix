@@ -10,6 +10,7 @@
             self.nixosModules.impermanence
             self.nixosModules.sops
             self.nixosModules.gnome
+            self.nixosModules.clamav
         ];
 
         boot = {
