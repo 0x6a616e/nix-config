@@ -7,6 +7,7 @@
             self.homeModules.nvim
             self.homeModules.gnome
             self.homeModules.direnv
+            self.homeModules.btop
         ];
 
         xdg.enable = true;

@@ -30,7 +30,6 @@
                 gnome-logs
                 loupe
                 nautilus
-                resources
                 showtime
                 wl-clipboard
                 gnomeExtensions.caffeine
