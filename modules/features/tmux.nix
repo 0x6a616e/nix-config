@@ -10,12 +10,15 @@ _: {
             shortcut = "a";
             terminal = "tmux-256color";
             extraConfig = ''
+                # ask for name on window creation
+                bind-key c command-prompt "new-window -n '%%'"
+                
                 # rename starts empty
                 bind-key , command-prompt "rename-window '%%'"
 
-                # move trough windows with ctrl-tab
-                bind -n C-Tab next-window
-                bind -n C-S-Tab previous-window
+                # move trough windows with ctrl and vim keys
+                bind -n C-l next-window
+                bind -n C-h previous-window
 
                 # split panes using | and -
                 bind - split-window -v -c "#{pane_current_path}"
