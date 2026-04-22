@@ -3,7 +3,7 @@ _: {
         programs.btop = {
             enable = true;
             settings = {
-                vim_keys = false;
+                vim_keys = true;
             };
         };
     };
