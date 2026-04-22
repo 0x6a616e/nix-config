@@ -8,6 +8,7 @@
             self.homeModules.gnome
             self.homeModules.direnv
             self.homeModules.btop
+            self.homeModules.lazygit
         ];
 
         xdg.enable = true;
