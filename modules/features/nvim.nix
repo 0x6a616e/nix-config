@@ -123,6 +123,7 @@
                         enableTreesitter = true;
                         enableFormat = true;
                         enableExtraDiagnostics = true;
+                        bash.enable = true;
                         nix.enable = true;
                     };
                     keymaps = [
