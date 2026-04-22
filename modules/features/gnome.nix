@@ -26,7 +26,6 @@
             packages = with pkgs; [
                 collision
                 gnome-characters
-                gnome-disk-utility
                 gnome-logs
                 loupe
                 nautilus
