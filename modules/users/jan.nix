@@ -40,8 +40,6 @@
             self.homeModules.zsh
         ];
 
-        xdg.enable = true;
-
         home = {
             username = "jan";
             homeDirectory = "/home/jan";
