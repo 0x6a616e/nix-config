@@ -3,13 +3,7 @@
         programs.zsh.enable = true;
     };
 
-    flake.homeModules.zsh = { config, pkgs, ... }: {
-        imports = [
-            self.homeModules.fzf
-            self.homeModules.zoxide
-            self.homeModules.tmux
-        ];
-
+    flake.homeModules.zsh = { config, pkgs, lib, ... }: {
         programs.zsh = {
             enable = true;
             autosuggestion.enable = true;
@@ -27,7 +21,7 @@
             initContent = ''
                 PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
                 if [[ -z $TMUX ]]; then
-                    tmux new -As jan
+                    ${lib.getExe pkgs.tmux} new -As jan
                 fi
             '';
             sessionVariables = {

@@ -4,13 +4,13 @@
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.home-manager.nixosModules.home-manager
 
-            self.nixosModules.nh
-            self.nixosModules.zsh
-            self.nixosModules.tailscale
-            self.nixosModules.impermanence
-            self.nixosModules.sops
-            self.nixosModules.gnome
             self.nixosModules.clamav
+            self.nixosModules.gnome
+            self.nixosModules.impermanence
+            self.nixosModules.nh
+            self.nixosModules.sops
+            self.nixosModules.tailscale
+            self.nixosModules.zsh
         ];
 
         boot = {

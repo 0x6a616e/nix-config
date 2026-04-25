@@ -2,9 +2,6 @@
     flake.homeModules.nvim = { lib, ... }: {
         imports = [
             inputs.nvf.homeManagerModules.default
-            self.homeModules.ripgrep
-            self.homeModules.fd
-            self.homeModules.yazi
         ];
 
         programs.nvf = {

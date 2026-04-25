@@ -1,7 +1,5 @@
 { self, ... }: {
     flake.nixosModules.gnome = { pkgs, ... }: {
-        imports = [ ];
-
         services = {
             displayManager.gdm.enable = true;
             desktopManager.gnome.enable = true;
@@ -15,12 +13,6 @@
     };
 
     flake.homeModules.gnome = { pkgs, lib, ... }: {
-        imports = [
-            self.homeModules.kitty
-            self.homeModules.firefox
-            self.homeModules.stylix
-        ];
-
         home = {
             file.".config/monitors.xml".source = ../../assets/monitors.xml;
             packages = with pkgs; [
