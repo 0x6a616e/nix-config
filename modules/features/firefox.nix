@@ -1,10 +1,5 @@
 _: {
     flake.homeModules.firefox = { pkgs, ... }: {
-        stylix.targets.firefox = {
-            profileNames = [ "main" ];
-            colorTheme.enable = true;
-        };
-
         programs.firefox = {
             enable = true;
             profiles.main = {
@@ -12,15 +7,6 @@ _: {
                 search = {
                     force = true;
                     engines = {
-                        nixos-wiki = {
-                            name = "NixOS Wiki";
-                            urls = [{
-                                template = "https://wiki.nixos.org/w/index.php";
-                                params = [ { name = "search"; value = "{searchTerms}"; } ];
-                            }];
-                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            definedAliases = [ "@nw" ];
-                        };
                         nix-packages = {
                             name = "Nix Packages";
                             urls = [{
@@ -56,15 +42,6 @@ _: {
                             }];
                             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                             definedAliases = [ "@ho" ];
-                        };
-                        nvf-options = {
-                            name = "NVF options";
-                            urls = [{
-                                template = "https://nvf.notashelf.dev/search.html";
-                                params = [ { name = "q"; value = "{searchTerms}"; } ];
-                            }];
-                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            definedAliases = [ "@nvf" ];
                         };
                     };
                 };

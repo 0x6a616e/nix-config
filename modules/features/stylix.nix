@@ -30,6 +30,10 @@
                 };
             };
             polarity = "dark";
+            targets.firefox = {
+                profileNames = [ "main" ];
+                colorTheme.enable = true;
+            };
         };
     };
 }
