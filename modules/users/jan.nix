@@ -1,4 +1,24 @@
 { self, ... }: {
+    flake.nixosModules.jan = { pkgs, config, ... }: {
+        imports = [
+            self.nixosModules.sops
+        ];
+
+        home-manager.users.jan.imports = [ self.homeModules.jan ];
+
+        sops.secrets."users/jan/password" = { };
+        sops.secrets."users/jan/password".neededForUsers = true;
+
+        users.users.jan = {
+            isNormalUser = true;
+            description = "Jan";
+            extraGroups = [ "networkmanager" "wheel" ];
+            shell = pkgs.zsh;
+            initialPassword = "12345678";
+            hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+        };
+    };
+
     flake.homeModules.jan = _: {
         imports = [
             self.homeModules.btop
