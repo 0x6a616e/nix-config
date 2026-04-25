@@ -1,11 +1,9 @@
 _: {
-    perSystem = { pkgs, lib, ... }: {
+    perSystem = { pkgs, ... }: {
         devShells.default = pkgs.mkShell {
             packages = [
-                pkgs.pre-commit
             ];
             shellHook = ''
-                ${lib.getExe pkgs.pre-commit} install
             '';
         };
     };
