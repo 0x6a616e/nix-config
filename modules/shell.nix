@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-    perSystem = { pkgs, self', lib, ... }: {
+_: {
+    perSystem = { pkgs, lib, ... }: {
         devShells.default = pkgs.mkShell {
             packages = [
                 pkgs.pre-commit
