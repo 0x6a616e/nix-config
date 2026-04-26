@@ -2,6 +2,7 @@ _: {
     flake.homeModules.firefox = { pkgs, ... }: {
         programs.firefox = {
             enable = true;
+            configPath = ".mozilla/firefox";
             profiles.main = {
                 extensions.force = true;
                 search = {
