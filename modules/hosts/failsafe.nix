@@ -68,6 +68,8 @@
             };
         };
 
+        home-manager.useUserPackages = true;
+
         i18n = {
             defaultLocale = "en_US.UTF-8";
             extraLocaleSettings = {
@@ -126,11 +128,6 @@
         system.stateVersion = "25.05";
 
         time.timeZone = "America/Monterrey";
-
-        home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-        };
 
         users.mutableUsers = false;
     };
