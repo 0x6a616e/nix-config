@@ -27,6 +27,7 @@
             sessionVariables = {
                 EDITOR = "nvim";
                 NEWLINE = "\n";
+                ZVM_LINE_INIT_MODE ="n";
                 ZVM_SYSTEM_CLIPBOARD_ENABLED = true;
             };
             setOptions = [ "prompt_subst" ];
