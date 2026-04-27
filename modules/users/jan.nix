@@ -19,33 +19,54 @@
         };
     };
 
-    flake.homeModules.jan = _: {
-        imports = [
-            self.homeModules.btop
-            self.homeModules.direnv
-            self.homeModules.fd
-            self.homeModules.firefox
-            self.homeModules.fzf
-            self.homeModules.git
-            self.homeModules.gnome
-            self.homeModules.kitty
-            self.homeModules.lazygit
-            self.homeModules.nvim
-            self.homeModules.pass
-            self.homeModules.ripgrep
-            self.homeModules.stylix
-            self.homeModules.tmux
-            self.homeModules.yazi
-            self.homeModules.zoxide
-            self.homeModules.zsh
-        ];
+    flake.homeModules.jan = { lib, osConfig, ... }:
+        let
+            filter = (currHost: host: currHost == host) osConfig.networking.hostName;
+            ifIn = lib.lists.any filter;
+        in {
+            imports = [
+                self.homeModules.btop
+                self.homeModules.direnv
+                self.homeModules.fd
+                self.homeModules.firefox
+                self.homeModules.fzf
+                self.homeModules.git
+                self.homeModules.gnome
+                self.homeModules.kitty
+                self.homeModules.lazygit
+                self.homeModules.nvim
+                self.homeModules.pass
+                self.homeModules.ripgrep
+                self.homeModules.stylix
+                self.homeModules.tmux
+                self.homeModules.yazi
+                self.homeModules.zoxide
+                self.homeModules.zsh
+            ];
 
-        home = {
-            username = "jan";
-            homeDirectory = "/home/jan";
-            stateVersion = "25.05";
+            btop.enable = ifIn [ "moose" ];
+            direnv.enable = ifIn [ "moose" ];
+            fd.enable = ifIn [ "moose" ];
+            firefox.enable = ifIn [ "moose" ];
+            fzf.enable = ifIn [ "moose" ];
+            git.enable = ifIn [ "moose" ];
+            gnome.enable = ifIn [ "moose" ];
+            kitty.enable = ifIn [ "moose" ];
+            lazygit.enable = ifIn [ "moose" ];
+            nvim.enable = ifIn [ "moose" ];
+            pass.enable = ifIn [ "moose" ];
+            ripgrep.enable = ifIn [ "moose" ];
+            tmux.enable = ifIn [ "moose" ];
+            yazi.enable = ifIn [ "moose" ];
+            zoxide.enable = ifIn [ "moose" ];
+            zsh.enable = ifIn [ "moose" ];
+
+            home = {
+                username = "jan";
+                homeDirectory = "/home/jan";
+                stateVersion = "25.05";
+            };
+
+            services.ssh-agent.enable = true;
         };
-
-        services.ssh-agent.enable = true;
-    };
 }
