@@ -2,6 +2,10 @@
     description = "Nixos config flake";
 
     inputs = {
+        disko = {
+            url = "github:nix-community/disko/latest";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         flake-parts.url = "github:hercules-ci/flake-parts";
         home-manager = {
             url = "github:nix-community/home-manager";
