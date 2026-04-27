@@ -1,9 +1,14 @@
 _: {
-    flake.homeModules.zoxide = _: {
-        programs.zoxide = {
-            enable = true;
-            enableZshIntegration = true;
-            options = [ "--cmd cd" ];
+    flake.homeModules.zoxide = { lib, config, ... }: {
+        options = {
+            zoxide.enable = lib.mkEnableOption "enable zoxide";
+        };
+        config = lib.mkIf config.zoxide.enable {
+            programs.zoxide = {
+                enable = true;
+                enableZshIntegration = true;
+                options = [ "--cmd cd" ];
+            };
         };
     };
 }
