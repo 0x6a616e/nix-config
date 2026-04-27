@@ -1,5 +1,10 @@
 _: {
-    flake.homeModules.fd = _: {
-        programs.fd.enable = true;
+    flake.homeModules.fd = { lib, config, ... }: {
+        options = {
+            fd.enable = lib.mkEnableOption "enable fd";
+        };
+        config = lib.mkIf config.fd.enable {
+            programs.fd.enable = true;
+        };
     };
 }
