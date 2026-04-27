@@ -1,68 +1,73 @@
 _: {
-    flake.homeModules.tmux = _: {
-        programs.tmux = {
-            enable = true;
-            baseIndex = 1;
-            clock24 = true;
-            historyLimit = 10000;
-            keyMode = "vi";
-            mouse = true;
-            shortcut = "a";
-            terminal = "tmux-256color";
-            extraConfig = ''
-                # ask for name on window creation
-                bind-key c command-prompt "new-window -n '%%'"
-                
-                # rename starts empty
-                bind-key , command-prompt "rename-window '%%'"
+    flake.homeModules.tmux = { lib, config, ... }: {
+        options = {
+            tmux.enable = lib.mkEnableOption "enable tmux";
+        };
+        config = lib.mkIf config.tmux.enable {
+            programs.tmux = {
+                enable = true;
+                baseIndex = 1;
+                clock24 = true;
+                historyLimit = 10000;
+                keyMode = "vi";
+                mouse = true;
+                shortcut = "a";
+                terminal = "tmux-256color";
+                extraConfig = ''
+                    # ask for name on window creation
+                    bind-key c command-prompt "new-window -n '%%'"
 
-                # move trough windows with ctrl and vim keys
-                bind -n C-l next-window
-                bind -n C-h previous-window
+                    # rename starts empty
+                    bind-key , command-prompt "rename-window '%%'"
 
-                # split panes using | and -
-                bind - split-window -v -c "#{pane_current_path}"
-                bind | split-window -h -c "#{pane_current_path}"
-                unbind '"'
-                unbind %
+                    # move trough windows with ctrl and vim keys
+                    bind -n C-l next-window
+                    bind -n C-h previous-window
 
-                # switch panes using Alt-arrow without prefix
-                bind -n M-h select-pane -L -Z
-                bind -n M-l select-pane -R -Z
-                bind -n M-k select-pane -U -Z
-                bind -n M-j select-pane -D -Z
+                    # split panes using | and -
+                    bind - split-window -v -c "#{pane_current_path}"
+                    bind | split-window -h -c "#{pane_current_path}"
+                    unbind '"'
+                    unbind %
 
-                # don't rename windows automatically
-                set-option -g allow-rename off
+                    # switch panes using Alt-arrow without prefix
+                    bind -n M-h select-pane -L -Z
+                    bind -n M-l select-pane -R -Z
+                    bind -n M-k select-pane -U -Z
+                    bind -n M-j select-pane -D -Z
 
-                # renumber windows when closing
-                set-option -g renumber-windows on
+                    # don't rename windows automatically
+                    set-option -g allow-rename off
 
-                ## DESIGN TWEAKS
-                # don't do anything when a 'bell' rings
-                set -g visual-activity off
-                set -g visual-bell off
-                set -g visual-silence off
-                setw -g monitor-activity off
-                set -g bell-action none
+                    # renumber windows when closing
+                    set-option -g renumber-windows on
 
-                # statusbar
-                set -g status-position bottom
-                set -g status-justify left
-                set -g status-style 'fg=red'
+                    ## DESIGN TWEAKS
+                    # don't do anything when a 'bell' rings
+                    set -g visual-activity off
+                    set -g visual-bell off
+                    set -g visual-silence off
+                    setw -g monitor-activity off
+                    set -g bell-action none
 
-                set -g status-left ""
-                set -g status-left-length 10
+                    # statusbar
+                    set -g status-position bottom
+                    set -g status-justify left
+                    set -g status-style 'fg=red'
 
-                set -g status-right ""
-                set -g status-right-length 50
+                    set -g status-left ""
+                    set -g status-left-length 10
 
-                setw -g window-status-current-style 'bg=yellow fg=black'
-                setw -g window-status-current-format ' #I #W #F '
+                    set -g status-right ""
+                    set -g status-right-length 50
 
-                setw -g window-status-style 'fg=yellow'
-                setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
-            '';
+                    setw -g window-status-current-style 'bg=yellow fg=black'
+                    setw -g window-status-current-format ' #I #W #F '
+
+                    setw -g window-status-style 'fg=yellow'
+                    setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
+                '';
+            };
         };
     };
 }
