@@ -62,8 +62,8 @@
                 "org/gnome/desktop/wm/keybindings" = {
                     cycle-windows = [];
                     cycle-windows-backward = [];
-                    switch-group = [ "<Alt>Escape" ];
-                    switch-group-backward = [ "<Shift><Alt>Escape" ];
+                    switch-group = [ "<Alt>grave" ];
+                    switch-group-backward = [ "<Shift><Alt>grave" ];
                 };
                 "org/gnome/settings-daemon/plugins/power" = {
                     sleep-inactive-ac-timeout = 900;
