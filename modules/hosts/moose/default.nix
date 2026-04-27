@@ -1,17 +1,17 @@
-{ self, ... }: {
+{ self, inputs, ... }: {
     flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
-            # inputs.home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
 
-            # self.nixosModules.clamav
+            self.nixosModules.clamav
             self.nixosModules.disko
-            # self.nixosModules.gnome
+            self.nixosModules.gnome
             self.nixosModules.impermanence
-            # self.nixosModules.jan
+            self.nixosModules.jan
             self.nixosModules.nh
             self.nixosModules.tailscale
-            # self.nixosModules.zsh
+            self.nixosModules.zsh
         ];
 
         boot = {
@@ -47,7 +47,7 @@
             };
         };
 
-        # home-manager.useUserPackages = true;
+        home-manager.useUserPackages = true;
 
         i18n = {
             defaultLocale = "en_US.UTF-8";
@@ -110,11 +110,5 @@
         time.timeZone = "America/Monterrey";
 
         users.mutableUsers = false;
-        users.users.jan = {
-            isNormalUser = true;
-            description = "Jan";
-            extraGroups = [ "networkmanager" "wheel" ];
-            initialPassword = "12345678";
-        };
     };
 }
