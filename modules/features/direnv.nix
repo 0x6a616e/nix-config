@@ -1,9 +1,14 @@
 _: {
-    flake.homeModules.direnv = _: {
-        programs.direnv = {
-            enable = true;
-            enableZshIntegration = true;
-            nix-direnv.enable = true;
+    flake.homeModules.direnv = { lib, config, ... }: {
+        options = {
+            direnv.enable = lib.mkEnableOption "enable direnv";
+        };
+        config = lib.mkIf config.direnv.enable {
+            programs.direnv = {
+                enable = true;
+                enableZshIntegration = true;
+                nix-direnv.enable = true;
+            };
         };
     };
 }
