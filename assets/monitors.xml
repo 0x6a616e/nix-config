@@ -3,35 +3,12 @@
     <layoutmode>physical</layoutmode>
     <logicalmonitor>
       <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <primary>yes</primary>
-      <monitor>
-        <monitorspec>
-          <connector>HDMI-1</connector>
-          <vendor>TRG</vendor>
-          <product>ZQ27F240L-CB</product>
-          <serial>W00W97R75PV26</serial>
-        </monitorspec>
-        <mode>
-          <width>2560</width>
-          <height>1440</height>
-          <rate>120.000</rate>
-        </mode>
-        <colormode>bt2100</colormode>
-      </monitor>
-    </logicalmonitor>
-  </configuration>
-  <configuration>
-    <layoutmode>physical</layoutmode>
-    <logicalmonitor>
-      <x>0</x>
       <y>1080</y>
       <scale>1</scale>
       <primary>yes</primary>
       <monitor>
         <monitorspec>
-          <connector>HDMI-1</connector>
+          <connector>DP-3</connector>
           <vendor>TRG</vendor>
           <product>ZQ27F240L-CB</product>
           <serial>W00W97R75PV26</serial>
@@ -39,7 +16,7 @@
         <mode>
           <width>2560</width>
           <height>1440</height>
-          <rate>120.000</rate>
+          <rate>240.000</rate>
         </mode>
         <colormode>bt2100</colormode>
       </monitor>
@@ -50,7 +27,7 @@
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>DP-1</connector>
+          <connector>HDMI-1</connector>
           <vendor>GSM</vendor>
           <product>LG ULTRAGEAR</product>
           <serial>0x0000cce0</serial>
