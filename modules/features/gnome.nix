@@ -41,7 +41,7 @@ _: {
                     };
                     "org/gnome/desktop/input-sources" = {
                         sources = [ (lib.hm.gvariant.mkTuple [ "xkb" "us" ]) ];
-                        xkb-options = [ "compose:ralt" ];
+                        xkb-options = [ "compose:menu" ];
                     };
                     "org/gnome/desktop/interface" = {
                         accent-color = "yellow";
