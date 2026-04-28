@@ -40,6 +40,7 @@
         };
 
         hardware = {
+            amdgpu.opencl.enable = true;
             cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             graphics = {
                 enable = true;
@@ -99,9 +100,13 @@
                 pulse.enable = true;
             };
             pulseaudio.enable = false;
-            xserver.xkb= {
-                layout = "us";
-                variant = "";
+            xserver = {
+                enable = true;
+                videoDrivers = [ "amdgpu" ];
+                xkb = {
+                    layout = "us";
+                    variant = "";
+                };
             };
         };
 
