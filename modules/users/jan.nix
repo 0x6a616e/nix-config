@@ -56,6 +56,7 @@
             nvim.enable = ifIn [ "moose" ];
             pass.enable = ifIn [ "moose" ];
             ripgrep.enable = ifIn [ "moose" ];
+            stylix.enableMyStyles = ifIn [ "moose" ];
             tmux.enable = ifIn [ "moose" ];
             yazi.enable = ifIn [ "moose" ];
             zoxide.enable = ifIn [ "moose" ];
