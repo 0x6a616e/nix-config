@@ -1,7 +1,12 @@
 _: {
-    flake.nixosModules.nh = _: {
-        programs.nh = {
-            enable = true;
+    flake.homeModules.nh = { lib, config, ... }: {
+        options = {
+            nh.enable = lib.mkEnableOption "enable nh";
+        };
+        config = lib.mkIf config.nh.enable {
+            programs.nh = {
+                enable = true;
+            };
         };
     };
 }

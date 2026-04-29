@@ -9,7 +9,6 @@
             self.nixosModules.gnome
             self.nixosModules.impermanence
             self.nixosModules.jan
-            self.nixosModules.nh
             self.nixosModules.tailscale
             self.nixosModules.zsh
         ];

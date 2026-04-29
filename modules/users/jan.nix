@@ -34,6 +34,7 @@
                 self.homeModules.gnome
                 self.homeModules.kitty
                 self.homeModules.lazygit
+                self.homeModules.nh
                 self.homeModules.nvim
                 self.homeModules.pass
                 self.homeModules.ripgrep
@@ -53,6 +54,7 @@
             gnome.enable = ifIn [ "moose" ];
             kitty.enable = ifIn [ "moose" ];
             lazygit.enable = ifIn [ "moose" ];
+            nh.enable = ifIn [ "moose" ];
             nvim.enable = ifIn [ "moose" ];
             pass.enable = ifIn [ "moose" ];
             ripgrep.enable = ifIn [ "moose" ];
