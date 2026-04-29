@@ -11,6 +11,7 @@ _: {
                 };
                 settings = {
                     cpu_single_graph = true;
+                    gpu_mirror_graph = false;
                     shown_boxes = "cpu mem net proc gpu0";
                     vim_keys = true;
                 };
