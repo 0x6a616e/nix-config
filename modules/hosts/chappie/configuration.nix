@@ -3,6 +3,7 @@
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
 
+            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
             inputs.home-manager.nixosModules.home-manager
 
             self.nixosModules.clamav
