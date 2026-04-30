@@ -5,9 +5,7 @@
             inputs.home-manager.nixosModules.home-manager
 
             self.nixosModules.clamav
-            self.nixosModules.disko
             self.nixosModules.gnome
-            self.nixosModules.impermanence
             self.nixosModules.jan
             self.nixosModules.tailscale
             self.nixosModules.zsh
