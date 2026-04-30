@@ -21,6 +21,7 @@
                     "/etc/sops/"
                     "/var/lib/bluetooth"
                     "/var/lib/nixos"
+                    "/var/lib/ollama"
                     "/var/lib/power-profiles-daemon"
                     "/var/lib/systemd/coredump"
                     "/var/lib/tailscale"
