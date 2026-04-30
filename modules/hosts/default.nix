@@ -4,6 +4,10 @@
     };
 
     flake.nixosConfigurations.moose = inputs.nixpkgs.lib.nixosSystem {
-        modules = [ self.nixosModules.mooseConfiguration ];
+        modules = [
+            self.nixosModules.mooseConfiguration
+            self.nixosModules.mooseDisko
+            self.nixosModules.mooseImpermanence
+        ];
     };
 }
