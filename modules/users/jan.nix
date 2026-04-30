@@ -2,6 +2,7 @@
     flake.nixosModules.jan = { pkgs, config, ... }: {
         imports = [
             self.nixosModules.sops
+            self.nixosModules.zsh
         ];
 
         home-manager.users.jan.imports = [ self.homeModules.jan ];
@@ -15,7 +16,7 @@
             extraGroups = [ "networkmanager" "wheel" ];
             shell = pkgs.zsh;
             initialPassword = "12345678";
-            hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+            # hashedPasswordFile = config.sops.secrets."users/jan/password".path;
         };
     };
 

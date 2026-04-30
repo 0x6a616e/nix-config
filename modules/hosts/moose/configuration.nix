@@ -8,7 +8,6 @@
             self.nixosModules.gnome
             self.nixosModules.jan
             self.nixosModules.tailscale
-            self.nixosModules.zsh
         ];
 
         boot = {
