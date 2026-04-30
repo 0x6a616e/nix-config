@@ -1,9 +1,11 @@
 keys:
   - &moose age1ejxfm8gla8gfpqkuteftf3kqweyquen4yk894z4pg3rgw6yxle3s5dv0ng
   - &moose_jan age1qnr0ltqrkgmzxyq5p2ff748rvfpw88k9tgp0qj642f3mtj608d7ssuw080
+  - &chappie age1jayuqe4kmeqsqjan9ucgxs5css6jy9marjlwzss3z3hh08f0nuhq9kf4dl
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
         - *moose
         - *moose_jan
+        - *chappie
