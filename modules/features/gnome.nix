@@ -52,6 +52,10 @@ _: {
                     "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
                         application-id = "org.gnome.Nautilus.desktop";
                     };
+                    "org/gnome/desktop/peripherals/mouse" = {
+                        accel-profile = "flat";
+                        speed = 0.0;
+                    };
                     "org/gnome/desktop/screen-time-limits" = {
                         daily-limit-enabled = false;
                         history-enabled = false;
