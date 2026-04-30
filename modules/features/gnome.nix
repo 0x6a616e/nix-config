@@ -22,7 +22,6 @@ _: {
                 packages = with pkgs; [
                     collision
                     gnome-characters
-                    gnome-logs
                     loupe
                     nautilus
                     showtime
