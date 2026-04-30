@@ -10,4 +10,12 @@
             self.nixosModules.mooseImpermanence
         ];
     };
+
+    flake.nixosConfigurations.chappie = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+            self.nixosModules.chappieConfiguration
+            self.nixosModules.chappieDisko
+            self.nixosModules.chappieImpermanence
+        ];
+    };
 }
