@@ -1,5 +1,8 @@
 _: {
-    flake.nixosModules.ollama = _: {
-        services.ollama.enable = true;
+    flake.nixosModules.ollama = { config, ... }: {
+        services.ollama = {
+            enable = true;
+            home = "${config.impermanence.path or ""}/var/lib/ollama";
+        };
     };
 }
