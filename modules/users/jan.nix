@@ -58,6 +58,7 @@
             nvim.enable = ifIn [ "moose" ];
             pass.enable = ifIn [ "moose" ];
             ripgrep.enable = ifIn [ "moose" ];
+            services.ssh-agent.enable = ifIn [ "moose" ];
             stylix.enableMyStyles = ifIn [ "moose" ];
             tmux.enable = ifIn [ "moose" ];
             yazi.enable = ifIn [ "moose" ];
@@ -69,7 +70,5 @@
                 homeDirectory = "/home/jan";
                 stateVersion = "25.05";
             };
-
-            services.ssh-agent.enable = true;
         };
 }
