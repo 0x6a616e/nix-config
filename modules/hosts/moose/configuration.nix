@@ -7,6 +7,7 @@
             self.nixosModules.clamav
             self.nixosModules.gnome
             self.nixosModules.jan
+            self.nixosModules.ollama
             self.nixosModules.tailscale
         ];
 

@@ -37,7 +37,6 @@
                 self.homeModules.lazygit
                 self.homeModules.nh
                 self.homeModules.nvim
-                self.homeModules.ollama
                 self.homeModules.pass
                 self.homeModules.ripgrep
                 self.homeModules.stylix
@@ -58,7 +57,6 @@
             lazygit.enable = ifIn [ "moose" "chappie" ];
             nh.enable = ifIn [ "moose" "chappie" ];
             nvim.enable = ifIn [ "moose" "chappie" ];
-            ollama.enable = ifIn [ "moose" ];
             pass.enable = ifIn [ "moose" "chappie" ];
             ripgrep.enable = ifIn [ "moose" "chappie" ];
             services.ssh-agent.enable = ifIn [ "moose" "chappie" ];
