@@ -1,12 +1,12 @@
 { inputs, ... }: {
-    flake.nixosModules.sops = _: {
+    flake.nixosModules.sops = { config, ... }: {
         imports = [
             inputs.sops-nix.nixosModules.sops
         ];
 
         sops = {
             defaultSopsFile = ../../secrets/secrets.yaml;
-            age.keyFile = "/persistent/etc/sops/age/keys.txt";
+            age.keyFile = "${config.impermanence.path or ""}/etc/sops/age/keys.txt";
         };
     };
 }
