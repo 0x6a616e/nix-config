@@ -1,5 +1,5 @@
 { inputs, ... }: {
-    flake.nixosModules.disko = { ... }: {
+    flake.nixosModules.mooseDisko = { config, ... }: {
         imports = [
             inputs.disko.nixosModules.disko
         ];
@@ -59,7 +59,7 @@
                             type = "zfs_fs";
                         };
                         persistent = {
-                            mountpoint = "/persistent";
+                            mountpoint = config.impermanence.path;
                             options.mountpoint = "legacy";
                             type = "zfs_fs";
                         };
