@@ -5,10 +5,10 @@
 
             inputs.home-manager.nixosModules.home-manager
 
-            # self.nixosModules.clamav
-            # self.nixosModules.gnome
+            self.nixosModules.clamav
+            self.nixosModules.gnome
             self.nixosModules.jan
-            # self.nixosModules.tailscale
+            self.nixosModules.tailscale
         ];
 
         boot = {

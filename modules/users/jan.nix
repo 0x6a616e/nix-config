@@ -16,7 +16,7 @@
             extraGroups = [ "networkmanager" "wheel" ];
             shell = pkgs.zsh;
             initialPassword = "12345678";
-            # hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+            hashedPasswordFile = config.sops.secrets."users/jan/password".path;
         };
     };
 
@@ -46,25 +46,25 @@
                 self.homeModules.zsh
             ];
 
-            btop.enable = ifIn [ "moose" ];
-            direnv.enable = ifIn [ "moose" ];
-            fd.enable = ifIn [ "moose" ];
-            firefox.enable = ifIn [ "moose" ];
-            fzf.enable = ifIn [ "moose" ];
-            git.enable = ifIn [ "moose" ];
-            gnome.enable = ifIn [ "moose" ];
-            kitty.enable = ifIn [ "moose" ];
-            lazygit.enable = ifIn [ "moose" ];
-            nh.enable = ifIn [ "moose" ];
-            nvim.enable = ifIn [ "moose" ];
-            pass.enable = ifIn [ "moose" ];
-            ripgrep.enable = ifIn [ "moose" ];
-            services.ssh-agent.enable = ifIn [ "moose" ];
-            stylix.enableMyStyles = ifIn [ "moose" ];
-            tmux.enable = ifIn [ "moose" ];
-            yazi.enable = ifIn [ "moose" ];
-            zoxide.enable = ifIn [ "moose" ];
-            zsh.enable = ifIn [ "moose" ];
+            btop.enable = ifIn [ "moose" "chappie" ];
+            direnv.enable = ifIn [ "moose" "chappie" ];
+            fd.enable = ifIn [ "moose" "chappie" ];
+            firefox.enable = ifIn [ "moose" "chappie" ];
+            fzf.enable = ifIn [ "moose" "chappie" ];
+            git.enable = ifIn [ "moose" "chappie" ];
+            gnome.enable = ifIn [ "moose" "chappie" ];
+            kitty.enable = ifIn [ "moose" "chappie" ];
+            lazygit.enable = ifIn [ "moose" "chappie" ];
+            nh.enable = ifIn [ "moose" "chappie" ];
+            nvim.enable = ifIn [ "moose" "chappie" ];
+            pass.enable = ifIn [ "moose" "chappie" ];
+            ripgrep.enable = ifIn [ "moose" "chappie" ];
+            services.ssh-agent.enable = ifIn [ "moose" "chappie" ];
+            stylix.enableMyStyles = ifIn [ "moose" "chappie" ];
+            tmux.enable = ifIn [ "moose" "chappie" ];
+            yazi.enable = ifIn [ "moose" "chappie" ];
+            zoxide.enable = ifIn [ "moose" "chappie" ];
+            zsh.enable = ifIn [ "moose" "chappie" ];
 
             home = {
                 username = "jan";
