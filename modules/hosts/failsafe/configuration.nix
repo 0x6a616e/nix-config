@@ -5,7 +5,7 @@
 
             self.nixosModules.clamav
             self.nixosModules.jan
-            # self.nixosModules.tailscale
+            self.nixosModules.tailscale
         ];
 
         boot = {
