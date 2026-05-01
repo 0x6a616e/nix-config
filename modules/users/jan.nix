@@ -14,7 +14,7 @@
             extraGroups = [ "networkmanager" "wheel" ];
             shell = pkgs.zsh;
             initialPassword = "12345678";
-            hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+            # hashedPasswordFile = config.sops.secrets."users/jan/password".path;
         };
     };
 

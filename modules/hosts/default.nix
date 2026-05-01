@@ -18,4 +18,12 @@
             self.nixosModules.chappieImpermanence
         ];
     };
+
+    flake.nixosConfigurations.failsafe = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+            self.nixosModules.failsafeConfiguration
+            self.nixosModules.failsafeDisko
+            self.nixosModules.failsafeImpermanence
+        ];
+    };
 }
