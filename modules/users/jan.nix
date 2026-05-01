@@ -5,11 +5,6 @@
             self.nixosModules.zsh
         ];
 
-        home-manager.users.jan = {
-            imports = [ self.homeModules.jan ];
-            nixpkgs.config.allowUnfree = true;
-        };
-
         sops.secrets."users/jan/password" = { };
         sops.secrets."users/jan/password".neededForUsers = true;
 

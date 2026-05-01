@@ -46,7 +46,13 @@
             };
         };
 
-        home-manager.useUserPackages = true;
+        home-manager = {
+            users.jan = {
+                imports = [ self.homeModules.jan ];
+                nixpkgs.config.allowUnfree = true;
+            };
+            useUserPackages = true;
+        };
 
         i18n = {
             defaultLocale = "en_US.UTF-8";
