@@ -8,6 +8,7 @@
             self.nixosModules.gnome
             self.nixosModules.jan
             self.nixosModules.ollama
+            self.nixosModules.steam
             self.nixosModules.tailscale
         ];
 
