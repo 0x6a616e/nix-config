@@ -5,6 +5,7 @@
 
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
             inputs.home-manager.nixosModules.home-manager
+            inputs.xremap-flake.nixosModules.default
 
             self.nixosModules.clamav
             self.nixosModules.gnome
@@ -95,6 +96,15 @@
                     support32Bit = true;
                 };
                 pulse.enable = true;
+            };
+            xremap = {
+                enable = true;
+                config.modmap = [
+                    {
+                        name = "global";
+                        remap = { "CapsLock" = "Esc"; };
+                    }
+                ];
             };
             xserver = {
                 enable = true;

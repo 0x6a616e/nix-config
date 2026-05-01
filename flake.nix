@@ -27,6 +27,7 @@
             url = "github:Mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        xremap-flake.url = "github:xremap/nix-flake";
     };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
