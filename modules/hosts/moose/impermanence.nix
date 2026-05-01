@@ -36,6 +36,7 @@
                         { directory = ".ssh"; mode = "0700"; }
                         ".local/state/nvf/undo"
                         ".local/share/direnv"
+                        ".local/share/Steam"
                         ".local/share/zoxide"
                         ".local/share/zsh"
                         ".local/state/wireplumber"
