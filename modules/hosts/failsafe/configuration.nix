@@ -84,7 +84,10 @@
             '';
         };
 
-        services.openssh.enable = true;
+        services = {
+            cloudflared.enable = true;
+            openssh.enable = true;
+        };
 
         system.stateVersion = "25.05";
 
