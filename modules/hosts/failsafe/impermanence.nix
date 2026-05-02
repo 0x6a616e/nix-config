@@ -19,6 +19,7 @@
                     { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
                     "/etc/NetworkManager/system-connections"
                     "/etc/sops/"
+                    "/var/lib/docker"
                     "/var/lib/nixos"
                     "/var/lib/systemd/coredump"
                     "/var/lib/tailscale"
