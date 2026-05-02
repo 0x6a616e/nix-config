@@ -17,6 +17,7 @@
                 hideMounts = true;
                 directories = [
                     { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+                    "/etc/dokploy"
                     "/etc/NetworkManager/system-connections"
                     "/etc/sops/"
                     "/var/lib/docker"
