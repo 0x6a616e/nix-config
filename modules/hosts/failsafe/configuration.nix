@@ -4,6 +4,7 @@
             (modulesPath + "/installer/scan/not-detected.nix")
 
             self.nixosModules.clamav
+            self.nixosModules.docker
             self.nixosModules.jan
             self.nixosModules.tailscale
         ];
