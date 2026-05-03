@@ -22,7 +22,7 @@
                             };
                         };
                         zfs = {
-                            end = "-17G";
+                            end = "-1G";
                             content = {
                                 type = "zfs";
                                 pool = "rpool";
