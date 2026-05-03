@@ -57,7 +57,6 @@
                     80
                     443
                     3000
-                    8080
                 ];
             };
             hostName = "failsafe";
