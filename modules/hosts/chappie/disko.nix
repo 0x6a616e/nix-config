@@ -7,7 +7,7 @@
         disko.devices = {
             disk.root = {
                 type = "disk";
-                device = "/dev/disk/by-id/nvme-KINGSTON_SNV3S1000G_50026B7687129744";
+                device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B768684BF89";
                 content = {
                     type = "gpt";
                     partitions = {
