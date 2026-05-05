@@ -23,7 +23,6 @@
         modules = [
             self.nixosModules.failsafeConfiguration
             self.nixosModules.failsafeDisko
-            self.nixosModules.failsafeImpermanence
         ];
     };
 }
