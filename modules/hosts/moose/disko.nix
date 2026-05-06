@@ -22,14 +22,14 @@
                             };
                         };
                         zfs = {
-                            end = "-9G";
+                            end = "-1G";
                             content = {
                                 type = "zfs";
                                 pool = "rpool";
                             };
                         };
                         swap = {
-                            size = "8G";
+                            size = "32G";
                             content = {
                                 type = "swap";
                                 discardPolicy = "both";
@@ -40,26 +40,17 @@
             };
             zpool = {
                 rpool = {
-                    options.cachefile = "none";
-                    postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^rpool/root@blank$' || zfs snapshot rpool/root@blank";
-                    rootFsOptions = {
-                        compression = "zstd";
-                        "com.sun:auto-snapshot" = "false";
-                    };
+                    rootFsOptions.compression = "zstd";
                     type = "zpool";
                     datasets = {
                         root = {
                             mountpoint = "/";
                             options.mountpoint = "legacy";
+                            postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^rpool/root@blank$' || zfs snapshot rpool/root@blank";
                             type = "zfs_fs";
                         };
                         nix = {
                             mountpoint = "/nix";
-                            options.mountpoint = "legacy";
-                            type = "zfs_fs";
-                        };
-                        persistent = {
-                            mountpoint = config.impermanence.path;
                             options.mountpoint = "legacy";
                             type = "zfs_fs";
                         };

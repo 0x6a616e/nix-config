@@ -7,7 +7,6 @@
         modules = [
             self.nixosModules.mooseConfiguration
             self.nixosModules.mooseDisko
-            self.nixosModules.mooseImpermanence
         ];
     };
 
