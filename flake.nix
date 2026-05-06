@@ -11,7 +11,6 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        impermanence.url = "github:nix-community/impermanence";
         import-tree.url = "github:vic/import-tree";
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
