@@ -15,7 +15,6 @@
         modules = [
             self.nixosModules.chappieConfiguration
             self.nixosModules.chappieDisko
-            self.nixosModules.chappieImpermanence
         ];
     };
 

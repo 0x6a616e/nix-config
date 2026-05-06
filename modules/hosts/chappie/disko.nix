@@ -45,23 +45,18 @@
                     datasets = {
                         root = {
                             mountpoint = "/";
-                            options.mountpoint = "legacy";
-                            postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^rpool/root@blank$' || zfs snapshot rpool/root@blank";
-                            type = "zfs_fs";
-                        };
-                        nix = {
-                            mountpoint = "/nix";
-                            options.mountpoint = "legacy";
-                            type = "zfs_fs";
-                        };
-                        persistent = {
-                            mountpoint = config.impermanence.path;
                             options = {
                                 encryption = "aes-256-gcm";
                                 keyformat = "passphrase";
                                 keylocation = "prompt";
                                 mountpoint = "legacy";
                             };
+                            postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^rpool/root@blank$' || zfs snapshot rpool/root@blank";
+                            type = "zfs_fs";
+                        };
+                        nix = {
+                            mountpoint = "/nix";
+                            options.mountpoint = "legacy";
                             type = "zfs_fs";
                         };
                     };
