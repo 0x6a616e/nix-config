@@ -23,10 +23,10 @@ _: {
                     size = 10000;
                 };
                 initContent = ''
-                PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
-                if [[ -z $TMUX ]]; then
-                    ${lib.getExe pkgs.tmux} new -As main
-                fi
+                    PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
+                    if [[ -z $TMUX ]]; then
+                        ${lib.getExe pkgs.tmux} new -As main
+                    fi
                 '';
                 sessionVariables = {
                     EDITOR = "nvim";
