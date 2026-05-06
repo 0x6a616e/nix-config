@@ -6,7 +6,7 @@
 
         sops = {
             defaultSopsFile = ../../secrets/secrets.yaml;
-            age.keyFile = "${config.impermanence.path or ""}/etc/sops/age/keys.txt";
+            age.keyFile = "/etc/sops/age/keys.txt";
         };
     };
 }
