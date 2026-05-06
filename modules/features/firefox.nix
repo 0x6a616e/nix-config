@@ -1,5 +1,5 @@
 _: {
-    flake.homeModules.firefox = { pkgs, lib, config, ... }: {
+    flake.homeModules.firefox = { lib, config, ... }: {
         options = {
             firefox.enable = lib.mkEnableOption "enable firefox";
         };

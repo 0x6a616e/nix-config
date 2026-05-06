@@ -1,5 +1,5 @@
 { inputs, ... }: {
-    flake.nixosModules.mooseDisko = { config, ... }: {
+    flake.nixosModules.mooseDisko = _: {
         imports = [
             inputs.disko.nixosModules.disko
         ];

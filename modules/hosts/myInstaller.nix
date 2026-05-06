@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-    flake.nixosModules.myInstaller = { pkgs, modulesPath, ... }: {
+_: {
+    flake.nixosModules.myInstaller = { modulesPath, ... }: {
         imports = [
             "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
         ];

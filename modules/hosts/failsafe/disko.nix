@@ -1,5 +1,5 @@
 { inputs, ... }: {
-    flake.nixosModules.failsafeDisko = { config, ... }: {
+    flake.nixosModules.failsafeDisko = _: {
         imports = [
             inputs.disko.nixosModules.disko
         ];

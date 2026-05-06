@@ -1,5 +1,5 @@
 { inputs, ... }: {
-    flake.nixosModules.chappieDisko = { config, ... }: {
+    flake.nixosModules.chappieDisko = _: {
         imports = [
             inputs.disko.nixosModules.disko
         ];

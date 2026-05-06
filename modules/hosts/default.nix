@@ -1,26 +1,28 @@
 { self, inputs, ... }: {
-    flake.nixosConfigurations.myInstaller = inputs.nixpkgs.lib.nixosSystem {
-        modules = [ self.nixosModules.myInstaller ];
-    };
+    flake.nixosConfigurations = {
+        myInstaller = inputs.nixpkgs.lib.nixosSystem {
+            modules = [ self.nixosModules.myInstaller ];
+        };
 
-    flake.nixosConfigurations.moose = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-            self.nixosModules.mooseConfiguration
-            self.nixosModules.mooseDisko
-        ];
-    };
+        moose = inputs.nixpkgs.lib.nixosSystem {
+            modules = [
+                self.nixosModules.mooseConfiguration
+                self.nixosModules.mooseDisko
+            ];
+        };
 
-    flake.nixosConfigurations.chappie = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-            self.nixosModules.chappieConfiguration
-            self.nixosModules.chappieDisko
-        ];
-    };
+        chappie = inputs.nixpkgs.lib.nixosSystem {
+            modules = [
+                self.nixosModules.chappieConfiguration
+                self.nixosModules.chappieDisko
+            ];
+        };
 
-    flake.nixosConfigurations.failsafe = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-            self.nixosModules.failsafeConfiguration
-            self.nixosModules.failsafeDisko
-        ];
+        failsafe = inputs.nixpkgs.lib.nixosSystem {
+            modules = [
+                self.nixosModules.failsafeConfiguration
+                self.nixosModules.failsafeDisko
+            ];
+        };
     };
 }

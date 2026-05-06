@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
+    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.home-manager.nixosModules.home-manager

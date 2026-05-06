@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.chappieConfiguration = { modulesPath, lib, config, pkgs, ... }: {
+    flake.nixosModules.chappieConfiguration = { modulesPath, lib, config, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
 

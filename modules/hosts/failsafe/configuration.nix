@@ -1,5 +1,5 @@
 { self, ... }: {
-    flake.nixosModules.failsafeConfiguration = { modulesPath, lib, config, pkgs, ... }: {
+    flake.nixosModules.failsafeConfiguration = { modulesPath, lib, config, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
 
