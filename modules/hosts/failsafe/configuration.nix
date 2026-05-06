@@ -20,6 +20,7 @@
                 efi.canTouchEfiVariables = true;
                 systemd-boot.enable = true;
             };
+            zfs.forceImportRoot = false;
         };
 
         hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
