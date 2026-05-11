@@ -11,7 +11,7 @@
             services."tailscale-health" = {
                 script = /* bash */ ''
                     set -eu
-                    result=\$(${lib.getExe pkgs.tailscale} status --json | ${lib.getExe pkgs.jq} '.Health')
+                    result=$(${lib.getExe pkgs.tailscale} status --json | ${lib.getExe pkgs.jq} '.Health')
                     if [[ \$result != "[]" ]]; then
                         reboot;
                     fi
