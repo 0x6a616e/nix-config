@@ -7,6 +7,7 @@
             self.nixosModules.docker
             self.nixosModules.jan
             self.nixosModules.tailscale
+            self.nixosModules.tailscaleHealthService
         ];
 
         boot = {
