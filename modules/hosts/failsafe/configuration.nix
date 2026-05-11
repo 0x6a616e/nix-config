@@ -63,7 +63,10 @@
         };
 
         nixpkgs = {
-            config.allowUnfree = true;
+            config = {
+                allowUnfree = true;
+                rocmSupport = true;
+            };
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
