@@ -76,7 +76,7 @@
         };
 
         services = {
-            logind.powerKey = "reboot";
+            logind.settings.Login.HandlePowerKey = "reboot";
             openssh.enable = true;
         };
 
