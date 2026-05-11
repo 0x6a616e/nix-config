@@ -2,7 +2,7 @@
     flake.nixosModules.tailscaleHealthService = { lib, pkgs, ... }: {
         systemd = {
             timers."tailscale-health" = {
-                wanted-by = [ "timers.target" ];
+                wantedBy = [ "timers.target" ];
                 timerConfig = {
                     OnCalendar = "*:00:00";
                     Unit = "tailscale-health";
