@@ -12,7 +12,7 @@
                 script = /* bash */ ''
                     set -eu
                     result=$(${lib.getExe pkgs.tailscale} status --json | ${lib.getExe pkgs.jq} '.Health')
-                    if [[ \$result != "[]" ]]; then
+                    if [[ $result != "[]" ]]; then
                         reboot;
                     fi
                 '';
