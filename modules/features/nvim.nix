@@ -125,6 +125,7 @@
                             enableFormat = true;
                             enableExtraDiagnostics = true;
                             bash.enable = true;
+                            clang.enable = true;
                             nix.enable = true;
                         };
                         keymaps = [
