@@ -42,14 +42,6 @@
         };
 
         networking = {
-            firewall = {
-                enable = true;
-                allowedTCPPorts = [
-                    80
-                    443
-                    3000
-                ];
-            };
             hostName = "failsafe";
             hostId = "f6ea4337";
             networkmanager.enable = true;
