@@ -126,6 +126,7 @@
                             enableExtraDiagnostics = true;
                             bash.enable = true;
                             clang.enable = true;
+                            go.enable = true;
                             nix.enable = true;
                         };
                         keymaps = [
