@@ -20,6 +20,7 @@
             kernelModules = [ "kvm-amd" ];
             loader = {
                 efi.canTouchEfiVariables = true;
+                timeout = 30;
                 systemd-boot.enable = true;
             };
             supportedFilesystems = [ "ntfs" ];
