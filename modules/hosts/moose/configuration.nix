@@ -7,7 +7,6 @@
             self.nixosModules.clamav
             self.nixosModules.gnome
             self.nixosModules.jan
-            self.nixosModules.steam
             self.nixosModules.tailscale
         ];
 
