@@ -77,7 +77,6 @@
         };
 
         security = {
-            lockKernelModules = true;
             rtkit.enable = true;
             sudo.extraConfig = ''
                 Defaults pwfeedback
