@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, ... }: {
+    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.home-manager.nixosModules.home-manager
@@ -17,6 +17,7 @@
                 kernelModules = [ ];
             };
             kernelModules = [ "kvm-amd" ];
+            kernelPackages = pkgs.linuxPackages_latest;
             loader = {
                 efi.canTouchEfiVariables = true;
                 timeout = 30;
