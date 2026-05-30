@@ -16,7 +16,7 @@
                 availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
                 kernelModules = [ ];
             };
-            kernelModules = [ "kvm-amd" "usb_storage" "uas" ];
+            kernelModules = [ "kvm-amd" ];
             loader = {
                 efi.canTouchEfiVariables = true;
                 timeout = 30;
