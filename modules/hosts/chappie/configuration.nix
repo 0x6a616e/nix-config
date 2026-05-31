@@ -37,11 +37,9 @@
         };
         
         home-manager = {
-            users.jan = {
-                imports = [ self.homeModules.jan ];
-                nixpkgs.config.allowUnfree = true;
-            };
+            users.jan.imports = [ self.homeModules.jan ];
             useUserPackages = true;
+            useGlobalPkgs = true;
         };
 
         i18n = {
