@@ -40,6 +40,7 @@ _: {
                         c = "clear";
                         grep = "grep --color=auto";
                         ls = "ls --color=auto";
+                        nix-run-unfree = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure";
                     };
                     syntaxHighlighting.enable = true;
                     plugins = [
