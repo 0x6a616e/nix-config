@@ -3,7 +3,6 @@
         home-manager = {
             users.jan.imports = [ self.homeModules.jan ];
             useUserPackages = true;
-            useGlobalPkgs = true;
         };
     };
 }
