@@ -6,6 +6,7 @@
 
             self.nixosModules.clamav
             self.nixosModules.gnome
+            self.nixosModules.home-manager
             self.nixosModules.jan
             self.nixosModules.tailscale
         ];
@@ -33,12 +34,6 @@
                 enable = true;
                 enable32Bit = true;
             };
-        };
-
-        home-manager = {
-            users.jan.imports = [ self.homeModules.jan ];
-            useUserPackages = true;
-            useGlobalPkgs = true;
         };
 
         i18n = {
