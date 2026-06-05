@@ -4,7 +4,6 @@
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.home-manager.nixosModules.home-manager
 
-            self.nixosModules.clamav
             self.nixosModules.gnome
             self.nixosModules.home-manager
             self.nixosModules.jan

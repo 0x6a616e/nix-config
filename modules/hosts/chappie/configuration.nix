@@ -7,7 +7,6 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.xremap-flake.nixosModules.default
 
-            self.nixosModules.clamav
             self.nixosModules.gnome
             self.nixosModules.home-manager
             self.nixosModules.jan
