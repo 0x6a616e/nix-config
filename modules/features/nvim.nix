@@ -128,6 +128,7 @@
                             clang.enable = true;
                             go.enable = true;
                             nix.enable = true;
+                            rust.enable = true;
                         };
                         keymaps = [
                             {
