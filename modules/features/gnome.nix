@@ -27,8 +27,6 @@ _: {
                     wl-clipboard
                     gnomeExtensions.caffeine
                 ];
-
-                gtk.gtk4.theme = null;
             };
         };
     };
