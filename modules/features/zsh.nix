@@ -37,10 +37,13 @@ _: {
                     };
                     setOptions = [ "prompt_subst" ];
                     shellAliases = {
-                        c = "clear";
+                        cp = "cp -i";
                         grep = "grep --color=auto";
-                        ls = "ls --color=auto";
+                        ls = "ls -lah --color=always --group-directories-first";
+                        mkdir = "mkdir -p";
+                        mv = "mv -i";
                         nix-run-unfree = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure";
+                        rm = "rm -I --preserve-root";
                     };
                     syntaxHighlighting.enable = true;
                     plugins = [
