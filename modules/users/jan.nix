@@ -25,6 +25,7 @@
             in {
                 imports = [
                     self.homeModules.btop
+                    self.homeModules.devenv
                     self.homeModules.fd
                     self.homeModules.firefox
                     self.homeModules.fzf
@@ -44,6 +45,7 @@
                 ];
 
                 btop.enable = ifIn [ "moose" "chappie" ];
+                devenv.enable = ifIn [ "moose" "chappie" ];
                 fd.enable = ifIn [ "moose" "chappie" ];
                 firefox.enable = ifIn [ "moose" "chappie" ];
                 fzf.enable = ifIn [ "moose" "chappie" ];
