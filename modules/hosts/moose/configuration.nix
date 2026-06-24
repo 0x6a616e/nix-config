@@ -1,13 +1,9 @@
 { self, inputs, ... }: {
-    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, ... }: {
+    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.home-manager.nixosModules.home-manager
-
-            self.nixosModules.gnome
-            self.nixosModules.home-manager
-            self.nixosModules.jan
-            self.nixosModules.tailscale
+            inputs.sops-nix.nixosModules.sops
         ];
 
         boot = {
@@ -33,6 +29,11 @@
                 enable = true;
                 enable32Bit = true;
             };
+        };
+
+        home-manager = {
+            users.jan.imports = [ self.homeModules.jan ];
+            useUserPackages = true;
         };
 
         i18n = {
@@ -70,6 +71,8 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
+        programs.zsh.enable = true;
+
         security = {
             rtkit.enable = true;
             sudo.extraConfig = ''
@@ -79,6 +82,13 @@
         };
 
         services = {
+            displayManager.gdm.enable = true;
+            desktopManager.gnome.enable = true;
+            gnome = {
+                core-apps.enable = false;
+                core-developer-tools.enable = false;
+                games.enable = false;
+            };
             pipewire = {
                 enable = true;
                 alsa = {
@@ -88,6 +98,10 @@
                 pulse.enable = true;
             };
             pulseaudio.enable = false;
+            tailscale = {
+                enable = true;
+                authKeyFile = config.sops.secrets."tailscale/authKey".path;
+            };
             xserver = {
                 enable = true;
                 videoDrivers = [ "amdgpu" ];
@@ -98,10 +112,29 @@
             };
         };
 
+        sops = {
+            defaultSopsFile = ../../../secrets/secrets.yaml;
+            age.keyFile = "/etc/sops/age/keys.txt";
+            secrets = {
+                "tailscale/authKey" = { };
+                "users/jan/password" = { };
+                "users/jan/password".neededForUsers = true;
+            };
+        };
+
         system.stateVersion = "25.05";
 
         time.timeZone = "America/Monterrey";
 
-        users.mutableUsers = false;
+        users = {
+            mutableUsers = false;
+            users.jan = {
+                isNormalUser = true;
+                description = "Jan";
+                extraGroups = [ "networkmanager" "wheel" ];
+                shell = pkgs.zsh;
+                hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+            };
+        };
     };
 }
