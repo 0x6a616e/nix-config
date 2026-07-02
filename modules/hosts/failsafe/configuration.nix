@@ -1,12 +1,8 @@
-{ self, ... }: {
-    flake.nixosModules.failsafeConfiguration = { modulesPath, lib, config, ... }: {
+{ inputs, ... }: {
+    flake.nixosModules.failsafeConfiguration = { modulesPath, lib, config, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
-
-            self.nixosModules.docker
-            self.nixosModules.jan
-            self.nixosModules.tailscale
-            self.nixosModules.tailscaleHealthService
+            inputs.sops-nix.nixosModules.sops
         ];
 
         boot = {
@@ -20,7 +16,6 @@
                 efi.canTouchEfiVariables = true;
                 systemd-boot.enable = true;
             };
-            zfs.forceImportRoot = false;
         };
 
         hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -71,12 +66,58 @@
         services = {
             logind.settings.Login.HandlePowerKey = "reboot";
             openssh.enable = true;
+            tailscale = {
+                enable = true;
+                authKeyFile = config.sops.secrets."tailscale/authKey".path;
+            };
+        };
+
+        sops = {
+            defaultSopsFile = ../../../secrets/secrets.yaml;
+            age.keyFile = "/etc/sops/age/keys.txt";
+            secrets = {
+                "tailscale/authKey" = { };
+                "users/jan/password" = { };
+                "users/jan/password".neededForUsers = true;
+            };
         };
 
         system.stateVersion = "25.05";
 
+        systemd = {
+            timers."tailscale-health" = {
+                wantedBy = [ "timers.target" ];
+                timerConfig = {
+                    OnCalendar = "*:00:00";
+                    Unit = "tailscale-health";
+                };
+            };
+            services."tailscale-health" = {
+                script = /* bash */ ''
+                    set -eu
+                    result=$(${lib.getExe pkgs.tailscale} status --json | ${lib.getExe pkgs.jq} '.Health')
+                    if [[ $result != "[]" ]]; then
+                        reboot;
+                    fi
+                '';
+                serviceConfig = {
+                    Type = "oneshot";
+                    User = "root";
+                    RemainAfterExit = true;
+                };
+            };
+        };
+
         time.timeZone = "America/Monterrey";
 
-        users.mutableUsers = false;
+        users = {
+            mutableUsers = false;
+            users.jan = {
+                isNormalUser = true;
+                description = "Jan";
+                extraGroups = [ "networkmanager" "wheel" ];
+                hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+            };
+        };
     };
 }
