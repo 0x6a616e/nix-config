@@ -13,6 +13,9 @@
                         type = "gpt";
                         partitions = {
                             ESP = {
+                                priority = 1;
+                                name = "ESP";
+                                start = "1M";
                                 size = "4G";
                                 type = "EF00";
                                 content = {
@@ -22,39 +25,33 @@
                                     mountOptions = [ "umask=0077" ];
                                 };
                             };
-                            zfs = {
-                                end = "-1G";
-                                content = {
-                                    type = "zfs";
-                                    pool = "rpool";
-                                };
-                            };
                             swap = {
-                                size = "16G";
+                                size = "32G";
                                 content = {
                                     type = "swap";
                                     discardPolicy = "both";
                                 };
                             };
-                        };
-                    };
-                };
-            };
-            zpool = {
-                rpool = {
-                    options.cachefile = "none";
-                    rootFsOptions.compression = "zstd";
-                    type = "zpool";
-                    datasets = {
-                        root = {
-                            mountpoint = "/";
-                            options.mountpoint = "legacy";
-                            type = "zfs_fs";
-                        };
-                        nix = {
-                            mountpoint = "/nix";
-                            options.mountpoint = "legacy";
-                            type = "zfs_fs";
+                            root = {
+                                size = "100%";
+                                content = {
+                                    type = "btrfs";
+                                    extraArgs = [ "-f" ];
+                                    subvolumes = {
+                                        "/rootfs" = {
+                                            mountpoint = "/";
+                                        };
+                                        "/nix" = {
+                                            mountOptions = [
+                                                "compress=zstd"
+                                                "noatime"
+                                            ];
+                                            mountpoint = "/nix";
+                                        };
+                                    };
+                                    mountpoint = "/partition-root";
+                                };
+                            };
                         };
                     };
                 };
