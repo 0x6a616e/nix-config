@@ -85,13 +85,6 @@
         system.stateVersion = "25.05";
 
         systemd = {
-            timers."tailscale-health" = {
-                wantedBy = [ "timers.target" ];
-                timerConfig = {
-                    OnCalendar = "*:00:00";
-                    Unit = "tailscale-health";
-                };
-            };
             services."tailscale-health" = {
                 script = /* bash */ ''
                     set -eu
@@ -104,6 +97,13 @@
                     Type = "oneshot";
                     User = "root";
                     RemainAfterExit = true;
+                };
+            };
+            timers."tailscale-health" = {
+                wantedBy = [ "timers.target" ];
+                timerConfig = {
+                    OnCalendar = "*:00:00";
+                    Unit = "tailscale-health";
                 };
             };
         };
