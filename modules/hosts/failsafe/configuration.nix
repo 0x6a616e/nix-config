@@ -55,6 +55,15 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
+        programs.git = {
+            enable = true;
+            config = {
+                init = {
+                    defaultBranch = "main";
+                };
+            };
+        };
+
         security = {
             rtkit.enable = true;
             sudo.extraConfig = ''
