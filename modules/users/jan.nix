@@ -310,58 +310,58 @@
                 shortcut = "a";
                 terminal = "tmux-256color";
                 extraConfig = ''
-                        # ask for name on window creation
-                        bind-key c command-prompt "new-window -n '%%'"
+                    # ask for name on window creation
+                    bind-key c command-prompt "new-window -n '%%'"
 
-                        # rename starts empty
-                        bind-key , command-prompt "rename-window '%%'"
+                    # rename starts empty
+                    bind-key , command-prompt "rename-window '%%'"
 
-                        # move trough windows with ctrl and vim keys
-                        bind -n C-l next-window
-                        bind -n C-h previous-window
+                    # move trough windows with ctrl and vim keys
+                    bind -n C-l next-window
+                    bind -n C-h previous-window
 
-                        # split panes using | and -
-                        bind - split-window -v -c "#{pane_current_path}"
-                        bind | split-window -h -c "#{pane_current_path}"
-                        unbind '"'
-                        unbind %
+                    # split panes using | and -
+                    bind - split-window -v -c "#{pane_current_path}"
+                    bind | split-window -h -c "#{pane_current_path}"
+                    unbind '"'
+                    unbind %
 
-                        # switch panes using Alt-arrow without prefix
-                        bind -n M-h select-pane -L -Z
-                        bind -n M-l select-pane -R -Z
-                        bind -n M-k select-pane -U -Z
-                        bind -n M-j select-pane -D -Z
+                    # switch panes using Alt-arrow without prefix
+                    bind -n M-h select-pane -L -Z
+                    bind -n M-l select-pane -R -Z
+                    bind -n M-k select-pane -U -Z
+                    bind -n M-j select-pane -D -Z
 
-                        # don't rename windows automatically
-                        set-option -g allow-rename off
+                    # don't rename windows automatically
+                    set-option -g allow-rename off
 
-                        # renumber windows when closing
-                        set-option -g renumber-windows on
+                    # renumber windows when closing
+                    set-option -g renumber-windows on
 
-                        ## DESIGN TWEAKS
-                        # don't do anything when a 'bell' rings
-                        set -g visual-activity off
-                        set -g visual-bell off
-                        set -g visual-silence off
-                        setw -g monitor-activity off
-                        set -g bell-action none
+                    ## DESIGN TWEAKS
+                    # don't do anything when a 'bell' rings
+                    set -g visual-activity off
+                    set -g visual-bell off
+                    set -g visual-silence off
+                    setw -g monitor-activity off
+                    set -g bell-action none
 
-                        # statusbar
-                        set -g status-position bottom
-                        set -g status-justify left
-                        set -g status-style 'fg=red'
+                    # statusbar
+                    set -g status-position bottom
+                    set -g status-justify left
+                    set -g status-style 'fg=red'
 
-                        set -g status-left ""
-                        set -g status-left-length 10
+                    set -g status-left ""
+                    set -g status-left-length 10
 
-                        set -g status-right ""
-                        set -g status-right-length 50
+                    set -g status-right ""
+                    set -g status-right-length 50
 
-                        setw -g window-status-current-style 'bg=yellow fg=black'
-                        setw -g window-status-current-format ' #I #W #F '
+                    setw -g window-status-current-style 'bg=yellow fg=black'
+                    setw -g window-status-current-format ' #I #W #F '
 
-                        setw -g window-status-style 'fg=yellow'
-                        setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
+                    setw -g window-status-style 'fg=yellow'
+                    setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
                 '';
             };
             yazi = {
@@ -393,11 +393,11 @@
                     share = true;
                     size = 10000;
                 };
-                initContent = ''
-                        PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
-                        if [[ -z $TMUX ]]; then
-                    ${lib.getExe pkgs.tmux} new -As main
-                        fi
+                initContent = /* bash */ ''
+                    PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
+                    if [[ -z $TMUX ]]; then
+                        ${lib.getExe pkgs.tmux} new -As main
+                    fi
                 '';
                 sessionVariables = {
                     EDITOR = "nvim";
