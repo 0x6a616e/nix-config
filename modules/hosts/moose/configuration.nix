@@ -19,7 +19,6 @@
                 systemd-boot.enable = true;
             };
             supportedFilesystems = [ "ntfs" ];
-            zfs.forceImportRoot = false;
         };
 
         hardware = {
