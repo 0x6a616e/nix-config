@@ -13,6 +13,7 @@
                 kernelModules = [ ];
             };
             kernelModules = [ "kvm-amd" ];
+            kernelPackages = pkgs.linuxPackages_latest;
             loader = {
                 efi.canTouchEfiVariables = true;
                 timeout = 30;
