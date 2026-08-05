@@ -11,13 +11,6 @@
             ];
         };
 
-        chappie = inputs.nixpkgs.lib.nixosSystem {
-            modules = [
-                self.nixosModules.chappieConfiguration
-                self.nixosModules.chappieDisko
-            ];
-        };
-
         failsafe = inputs.nixpkgs.lib.nixosSystem {
             modules = [
                 self.nixosModules.failsafeConfiguration

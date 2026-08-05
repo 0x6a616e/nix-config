@@ -12,7 +12,6 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         import-tree.url = "github:vic/import-tree";
-        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         nvf = {
             url = "github:NotAShelf/nvf";
@@ -26,7 +25,6 @@
             url = "github:Mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        xremap-flake.url = "github:xremap/nix-flake";
     };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
