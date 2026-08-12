@@ -55,13 +55,16 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
-        programs.git = {
-            enable = true;
-            config = {
-                init = {
-                    defaultBranch = "main";
+        programs = {
+            git = {
+                enable = true;
+                config = {
+                    init = {
+                        defaultBranch = "main";
+                    };
                 };
             };
+            nh.enable = true;
         };
 
         security = {
