@@ -2,6 +2,7 @@
     flake.nixosModules.failsafeConfiguration = { modulesPath, lib, config, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
+            inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
         ];
 
