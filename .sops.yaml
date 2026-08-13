@@ -2,6 +2,7 @@ keys:
   - &moose age1ejxfm8gla8gfpqkuteftf3kqweyquen4yk894z4pg3rgw6yxle3s5dv0ng
   - &moose_jan age1qnr0ltqrkgmzxyq5p2ff748rvfpw88k9tgp0qj642f3mtj608d7ssuw080
   - &failsafe age1nd8jj27qta93cdn7fh4yy8gz0x8f8psu93x2r5rjx0gqhl8hdf2szycj5r
+  - &failsafe_jan age1ftuy7vrg8c5kwp3k50u5tn7dv702lvdfljgv0q8fe3e26rr0pcvqa7p2cz
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -9,3 +10,4 @@ creation_rules:
         - *moose
         - *moose_jan
         - *failsafe
+        - *failsafe_jan
