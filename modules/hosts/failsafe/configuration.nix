@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, self, ... }: {
     flake.nixosModules.failsafeConfiguration = { modulesPath, lib, config, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
@@ -14,6 +14,7 @@
             kernelModules = [ "kvm-amd" ];
             loader = {
                 efi.canTouchEfiVariables = true;
+                timeout = 30;
                 systemd-boot.enable = true;
             };
         };
@@ -92,6 +93,55 @@
                 "users/jan/password" = { };
                 "users/jan/password".neededForUsers = true;
             };
+        };
+
+        specialisation.desktop.configuration = {
+            hardware = {
+                graphics = {
+                    enable = true;
+                    enable32Bit = true;
+                };
+            };
+
+            home-manager = {
+                users.jan.imports = [ self.homeModules.jan ];
+                useUserPackages = true;
+            };
+
+            programs.zsh.enable = true;
+
+            services = {
+                displayManager.gdm.enable = true;
+                desktopManager.gnome.enable = true;
+                gnome = {
+                    core-apps.enable = false;
+                    core-developer-tools.enable = false;
+                    games.enable = false;
+                };
+                pipewire = {
+                    enable = true;
+                    alsa = {
+                        enable = true;
+                        support32Bit = true;
+                    };
+                    pulse.enable = true;
+                };
+                pulseaudio.enable = false;
+                tailscale = {
+                    enable = true;
+                    authKeyFile = config.sops.secrets."tailscale/authKey".path;
+                };
+                xserver = {
+                    enable = true;
+                    videoDrivers = [ "amdgpu" ];
+                    xkb = {
+                        layout = "us";
+                        variant = "";
+                    };
+                };
+            };
+
+            users.users.jan.shell = pkgs.zsh;
         };
 
         system.stateVersion = "25.05";
