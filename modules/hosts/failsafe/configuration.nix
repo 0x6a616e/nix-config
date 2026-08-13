@@ -20,7 +20,18 @@
             };
         };
 
-        hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+        hardware = {
+            cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+            graphics = {
+                enable = true;
+                enable32Bit = true;
+            };
+        };
+
+        home-manager = {
+            users.jan.imports = [ self.homeModules.jan ];
+            useUserPackages = true;
+        };
 
         i18n = {
             defaultLocale = "en_US.UTF-8";
@@ -57,17 +68,7 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
-        programs = {
-            git = {
-                enable = true;
-                config = {
-                    init = {
-                        defaultBranch = "main";
-                    };
-                };
-            };
-            nh.enable = true;
-        };
+        programs.zsh.enable = true;
 
         security = {
             rtkit.enable = true;
@@ -78,11 +79,34 @@
         };
 
         services = {
+            displayManager.gdm.enable = true;
+            desktopManager.gnome.enable = true;
+            gnome = {
+                core-apps.enable = false;
+                core-developer-tools.enable = false;
+                games.enable = false;
+            };
             logind.settings.Login.HandlePowerKey = "reboot";
-            openssh.enable = true;
+            pipewire = {
+                enable = true;
+                alsa = {
+                    enable = true;
+                    support32Bit = true;
+                };
+                pulse.enable = true;
+            };
+            pulseaudio.enable = false;
             tailscale = {
                 enable = true;
                 authKeyFile = config.sops.secrets."tailscale/authKey".path;
+            };
+            xserver = {
+                enable = true;
+                videoDrivers = [ "amdgpu" ];
+                xkb = {
+                    layout = "us";
+                    variant = "";
+                };
             };
         };
 
@@ -96,80 +120,7 @@
             };
         };
 
-        specialisation.desktop.configuration = {
-            hardware = {
-                graphics = {
-                    enable = true;
-                    enable32Bit = true;
-                };
-            };
-
-            home-manager = {
-                users.jan.imports = [ self.homeModules.jan ];
-                useUserPackages = true;
-            };
-
-            programs.zsh.enable = true;
-
-            services = {
-                displayManager.gdm.enable = true;
-                desktopManager.gnome.enable = true;
-                gnome = {
-                    core-apps.enable = false;
-                    core-developer-tools.enable = false;
-                    games.enable = false;
-                };
-                pipewire = {
-                    enable = true;
-                    alsa = {
-                        enable = true;
-                        support32Bit = true;
-                    };
-                    pulse.enable = true;
-                };
-                pulseaudio.enable = false;
-                tailscale = {
-                    enable = true;
-                    authKeyFile = config.sops.secrets."tailscale/authKey".path;
-                };
-                xserver = {
-                    enable = true;
-                    videoDrivers = [ "amdgpu" ];
-                    xkb = {
-                        layout = "us";
-                        variant = "";
-                    };
-                };
-            };
-
-            users.users.jan.shell = pkgs.zsh;
-        };
-
         system.stateVersion = "25.05";
-
-        systemd = {
-            services."tailscale-health" = {
-                script = /* bash */ ''
-                    set -eu
-                    result=$(${lib.getExe pkgs.tailscale} status --json | ${lib.getExe pkgs.jq} '.Health')
-                    if [[ $result != "[]" ]]; then
-                        reboot;
-                    fi
-                '';
-                serviceConfig = {
-                    Type = "oneshot";
-                    User = "root";
-                    RemainAfterExit = true;
-                };
-            };
-            timers."tailscale-health" = {
-                wantedBy = [ "timers.target" ];
-                timerConfig = {
-                    OnCalendar = "*:00:00";
-                    Unit = "tailscale-health";
-                };
-            };
-        };
 
         time.timeZone = "America/Monterrey";
 
@@ -180,6 +131,7 @@
                 description = "Jan";
                 extraGroups = [ "networkmanager" "wheel" ];
                 hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+                shell = pkgs.zsh;
             };
         };
     };
