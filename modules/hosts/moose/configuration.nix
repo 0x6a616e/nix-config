@@ -19,7 +19,6 @@
                 timeout = 30;
                 systemd-boot.enable = true;
             };
-            supportedFilesystems = [ "ntfs" ];
         };
 
         hardware = {
