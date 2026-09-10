@@ -5,10 +5,7 @@
         };
 
         moose = inputs.nixpkgs.lib.nixosSystem {
-            modules = [
-                self.nixosModules.mooseConfiguration
-                self.nixosModules.mooseDisko
-            ];
+            modules = [ self.nixosModules.mooseConfiguration ];
         };
     };
 }

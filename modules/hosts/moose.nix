@@ -2,6 +2,7 @@
     flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
+            inputs.disko.nixosModules.disko
             inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
         ];
@@ -18,6 +19,56 @@
                 efi.canTouchEfiVariables = true;
                 timeout = 30;
                 systemd-boot.enable = true;
+            };
+        };
+
+        disko.devices.disk.main = {
+            type = "disk";
+            device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL21T0HCLR-00BH1_S641NF0X437278";
+            content = {
+                type = "gpt";
+                partitions = {
+                    ESP = {
+                        priority = 1;
+                        name = "ESP";
+                        start = "1M";
+                        size = "4G";
+                        type = "EF00";
+                        content = {
+                            type = "filesystem";
+                            format = "vfat";
+                            mountpoint = "/boot";
+                            mountOptions = [ "umask=0077" ];
+                        };
+                    };
+                    swap = {
+                        size = "32G";
+                        content = {
+                            type = "swap";
+                            discardPolicy = "both";
+                        };
+                    };
+                    root = {
+                        size = "100%";
+                        content = {
+                            type = "btrfs";
+                            extraArgs = [ "-f" ];
+                            subvolumes = {
+                                "/rootfs" = {
+                                    mountpoint = "/";
+                                };
+                                "/nix" = {
+                                    mountOptions = [
+                                        "compress=zstd"
+                                        "noatime"
+                                    ];
+                                    mountpoint = "/nix";
+                                };
+                            };
+                            mountpoint = "/partition-root";
+                        };
+                    };
+                };
             };
         };
 
@@ -470,7 +521,7 @@
                 stylix = {
                     enable = true;
                     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-                    image = ../../../assets/wallpaper.jpg;
+                    image = ../../assets/wallpaper.jpg;
                     cursor = {
                         name = "BreezeX-RosePine-Linux";
                         package = pkgs.rose-pine-cursor;
@@ -578,7 +629,7 @@
         };
 
         sops = {
-            defaultSopsFile = ../../../secrets/secrets.yaml;
+            defaultSopsFile = ../../secrets/secrets.yaml;
             age.keyFile = "/etc/sops/age/keys.txt";
             secrets = {
                 "tailscale/authKey" = { };
