@@ -10,12 +10,5 @@
                 self.nixosModules.mooseDisko
             ];
         };
-
-        failsafe = inputs.nixpkgs.lib.nixosSystem {
-            modules = [
-                self.nixosModules.failsafeConfiguration
-                self.nixosModules.failsafeDisko
-            ];
-        };
     };
 }
