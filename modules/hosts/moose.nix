@@ -108,6 +108,7 @@
                 };
 
                 programs = {
+                    bat.enable = true;
                     btop = {
                         enable = true;
                         package = pkgs.btop.override {
