@@ -237,15 +237,16 @@
                                 };
                                 statusline.lualine = {
                                     enable = true;
-                                    activeSection.c = [
-                                        ''function()
+                                    setupOpts.sections.lualine_c = [{
+                                        _type = "lua-inline";
+                                        expr = ''function()
                                             local blame = vim.b.gitsigns_blame_line
                                             if blame == nil or blame == "" then
                                                 return ""
                                             end
                                             return blame
-                                        end''
-                                    ];
+                                        end'';
+                                    }];
                                 };
                                 utility = {
                                     undotree.enable = true;
