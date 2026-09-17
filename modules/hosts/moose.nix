@@ -604,7 +604,10 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
-        programs.zsh.enable = true;
+        programs = {
+            steam.enable = true;
+            zsh.enable = true;
+        };
 
         security = {
             rtkit.enable = true;
