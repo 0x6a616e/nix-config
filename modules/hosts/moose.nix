@@ -218,6 +218,17 @@
                                     toggleterm = {
                                         enable = true;
                                         lazygit.enable = true;
+                                        mappings.open = "<leader>st";
+                                        setupOpts = {
+                                            direction = "float";
+                                            on_open = lib.generators.mkLuaInline ''
+                                                function()
+                                                    vim.schedule(function()
+                                                        vim.cmd("startinsert")
+                                                    end)
+                                                end
+                                            '';
+                                        };
                                     };
                                 };
                                 autocomplete.blink-cmp.enable = true;
