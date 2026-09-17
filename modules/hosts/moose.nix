@@ -106,7 +106,6 @@
                         pkgs.nautilus
                         pkgs.showtime
                         pkgs.wl-clipboard
-                        inputs.superfile.packages.${pkgs.stdenv.hostPlatform.system}.default
                     ];
                     stateVersion = "25.05";
                 };
