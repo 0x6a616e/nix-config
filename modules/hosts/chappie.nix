@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.chappieConfiguration = { modulesPath, ... }: {
+    flake.nixosModules.chappieConfiguration = { modulesPath, lib, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
@@ -53,6 +53,10 @@
                     };
                 };
             };
+        };
+
+        nixpkgs = {
+            hostPlatform = lib.mkDefault "x86_64-linux";
         };
     };
 }
