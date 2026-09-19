@@ -452,7 +452,7 @@
                             set -g status-style 'fg=yellow'
 
                             set -g status-left "[#S] "
-                            set -g status-left-length 10
+                            set -g status-left-length 50
 
                             set -g status-right ""
                             set -g status-right-length 50
@@ -462,6 +462,10 @@
 
                             setw -g window-status-style 'fg=yellow'
                             setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
+
+                            set-option -ug message-format
+                            set-option -ug message-style
+                            set-option -ug message-command-style
                         '';
                     };
                     yazi = {
