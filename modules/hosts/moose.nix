@@ -449,9 +449,9 @@
                             # statusbar
                             set -g status-position bottom
                             set -g status-justify left
-                            set -g status-style 'fg=red'
+                            set -g status-style 'fg=yellow'
 
-                            set -g status-left ""
+                            set -g status-left "[#S] "
                             set -g status-left-length 10
 
                             set -g status-right ""
