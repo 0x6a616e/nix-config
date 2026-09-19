@@ -7,5 +7,9 @@
         moose = inputs.nixpkgs.lib.nixosSystem {
             modules = [ self.nixosModules.mooseConfiguration ];
         };
+
+        chappie = inputs.nixpkgs.lib.nixosSystem {
+            modules = [ self.nixosModules.chappieConfiguration ];
+        };
     };
 }
