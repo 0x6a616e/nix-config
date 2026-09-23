@@ -4,6 +4,7 @@
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
             inputs.home-manager.nixosModules.home-manager
+            inputs.niri-flake.nixosModules.niri
             inputs.sops-nix.nixosModules.sops
         ];
 
@@ -90,7 +91,6 @@
                 homeConfig = config.home-manager.users.jan;
             in {
                 imports = [
-                    inputs.stylix.homeModules.stylix
                     inputs.nvf.homeManagerModules.default
                 ];
 
@@ -98,13 +98,8 @@
                     username = "jan";
                     homeDirectory = "/home/jan";
                     packages = [
-                        pkgs.collision
-                        pkgs.devenv
-                        pkgs.gnome-characters
-                        pkgs.gnomeExtensions.caffeine
-                        pkgs.loupe
                         pkgs.nautilus
-                        pkgs.showtime
+                        pkgs.rose-pine-cursor
                         pkgs.wl-clipboard
                     ];
                     stateVersion = "25.05";
@@ -156,11 +151,12 @@
                         };
                     };
                     gpg.enable = true;
+                    hyprlock.enable = true;
                     kitty = {
                         enable = true;
                         settings = {
                             window_padding_width = 5;
-                            hide_window_decorations = "yes";
+                            # hide_window_decorations = "yes";
                         };
                         shellIntegration.enableZshIntegration = true;
                     };
@@ -169,6 +165,101 @@
                         enableZshIntegration = true;
                     };
                     nh.enable = true;
+                    niri.settings = {
+                        binds = {
+                            "Mod+T".action.spawn = "kitty";
+                            "Mod+F".action.spawn = "firefox";
+
+                            "Mod+K".action.focus-window-or-workspace-up = [ ];
+                            "Mod+J".action.focus-window-or-workspace-down = [ ];
+                            "Mod+Shift+K".action.move-window-to-workspace-up = [ ];
+                            "Mod+Shift+J".action.move-window-to-workspace-down = [ ];
+
+                            "Mod+L".action.focus-column-right = [ ];
+                            "Mod+H".action.focus-column-left = [ ];
+                            "Mod+Shift+L".action.move-column-right = [ ];
+                            "Mod+Shift+H".action.move-column-left = [ ];
+                            "Mod+Shift+Alt+L".action.consume-or-expel-window-right = [ ];
+                            "Mod+Shift+Alt+H".action.consume-or-expel-window-left = [ ];
+
+                            "Mod+Shift+backslash".action.switch-preset-column-width = [ ];
+
+                            "Mod+1".action.focus-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
+                            "Mod+2".action.focus-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
+                            "Mod+Shift+1".action.move-window-to-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
+                            "Mod+Shift+2".action.move-window-to-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
+                            "Mod+Shift+Alt+1".action.move-column-to-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
+                            "Mod+Shift+Alt+2".action.move-column-to-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
+
+                            "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"];
+                            "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"];
+
+                            "Mod+Tab".action.toggle-overview = [ ];
+
+                            "Print".action.screenshot = { };
+                        };
+
+                        cursor = {
+                            hide-when-typing = true;
+                            theme = "BreezeX-RosePine-Linux";
+                            size = 40;
+                        };
+
+                        hotkey-overlay.skip-at-startup = true;
+
+                        input = {
+                            keyboard.xkb.options = "compose:ralt";
+                            mouse.accel-profile = "flat";
+                        };
+
+                        layout = {
+                            default-column-width = {
+                                proportion = 1.;
+                            };
+
+                            preset-column-widths = [
+                                { proportion = 1. / 2.; }
+                                { proportion = 1.; }
+                            ];
+                        };
+
+                        outputs = {
+                            "PNP(TRG) ZQ27F240L-CB W00W97R75PV26" = {
+                                mode = {
+                                    height = 1440;
+                                    width = 2560;
+                                    refresh = 240.002;
+                                };
+                                focus-at-startup = true;
+                                position = {
+                                    x = 0;
+                                    y = 0;
+                                };
+                            };
+
+                            "PNP(TRG) CF25F300L 0R00D9R2QULMT" = {
+                                mode = {
+                                    height = 1080;
+                                    width = 1920;
+                                    refresh = 239.998;
+                                };
+                                transform.rotation = 90;
+                                position = {
+                                    x = 2560;
+                                    y = 0;
+                                };
+                            };
+                        };
+
+                        overview.backdrop-color = "#000000";
+
+                        prefer-no-csd = true;
+
+                        recent-windows.binds = {
+                            "Alt+Tab".action.next-window = [ ];
+                            "Alt+grave".action.next-window = { filter = "app-id"; };
+                        };
+                    };
                     nvf = {
                         enable = true;
                         settings = {
@@ -499,9 +590,6 @@
                         };
                         initContent = /* bash */ ''
                             PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
-                            # if [[ -z $TMUX ]]; then
-                            #     ${lib.getExe pkgs.tmux} new -As main
-                            # fi
                         '';
                         sessionVariables = {
                             EDITOR = "nvim";
@@ -535,39 +623,44 @@
                         enable = true;
                         pinentry.package = pkgs.pinentry-curses;
                     };
+                    hypridle = {
+                        enable = true;
+                        settings = {
+                            general = {
+                                lock_cmd = "hyprlock";
+                            };
+                            listener = [
+                                {
+                                    on-timeout = "hyprlock";
+                                    timeout = 300;
+                                }
+                                {
+                                    on-resume = "niri msg action power-on-monitors";
+                                    on-timeout = "niri msg action power-off-monitors";
+                                    timeout = 600;
+                                }
+                            ];
+                        };
+                    };
+                    hyprpaper = {
+                        enable = true;
+                        settings = {
+                            splash = false;
+                            wallpaper = [
+                                {
+                                    monitor = "";
+                                    path = "${../../assets/wallpaper.jpeg}";
+                                }
+                            ];
+                        };
+                    };
+                    mako = {
+                        enable = true;
+                        settings = {
+                            default-timeout = 15000;
+                        };
+                    };
                     ssh-agent.enable = true;
-                };
-
-                stylix = {
-                    enable = true;
-                    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-                    image = ../../assets/wallpaper.jpg;
-                    cursor = {
-                        name = "BreezeX-RosePine-Linux";
-                        package = pkgs.rose-pine-cursor;
-                        size = 40;
-                    };
-                    fonts = {
-                        serif = {
-                            package = pkgs.dejavu_fonts;
-                            name = "DejaVu Serif";
-                        };
-
-                        sansSerif = {
-                            package = pkgs.dejavu_fonts;
-                            name = "DejaVu Sans";
-                        };
-
-                        monospace = {
-                            package = pkgs.nerd-fonts.jetbrains-mono;
-                            name = "JetBrainsMono Nerd Font";
-                        };
-                    };
-                    polarity = "dark";
-                    targets.firefox = {
-                        profileNames = [ "main" ];
-                        colorTheme.enable = true;
-                    };
                 };
             };
         };
@@ -594,6 +687,8 @@
             useDHCP = lib.mkDefault true;
         };
 
+        niri-flake.cache.enable = false;
+
         nix.settings = {
             auto-optimise-store = true;
             experimental-features = [ "nix-command" "flakes" ];
@@ -605,14 +700,20 @@
                 rocmSupport = true;
             };
             hostPlatform = lib.mkDefault "x86_64-linux";
+            overlays = [ inputs.niri-flake.overlays.niri ];
         };
 
         programs = {
+            niri = {
+                enable = true;
+                package = pkgs.niri-stable;
+            };
             steam.enable = true;
             zsh.enable = true;
         };
 
         security = {
+            pam.services.hyprlock = {};
             rtkit.enable = true;
             sudo.extraConfig = ''
                 Defaults pwfeedback
@@ -621,13 +722,8 @@
         };
 
         services = {
-            displayManager.gdm.enable = true;
-            desktopManager.gnome.enable = true;
-            gnome = {
-                core-apps.enable = false;
-                core-developer-tools.enable = false;
-                games.enable = false;
-            };
+            displayManager.autoLogin.user = "jan";
+            displayManager.ly.enable = true;
             pipewire = {
                 enable = true;
                 alsa = {
@@ -636,7 +732,6 @@
                 };
                 pulse.enable = true;
             };
-            pulseaudio.enable = false;
             tailscale = {
                 enable = true;
                 authKeyFile = config.sops.secrets."tailscale/authKey".path;
@@ -674,6 +769,10 @@
                 shell = pkgs.zsh;
                 hashedPasswordFile = config.sops.secrets."users/jan/password".path;
             };
+        };
+        
+        xdg.portal.config.niri = {
+            "org.freedesktop.impl.portal.FileChooser" = "gtk";
         };
     };
 }
