@@ -130,7 +130,6 @@
                                     { name = "NixOs Search"; url = "https://search.nixos.org/packages?channel=unstable"; keyword = "ns"; }
                                 ];
                             };
-                            extensions.force = true;
                         };
                     };
                     fzf = {
@@ -391,6 +390,7 @@
                                     go.enable = true;
                                     nix.enable = true;
                                     rust.enable = true;
+                                    qml.enable = true;
                                 };
                                 keymaps = [
                                     {
@@ -769,10 +769,6 @@
                 shell = pkgs.zsh;
                 hashedPasswordFile = config.sops.secrets."users/jan/password".path;
             };
-        };
-        
-        xdg.portal.config.niri = {
-            "org.freedesktop.impl.portal.FileChooser" = "gtk";
         };
     };
 }
