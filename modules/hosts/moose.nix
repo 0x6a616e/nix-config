@@ -490,6 +490,13 @@
                         enable = true;
                         settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
                     };
+                    quickshell = {
+                        enable = true;
+                        systemd.enable = true;
+                        configs = {
+                            "shell.qml" = ../../assets/shell.qml;
+                        };
+                    };
                     ripgrep.enable = true;
                     tmux = {
                         enable = true;
