@@ -649,18 +649,6 @@
                             ];
                         };
                     };
-                    hyprpaper = {
-                        enable = true;
-                        settings = {
-                            splash = false;
-                            wallpaper = [
-                                {
-                                    monitor = "";
-                                    path = "${../../assets/wallpaper.jpeg}";
-                                }
-                            ];
-                        };
-                    };
                     mako = {
                         enable = true;
                         settings = {
@@ -764,6 +752,14 @@
         };
 
         system.stateVersion = "25.05";
+
+        systemd.user.services.swaybg = {
+            after = [ "graphical-session.target" ];
+            partOf = [ "graphical-session.target" ];
+            requisite = [ "graphical-session.target" ];
+            script = "${lib.getExe pkgs.swaybg} -o 'DP-2' -m fill -i ${../../assets/wallpaper-h.png} -o 'DP-3' -m fill -i ${../../assets/wallpaper-v.png}";
+            wantedBy = [ "graphical-session.target" ];
+        };
 
         time.timeZone = "America/Monterrey";
 
