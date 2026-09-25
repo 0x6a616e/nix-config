@@ -1,4 +1,16 @@
-{ inputs, ... }: {
+{ self, inputs, ... }: {
+    flake.overlays.default = final: prev: {
+        vcr-osd-mono = prev.stdenvNoCC.mkDerivation {
+            pname = "VCR-OSD-Mono";
+            version = "1.0";
+            src = ../../assets/VCR_OSD_MONO_1.001.ttf;
+            dontUnpack = true;
+            installPhase = ''
+                install -Dm644 $src $out/share/fonts/truetype/VCR-OSD-Mono.ttf
+            '';
+        };
+    };
+
     flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
@@ -79,6 +91,7 @@
         fonts.packages = [
             pkgs.dejavu_fonts
             pkgs.nerd-fonts.jetbrains-mono
+            pkgs.vcr-osd-mono
         ];
 
         hardware = {
@@ -719,7 +732,10 @@
                 rocmSupport = true;
             };
             hostPlatform = lib.mkDefault "x86_64-linux";
-            overlays = [ inputs.niri-flake.overlays.niri ];
+            overlays = [
+                inputs.niri-flake.overlays.niri
+                self.overlays.default
+            ];
         };
 
         programs = {
