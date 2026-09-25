@@ -532,6 +532,9 @@
                         systemd.enable = true;
                         configs = {
                             "shell.qml" = ../../assets/shell.qml;
+                            "Bar.qml" = ../../assets/Bar.qml;
+                            "ClockWidget.qml" = ../../assets/ClockWidget.qml;
+                            "Fonts.qml" = ../../assets/Fonts.qml;
                         };
                     };
                     ripgrep.enable = true;
