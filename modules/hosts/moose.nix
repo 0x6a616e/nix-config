@@ -76,6 +76,11 @@
             };
         };
 
+        fonts.packages = [
+            pkgs.dejavu_fonts
+            pkgs.nerd-fonts.jetbrains-mono
+        ];
+
         hardware = {
             amdgpu.opencl.enable = true;
             cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -93,6 +98,15 @@
                 imports = [
                     inputs.nvf.homeManagerModules.default
                 ];
+
+                fonts.fontconfig = {
+                    enable = true;
+                    defaultFonts = {
+                        monospace = [ "JetBrainsMono Nerd Font" ];
+                        sansSerif = [ "DejaVu Sans" ];
+                        serif = [ "DejaVu Serif" ];
+                    };
+                };
 
                 home = {
                     username = "jan";
