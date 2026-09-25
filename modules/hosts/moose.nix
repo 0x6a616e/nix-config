@@ -275,6 +275,16 @@
                                             end
                                         '';
                                     }
+                                     {
+                                        event = [ "FileType" ];
+                                        pattern = [ "qml" ];
+                                        callback = lib.generators.mkLuaInline ''
+                                            function()
+                                                vim.cmd("unlet! b:did_indent")
+                                                vim.cmd("runtime! indent/qml.vim")
+                                            end
+                                        '';
+                                    }
                                 ];
                                 globals = {
                                     mapleader = " ";
