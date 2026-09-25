@@ -1,10 +1,4 @@
 import Quickshell
 
-Scope {
-    Variants {
-        model: Quickshell.screens
-
-        Bar {
-        }
-    }
+Bar {
 }
