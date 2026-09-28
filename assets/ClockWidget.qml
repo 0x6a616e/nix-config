@@ -5,7 +5,7 @@ Text {
     color: Fonts.color
     font.family: Fonts.family
     font.pointSize: Fonts.pointSize
-    text: Qt.formatDateTime(clock.date, "hh:mm:ss")
+    text: Qt.formatDateTime(clock.date, "hh:mm")
 
     SystemClock {
         id: clock
