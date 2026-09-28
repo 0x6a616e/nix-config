@@ -244,6 +244,8 @@
                                 proportion = 1.;
                             };
 
+                            focus-ring.active = { color = "#FFFFFF"; };
+
                             preset-column-widths = [
                                 { proportion = 1. / 2.; }
                                 { proportion = 1.; }
