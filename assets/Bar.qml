@@ -10,7 +10,6 @@ PanelWindow {
     color: "#000000"
 
     implicitHeight: 30
-    aboveWindows: false
 
     ClockWidget {
         anchors.centerIn: parent
