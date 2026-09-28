@@ -128,6 +128,7 @@
                         pkgs.nautilus
                         pkgs.rose-pine-cursor
                         pkgs.wl-clipboard
+                        pkgs.xwayland-satellite
                     ];
                     stateVersion = "25.05";
                 };
