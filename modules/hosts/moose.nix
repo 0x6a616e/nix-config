@@ -537,7 +537,7 @@
                             "shell.qml" = ../../assets/shell.qml;
                             "Bar.qml" = ../../assets/Bar.qml;
                             "ClockWidget.qml" = ../../assets/ClockWidget.qml;
-                            "Fonts.qml" = ../../assets/Fonts.qml;
+                            "PowerButton.qml" = ../../assets/PowerButton.qml;
                         };
                     };
                     ripgrep.enable = true;

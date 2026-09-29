@@ -1,4 +1,2 @@
-import Quickshell
-
 Bar {
 }
