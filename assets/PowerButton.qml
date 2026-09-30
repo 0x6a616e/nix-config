@@ -49,10 +49,10 @@ IconImage {
                     }
                     Text {
                         anchors.centerIn: parent
-                        color: attributes.color
+                        color: attributes.fontColor
                         font {
-                            family: attributes.family
-                            pointSize: attributes.pointSize
+                            family: attributes.fontFamily
+                            pointSize: attributes.fontPointSize
                         }
                         text: "Lock"
                     }
@@ -77,10 +77,10 @@ IconImage {
                     }
                     Text {
                         anchors.centerIn: parent
-                        color: attributes.color
+                        color: attributes.fontColor
                         font {
-                            family: attributes.family
-                            pointSize: attributes.pointSize
+                            family: attributes.fontFamily
+                            pointSize: attributes.fontPointSize
                         }
                         text: "Logout"
                     }
@@ -105,10 +105,10 @@ IconImage {
                     }
                     Text {
                         anchors.centerIn: parent
-                        color: attributes.color
+                        color: attributes.fontColor
                         font {
-                            family: attributes.family
-                            pointSize: attributes.pointSize
+                            family: attributes.fontFamily
+                            pointSize: attributes.fontPointSize
                         }
                         text: "Reboot"
                     }
@@ -133,10 +133,10 @@ IconImage {
                     }
                     Text {
                         anchors.centerIn: parent
-                        color: attributes.color
+                        color: attributes.fontColor
                         font {
-                            family: attributes.family
-                            pointSize: attributes.pointSize
+                            family: attributes.fontFamily
+                            pointSize: attributes.fontPointSize
                         }
                         text: "Shutdown"
                     }

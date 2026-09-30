@@ -2,10 +2,10 @@ import QtQuick
 import Quickshell
 
 Text {
-    color: attributes.color
+    color: attributes.fontColor
     font {
-        family: attributes.family
-        pointSize: attributes.pointSize
+        family: attributes.fontFamily
+        pointSize: attributes.fontPointSize
     }
     text: Qt.formatDateTime(clock.date, "hh:mm")
 

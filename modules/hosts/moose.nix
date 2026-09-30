@@ -539,6 +539,7 @@
                             "Bar.qml" = ../../assets/Bar.qml;
                             "ClockWidget.qml" = ../../assets/ClockWidget.qml;
                             "PowerButton.qml" = ../../assets/PowerButton.qml;
+                            "VolumeOSD.qml" = ../../assets/VolumeOSD.qml;
                         };
                     };
                     ripgrep.enable = true;

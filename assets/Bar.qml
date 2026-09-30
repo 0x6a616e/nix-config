@@ -4,21 +4,7 @@ import QtQuick
 
 PanelWindow {
     id: bar
-
-    // TODO: rename font attributes
-    QtObject {
-        id: attributes
-        readonly property string family: "VCR OSD Mono"
-        readonly property real pointSize: 16
-        readonly property string color: "#FFFFFF"
-        property string openPopup: ""
-    }
-
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
+    screen: Quickshell.screens[attributes.mainScreenIndex]
 
     color: "#000000"
 
