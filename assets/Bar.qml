@@ -22,9 +22,4 @@ PanelWindow {
     TapHandler {
         onTapped: attributes.openPopup = ""
     }
-
-    Process {
-        id: p
-        command: [ "nix", "shell", "nixpkgs#libnotify", "-c", "notify-send", "hello" ]
-    }
 }
