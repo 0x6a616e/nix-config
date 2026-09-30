@@ -218,8 +218,8 @@
                             "Mod+Shift+Alt+1".action.move-column-to-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
                             "Mod+Shift+Alt+2".action.move-column-to-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
 
-                            "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"];
-                            "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"];
+                            "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+" "-l" "1"];
+                            "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"];
                             "XF86AudioPlay".action.spawn = [ "${lib.getExe pkgs.playerctl}" "play-pause" ];
 
                             "Mod+Tab".action.toggle-overview = [ ];
