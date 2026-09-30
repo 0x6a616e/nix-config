@@ -23,7 +23,7 @@ IconImage {
                 }
             }
             implicitWidth: 200
-            implicitHeight: 200
+            implicitHeight: 150 // 50 per item
             visible: attributes.openPopup === popupId
 
             ColumnLayout {
@@ -41,11 +41,14 @@ IconImage {
                         id: ma1
                         anchors.fill: parent
                         hoverEnabled: true
-                        onClicked: p1.running = true
+                        onClicked: {
+                            attributes.locked = true
+                            p1.running = true
+                        }
                     }
                     Process {
                         id: p1
-                        command: [ "sh", "-c", "loginctl lock-session" ]
+                        command: [ "sh", "-c", "hyprlock" ]
                     }
                     Text {
                         anchors.centerIn: parent
@@ -55,34 +58,6 @@ IconImage {
                             pointSize: attributes.fontPointSize
                         }
                         text: "Lock"
-                    }
-                }
-                Rectangle {
-                    border {
-                        color: "#FFFFFF"
-                        width: ma2.containsMouse ? 2 : 0
-                    }
-                    color: "#000000"
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    MouseArea {
-                        id: ma2
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onClicked: p2.running = true
-                    }
-                    Process {
-                        id: p2
-                        command: [ "sh", "-c", "loginctl terminate-user $USER" ]
-                    }
-                    Text {
-                        anchors.centerIn: parent
-                        color: attributes.fontColor
-                        font {
-                            family: attributes.fontFamily
-                            pointSize: attributes.fontPointSize
-                        }
-                        text: "Logout"
                     }
                 }
                 Rectangle {

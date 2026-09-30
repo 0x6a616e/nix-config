@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.overlays.default = final: prev: {
+    flake.overlays.default = _: prev: {
         vcr-osd-mono = prev.stdenvNoCC.mkDerivation {
             pname = "VCR-OSD-Mono";
             version = "1.0";
@@ -540,6 +540,7 @@
                             "ClockWidget.qml" = ../../assets/ClockWidget.qml;
                             "PowerButton.qml" = ../../assets/PowerButton.qml;
                             "VolumeOSD.qml" = ../../assets/VolumeOSD.qml;
+                            "IdleHandler.qml" = ../../assets/IdleHandler.qml;
                         };
                     };
                     ripgrep.enable = true;
@@ -675,25 +676,6 @@
                         enable = true;
                         pinentry.package = pkgs.pinentry-curses;
                     };
-                    hypridle = {
-                        enable = true;
-                        settings = {
-                            general = {
-                                lock_cmd = "hyprlock";
-                            };
-                            listener = [
-                                {
-                                    on-timeout = "hyprlock";
-                                    timeout = 300;
-                                }
-                                {
-                                    on-resume = "niri msg action power-on-monitors";
-                                    on-timeout = "niri msg action power-off-monitors";
-                                    timeout = 600;
-                                }
-                            ];
-                        };
-                    };
                     mako = {
                         enable = true;
                         settings = {
@@ -801,12 +783,15 @@
 
         system.stateVersion = "25.05";
 
-        systemd.user.services.swaybg = {
-            after = [ "graphical-session.target" ];
-            partOf = [ "graphical-session.target" ];
-            requisite = [ "graphical-session.target" ];
-            script = "${lib.getExe pkgs.swaybg} -o 'DP-2' -m fill -i ${../../assets/wallpaper-h.png} -o 'DP-3' -m fill -i ${../../assets/wallpaper-v.png}";
-            wantedBy = [ "graphical-session.target" ];
+        systemd = {
+            sleep.settings.Sleep.HibernateDelaySec = "2h";
+            user.services.swaybg = {
+                after = [ "graphical-session.target" ];
+                partOf = [ "graphical-session.target" ];
+                requisite = [ "graphical-session.target" ];
+                script = "${lib.getExe pkgs.swaybg} -o 'DP-2' -m fill -i ${../../assets/wallpaper-h.png} -o 'DP-3' -m fill -i ${../../assets/wallpaper-v.png}";
+                wantedBy = [ "graphical-session.target" ];
+            };
         };
 
         time.timeZone = "America/Monterrey";
