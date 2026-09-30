@@ -9,7 +9,7 @@ Scope {
         readonly property string fontColor: "#FFFFFF"
         property int mainScreenIndex: 1
         property string openPopup: ""
-        property bool locked: true
+        property bool locked: false
     }
 
     Bar {
