@@ -541,6 +541,7 @@
                             "PowerButton.qml" = ../../assets/PowerButton.qml;
                             "VolumeOSD.qml" = ../../assets/VolumeOSD.qml;
                             "IdleHandler.qml" = ../../assets/IdleHandler.qml;
+                            "WifiWidget.qml" = ../../assets/WifiWidget.qml;
                         };
                     };
                     ripgrep.enable = true;

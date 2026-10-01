@@ -1,6 +1,6 @@
 import Quickshell
-import Quickshell.Io
 import QtQuick
+import QtQuick.Layouts
 
 PanelWindow {
     id: bar
@@ -10,16 +10,29 @@ PanelWindow {
 
     implicitHeight: 30
 
-    ClockWidget {
-        anchors.centerIn: parent
-    }
-
-    PowerButton {
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-    }
-
     TapHandler {
         onTapped: attributes.openPopup = ""
     }
+
+    ClockWidget {
+        anchors.centerIn: parent
+        anchors.verticalCenter: parent.verticalCenter
+    }
+
+    RowLayout {
+        anchors {
+            bottom: parent.bottom
+            right: parent.right
+            top: parent.top
+        }
+        spacing: 10
+
+        WifiWidget {
+        }
+
+        PowerButton {
+            implicitSize: parent.height * 0.85
+        }
+    }
+
 }

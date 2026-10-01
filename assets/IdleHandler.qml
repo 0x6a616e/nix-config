@@ -6,8 +6,7 @@ Scope {
     IdleMonitor {
         timeout: 5 * 60
         onIsIdleChanged: {
-            if (isIdle && !attributes.locked) {
-                attributes.locked = true;
+            if (isIdle) {
                 Quickshell.execDetached(["sh", "-c", "hyprlock"]);
             }
         }

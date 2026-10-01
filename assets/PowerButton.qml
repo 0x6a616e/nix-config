@@ -10,7 +10,6 @@ IconImage {
     property string popupId: "power"
 
     source: "file:///home/jan/nix-config/assets/v1.png"
-    implicitSize: parent.height * 0.85
 
     LazyLoader {
         active: attributes.openPopup === popupId
@@ -42,7 +41,6 @@ IconImage {
                         anchors.fill: parent
                         hoverEnabled: true
                         onClicked: {
-                            attributes.locked = true
                             p1.running = true
                         }
                     }
