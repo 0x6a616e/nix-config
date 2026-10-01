@@ -25,7 +25,7 @@ PanelWindow {
             right: parent.right
             top: parent.top
         }
-        spacing: 10
+        spacing: 20
 
         WifiWidget {
         }
