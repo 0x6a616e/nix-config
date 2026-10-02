@@ -6,8 +6,8 @@ PanelWindow {
     id: bar
     screen: Quickshell.screens[attributes.mainScreenIndex]
 
+    aboveWindows: false
     color: "#000000"
-
     implicitHeight: 30
 
     TapHandler {
