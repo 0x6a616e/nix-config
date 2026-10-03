@@ -183,7 +183,6 @@
                         enable = true;
                         settings = {
                             window_padding_width = 5;
-                            # hide_window_decorations = "yes";
                         };
                         shellIntegration.enableZshIntegration = true;
                     };
@@ -306,16 +305,16 @@
                                             end
                                         '';
                                     }
-                                     {
-                                        event = [ "FileType" ];
-                                        pattern = [ "qml" ];
-                                        callback = lib.generators.mkLuaInline ''
-                                            function()
-                                                vim.cmd("unlet! b:did_indent")
-                                                vim.cmd("runtime! indent/qml.vim")
-                                            end
-                                        '';
-                                    }
+                                    #  {
+                                    #     event = [ "FileType" ];
+                                    #     pattern = [ "qml" ];
+                                    #     callback = lib.generators.mkLuaInline ''
+                                    #         function()
+                                    #             vim.cmd("unlet! b:did_indent")
+                                    #             vim.cmd("runtime! indent/qml.vim")
+                                    #         end
+                                    #     '';
+                                    # }
                                 ];
                                 globals = {
                                     mapleader = " ";
@@ -431,7 +430,7 @@
                                     go.enable = true;
                                     nix.enable = true;
                                     rust.enable = true;
-                                    qml.enable = true;
+                                    # qml.enable = true;
                                 };
                                 keymaps = [
                                     {
@@ -531,19 +530,19 @@
                         enable = true;
                         settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
                     };
-                    quickshell = {
-                        enable = true;
-                        systemd.enable = true;
-                        configs = {
-                            "shell.qml" = ../../assets/shell.qml;
-                            "Bar.qml" = ../../assets/Bar.qml;
-                            "ClockWidget.qml" = ../../assets/ClockWidget.qml;
-                            "PowerButton.qml" = ../../assets/PowerButton.qml;
-                            "VolumeOSD.qml" = ../../assets/VolumeOSD.qml;
-                            "IdleHandler.qml" = ../../assets/IdleHandler.qml;
-                            "WifiWidget.qml" = ../../assets/WifiWidget.qml;
-                        };
-                    };
+                    # quickshell = {
+                    #     enable = true;
+                    #     systemd.enable = true;
+                    #     configs = {
+                    #         "shell.qml" = ../../assets/shell.qml;
+                    #         "Bar.qml" = ../../assets/Bar.qml;
+                    #         "ClockWidget.qml" = ../../assets/ClockWidget.qml;
+                    #         "PowerButton.qml" = ../../assets/PowerButton.qml;
+                    #         "VolumeOSD.qml" = ../../assets/VolumeOSD.qml;
+                    #         "IdleHandler.qml" = ../../assets/IdleHandler.qml;
+                    #         "WifiWidget.qml" = ../../assets/WifiWidget.qml;
+                    #     };
+                    # };
                     ripgrep.enable = true;
                     tmux = {
                         enable = true;
