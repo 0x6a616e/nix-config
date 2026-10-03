@@ -96,6 +96,7 @@
 
         hardware = {
             amdgpu.opencl.enable = true;
+            bluetooth.enable = true;
             cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             graphics = {
                 enable = true;
@@ -757,10 +758,12 @@
                 };
                 pulse.enable = true;
             };
+            power-profiles-daemon.enable = true;
             tailscale = {
                 enable = true;
                 authKeyFile = config.sops.secrets."tailscale/authKey".path;
             };
+            upower.enable = true;
             xserver = {
                 enable = true;
                 videoDrivers = [ "amdgpu" ];
