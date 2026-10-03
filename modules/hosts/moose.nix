@@ -291,6 +291,10 @@
                             "Alt+Tab".action.next-window = [ ];
                             "Alt+grave".action.next-window = { filter = "app-id"; };
                         };
+
+                        spawn-at-startup = [
+                            { argv = [ "noctalia" ]; }
+                        ];
                     };
                     noctalia = {
                         enable = true;
