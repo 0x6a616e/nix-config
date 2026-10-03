@@ -17,6 +17,7 @@
             inputs.disko.nixosModules.disko
             inputs.home-manager.nixosModules.home-manager
             inputs.niri-flake.nixosModules.niri
+            inputs.noctalia.nixosModules.default
             inputs.sops-nix.nixosModules.sops
         ];
 
@@ -110,6 +111,7 @@
                 homeConfig = config.home-manager.users.jan;
             in {
                 imports = [
+                    inputs.noctalia.homeModules.default
                     inputs.nvf.homeManagerModules.default
                 ];
 
@@ -288,6 +290,15 @@
                         recent-windows.binds = {
                             "Alt+Tab".action.next-window = [ ];
                             "Alt+grave".action.next-window = { filter = "app-id"; };
+                        };
+                    };
+                    noctalia = {
+                        enable = true;
+                        settings = {
+                            wallpaper = {
+                                enabled = true;
+                                default.path = "${../../assets/wallpaper-h.png}";
+                            };
                         };
                     };
                     nvf = {
@@ -734,6 +745,10 @@
                 enable = true;
                 package = pkgs.niri-stable;
             };
+            noctalia = {
+                enable = true;
+                recommendedServices.enable = true;
+            };
             steam.enable = true;
             zsh.enable = true;
         };
@@ -788,13 +803,13 @@
 
         systemd = {
             sleep.settings.Sleep.HibernateDelaySec = "2h";
-            user.services.swaybg = {
-                after = [ "graphical-session.target" ];
-                partOf = [ "graphical-session.target" ];
-                requisite = [ "graphical-session.target" ];
-                script = "${lib.getExe pkgs.swaybg} -o 'DP-2' -m fill -i ${../../assets/wallpaper-h.png} -o 'DP-3' -m fill -i ${../../assets/wallpaper-v.png}";
-                wantedBy = [ "graphical-session.target" ];
-            };
+            # user.services.swaybg = {
+            #     after = [ "graphical-session.target" ];
+            #     partOf = [ "graphical-session.target" ];
+            #     requisite = [ "graphical-session.target" ];
+            #     script = "${lib.getExe pkgs.swaybg} -o 'DP-2' -m fill -i ${../../assets/wallpaper-h.png} -o 'DP-3' -m fill -i ${../../assets/wallpaper-v.png}";
+            #     wantedBy = [ "graphical-session.target" ];
+            # };
         };
 
         time.timeZone = "America/Monterrey";
