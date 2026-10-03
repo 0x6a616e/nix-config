@@ -767,7 +767,7 @@
         };
 
         services = {
-            displayManager.autoLogin.user = "jan";
+            # displayManager.autoLogin.user = "jan";
             displayManager.ly.enable = true;
             pipewire = {
                 enable = true;
