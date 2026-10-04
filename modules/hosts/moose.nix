@@ -201,8 +201,8 @@
 
                             "Mod+K".action.focus-window-or-workspace-up = [ ];
                             "Mod+J".action.focus-window-or-workspace-down = [ ];
-                            "Mod+Shift+K".action.move-window-to-workspace-up = [ ];
-                            "Mod+Shift+J".action.move-window-to-workspace-down = [ ];
+                            "Mod+Shift+K".action.move-window-up-or-to-workspace-up = [ ];
+                            "Mod+Shift+J".action.move-window-down-or-to-workspace-down = [ ];
 
                             "Mod+L".action.focus-column-right = [ ];
                             "Mod+H".action.focus-column-left = [ ];
