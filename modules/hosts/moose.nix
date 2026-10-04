@@ -541,6 +541,14 @@
                                             global = true;
                                         };
                                     };
+                                    dmenu.entry.password-store = {
+                                        command = "find $PASSWORD_STORE_DIR -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
+                                        label = "Password Store";
+                                        prefix = "pass";
+                                        glyph = "key";
+                                        global = false;
+                                        exec = "${lib.getExe pkgs.pass} -c '{selection}'";
+                                    };
                                 };
                                 panel = {
                                     clipboard_placement = "attached";
@@ -988,7 +996,7 @@
                 services = {
                     gpg-agent = {
                         enable = true;
-                        pinentry.package = pkgs.pinentry-curses;
+                        pinentry.package = pkgs.pinentry-qt;
                     };
                     # mako = {
                     #     enable = true;
