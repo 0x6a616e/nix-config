@@ -181,7 +181,7 @@
                         };
                     };
                     gpg.enable = true;
-                    hyprlock.enable = true;
+                    # hyprlock.enable = true;
                     kitty = {
                         enable = true;
                         settings = {
@@ -196,8 +196,8 @@
                     nh.enable = true;
                     niri.settings = {
                         binds = {
-                            "Mod+T".action.spawn = "kitty";
-                            "Mod+F".action.spawn = "firefox";
+                            # "Mod+T".action.spawn = "kitty";
+                            # "Mod+F".action.spawn = "firefox";
 
                             "Mod+K".action.focus-window-or-workspace-up = [ ];
                             "Mod+J".action.focus-window-or-workspace-down = [ ];
@@ -220,13 +220,15 @@
                             "Mod+Shift+Alt+1".action.move-column-to-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
                             "Mod+Shift+Alt+2".action.move-column-to-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
 
-                            "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+" "-l" "1"];
-                            "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"];
+                            "XF86AudioRaiseVolume".action.spawn = ["noctalia" "msg" "volume-up"];
+                            "XF86AudioLowerVolume".action.spawn = ["noctalia" "msg" "volume-down"];
                             "XF86AudioPlay".action.spawn = [ "${lib.getExe pkgs.playerctl}" "play-pause" ];
 
-                            "Mod+Tab".action.toggle-overview = [ ];
+                            "Mod+Grave".action.toggle-overview = [ ];
+                            "Mod+Space".action.spawn = [ "noctalia" "msg" "panel-toggle" "launcher" ];
+                            "Mod+Tab".action.spawn = [ "noctalia" "msg" "panel-toggle" "control-center" ];
 
-                            "Print".action.screenshot = { };
+                            "Print".action.spawn = [ "noctalia" "msg" "screenshot-annotate" ];
                         };
 
                         cursor = {
@@ -298,11 +300,307 @@
                     };
                     noctalia = {
                         enable = true;
+                        customPalettes = {
+                            "my-palette" = {
+                                "dark" = {
+                                    "mPrimary" = "#ffffff";
+                                    "mOnPrimary" = "#1b1b1b";
+                                    "mSecondary" = "#c6c6c6";
+                                    "mOnSecondary" = "#1b1b1b";
+                                    "mTertiary" = "#e2e2e2";
+                                    "mOnTertiary" = "#1b1b1b";
+                                    "mError" = "#ffb4ab";
+                                    "mOnError" = "#690005";
+                                    "mSurface" = "#131313";
+                                    "mOnSurface" = "#e2e2e2";
+                                    "mSurfaceVariant" = "#1f1f1f";
+                                    "mOnSurfaceVariant" = "#c6c6c6";
+                                    "mOutline" = "#474747";
+                                    "mShadow" = "#000000";
+                                    "mHover" = "#e2e2e2";
+                                    "mOnHover" = "#1b1b1b";
+                                    "terminal" = {
+                                        "normal" = {
+                                            "black" = "#474747";
+                                            "red" = "#ffb4ab";
+                                            "green" = "#ffffff";
+                                            "yellow" = "#c6c6c6";
+                                            "blue" = "#e2e2e2";
+                                            "magenta" = "#7d7d7d";
+                                            "cyan" = "#ababab";
+                                            "white" = "#e2e2e2";
+                                        };
+                                        "bright" = {
+                                            "black" = "#919191";
+                                            "red" = "#ffb4ab";
+                                            "green" = "#ffffff";
+                                            "yellow" = "#c6c6c6";
+                                            "blue" = "#e2e2e2";
+                                            "magenta" = "#7d7d7d";
+                                            "cyan" = "#ababab";
+                                            "white" = "#e2e2e2";
+                                        };
+                                        "foreground" = "#e2e2e2";
+                                        "background" = "#131313";
+                                        "cursor" = "#e2e2e2";
+                                        "cursorText" = "#131313";
+                                        "selectionFg" = "#c6c6c6";
+                                        "selectionBg" = "#474747";
+                                    };
+                                };
+                                "light" = {
+                                    "mPrimary" = "#000000";
+                                    "mOnPrimary" = "#e2e2e2";
+                                    "mSecondary" = "#5e5e5e";
+                                    "mOnSecondary" = "#ffffff";
+                                    "mTertiary" = "#3b3b3b";
+                                    "mOnTertiary" = "#e2e2e2";
+                                    "mError" = "#ba1a1a";
+                                    "mOnError" = "#ffffff";
+                                    "mSurface" = "#f9f9f9";
+                                    "mOnSurface" = "#1b1b1b";
+                                    "mSurfaceVariant" = "#eeeeee";
+                                    "mOnSurfaceVariant" = "#474747";
+                                    "mOutline" = "#c6c6c6";
+                                    "mShadow" = "#000000";
+                                    "mHover" = "#3b3b3b";
+                                    "mOnHover" = "#e2e2e2";
+                                    "terminal" = {
+                                        "normal" = {
+                                            "black" = "#e2e2e2";
+                                            "red" = "#ba1a1a";
+                                            "green" = "#000000";
+                                            "yellow" = "#5e5e5e";
+                                            "blue" = "#3b3b3b";
+                                            "magenta" = "#474747";
+                                            "cyan" = "#737373";
+                                            "white" = "#1b1b1b";
+                                        };
+                                        "bright" = {
+                                            "black" = "#777777";
+                                            "red" = "#ba1a1a";
+                                            "green" = "#000000";
+                                            "yellow" = "#5e5e5e";
+                                            "blue" = "#3b3b3b";
+                                            "magenta" = "#474747";
+                                            "cyan" = "#737373";
+                                            "white" = "#1b1b1b";
+                                        };
+                                        "foreground" = "#1b1b1b";
+                                        "background" = "#f9f9f9";
+                                        "cursor" = "#1b1b1b";
+                                        "cursorText" = "#f9f9f9";
+                                        "selectionFg" = "#474747";
+                                        "selectionBg" = "#e2e2e2";
+                                    };
+                                };
+                            };
+                        };
                         settings = {
+                            accessibility = {
+                                ui_scale = 1.1500000096857548;
+                            };
+
+                            bar = {
+                                default = {
+                                    capsule = true;
+                                    capsule_border = "surface";
+                                    capsule_fill = "surface";
+                                    capsule_foreground = "primary";
+                                    end = [ "tray" "notifications" "network" "bluetooth" "volume" "brightness" "battery" "caffeine" "session" ];
+                                    margin_ends = 0;
+                                    radius = 0;
+                                    scale = 1.4000000134110451;
+                                    start = [ "workspaces" ];
+                                    thickness = 40;
+                                };
+                            };
+
+                            control_center = {
+                                hidden_tabs = [ "weather" "screen-time" ];
+                                shortcuts = [];
+                                width = 1200;
+
+                                calendar = {
+                                    show_events_card = false;
+                                    show_week_numbers = true;
+                                };
+                            };
+
+                            desktop_widgets = {
+                                enabled = false;
+                                schema_version = 2;
+                                widget_order = [];
+                            };
+
+                            idle = {
+                                behavior_order = [ "lock" "screen-off" "Suspend then Hibernate" ];
+                                pre_action_fade_seconds = 0;
+                                behavior = {
+                                    "Suspend then Hibernate" = {
+                                        action = "command";
+                                        command = "systemctl suspend-then-hibernate";
+                                        enabled = true;
+                                        timeout = 3600.0;
+                                    };
+                                    lock = {
+                                        action = "lock";
+                                        enabled = true;
+                                        timeout = 600.0;
+                                    };
+                                    screen-off = {
+                                        action = "screen_off";
+                                        enabled = true;
+                                        timeout = 660.0;
+                                    };
+                                };
+                            };
+
+                            lockscreen = {
+                                blur_intensity = 0.0;
+                                fingerprint = false;
+                                monitors = [ "DP-2" ];
+                                tint_intensity = 0.0;
+                                transition = [ "fade" ];
+                                wallpaper = "${../../assets/lockscreen.png}";
+                            };
+
+                            lockscreen_widgets = {
+                                enabled = true;
+                                schema_version = 2;
+                                widget_order = [ "lockscreen-login-box@DP-2" "lockscreen-login-box@DP-3" "lockscreen-widget-0000000000000001" ];
+
+                                widget = {
+                                    "lockscreen-login-box@DP-2" = {
+                                        box_height = 128.0;
+                                        box_width = 768.0;
+                                        cx = 640.0;
+                                        cy = 784.0;
+                                        output = "DP-2";
+                                        placement_height = 1440.0;
+                                        placement_width = 2560.0;
+                                        rotation = 0.0;
+                                        type = "login_box";
+                                        settings = {
+                                            background_color = "surface_variant";
+                                            background_opacity = 0.88;
+                                            background_radius = 12.0;
+                                            center_password_text = false;
+                                            input_opacity = 1.0;
+                                            input_radius = 6.0;
+                                            layout = "regular";
+                                            show_caps_lock = true;
+                                            show_keyboard_layout = false;
+                                            show_login_button = true;
+                                            show_media = false;
+                                            show_session_buttons = true;
+                                            show_unlock_hint = false;
+                                            show_weather = false;
+                                        };
+                                    };
+                                    "lockscreen-widget-0000000000000001" = {
+                                        box_height = 128.0;
+                                        box_width = 768.0;
+                                        cx = 640.0;
+                                        cy = 656.0;
+                                        output = "DP-2";
+                                        placement_height = 1440.0;
+                                        placement_width = 2560.0;
+                                        rotation = 0.0;
+                                        type = "clock";
+                                        settings = {
+                                            background = false;
+                                            background_opacity = 1.0;
+                                            background_padding = 0;
+                                            background_radius = 0;
+                                            center_text = true;
+                                            clock_style = "digital";
+                                            font_family = "";
+                                            shadow = true;
+                                        };
+                                    };
+                                };
+                            };
+                            shell = {
+                                corner_radius_scale = 0.0;
+                                font_family = "VCR OSD Mono";
+                                polkit_agent = true;
+                                settings_expand_all_groups = true;
+                                launcher = {
+                                    categories = false;
+                                    fetch_exchange_rates = false;
+                                    panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
+                                    providers = {
+                                        emoji = {
+                                            global = false;
+                                        };
+                                        panels = {
+                                            global = true;
+                                        };
+                                        session = {
+                                            global = true;
+                                        };
+                                    };
+                                };
+                                panel = {
+                                    clipboard_placement = "attached";
+                                    control_center_position = "center";
+                                    launcher_placement = "attached";
+                                    polkit_placement = "attached";
+                                    session_position = "center";
+                                };
+                                session = {
+                                    show_shortcuts = false;
+                                    actions = [
+                                        {
+                                            action = "lock";
+                                            countdown_seconds = 0.0;
+                                            enabled = true;
+                                            shortcut = "1";
+                                            variant = "default";
+                                        }
+                                        {
+                                            action = "logout";
+                                            countdown_seconds = 0.0;
+                                            enabled = true;
+                                            shortcut = "2";
+                                            variant = "default";
+                                        }
+                                        {
+                                            action = "reboot";
+                                            countdown_seconds = 0.0;
+                                            enabled = true;
+                                            shortcut = "3";
+                                            variant = "default";
+                                        }
+                                        {
+                                            action = "shutdown";
+                                            countdown_seconds = 0.0;
+                                            enabled = true;
+                                            shortcut = "4";
+                                            variant = "destructive";
+                                        }
+                                    ];
+                                };
+                            };
+                            theme = {
+                                custom_palette = "my-palette";
+                                pure_black_dark = true;
+                                source = "custom";
+                                templates = {
+                                    enable_builtin_templates = false;
+                                    enable_community_templates = false;
+                                };
+                            };
                             wallpaper = {
                                 enabled = true;
-                                default.path = "${../../assets/wallpaper-h.png}";
+                                fill_color = "#000000";
+                                default.path = "${../../assets/wallpaper.jpeg}";
                             };
+
+                            weather.enabled = false;
+
+                            widget.workspaces.style = "minimal";
                         };
                     };
                     nvf = {
@@ -692,12 +990,12 @@
                         enable = true;
                         pinentry.package = pkgs.pinentry-curses;
                     };
-                    mako = {
-                        enable = true;
-                        settings = {
-                            default-timeout = 15000;
-                        };
-                    };
+                    # mako = {
+                    #     enable = true;
+                    #     settings = {
+                    #         default-timeout = 15000;
+                    #     };
+                    # };
                     ssh-agent.enable = true;
                 };
             };
@@ -758,7 +1056,7 @@
         };
 
         security = {
-            pam.services.hyprlock = {};
+            # pam.services.hyprlock = {};
             rtkit.enable = true;
             sudo.extraConfig = ''
                 Defaults pwfeedback
