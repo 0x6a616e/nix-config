@@ -181,7 +181,6 @@
                         };
                     };
                     gpg.enable = true;
-                    # hyprlock.enable = true;
                     kitty = {
                         enable = true;
                         settings = {
@@ -196,9 +195,6 @@
                     nh.enable = true;
                     niri.settings = {
                         binds = {
-                            # "Mod+T".action.spawn = "kitty";
-                            # "Mod+F".action.spawn = "firefox";
-
                             "Mod+K".action.focus-window-or-workspace-up = [ ];
                             "Mod+J".action.focus-window-or-workspace-down = [ ];
                             "Mod+Shift+K".action.move-window-up-or-to-workspace-up = [ ];
@@ -564,15 +560,9 @@
                                     fetch_exchange_rates = false;
                                     panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
                                     providers = {
-                                        emoji = {
-                                            global = false;
-                                        };
-                                        panels = {
-                                            global = true;
-                                        };
-                                        session = {
-                                            global = true;
-                                        };
+                                        emoji.global = false;
+                                        panels.global = true;
+                                        session.global = true;
                                     };
                                     dmenu.entry.password-store = {
                                         command = "find $PASSWORD_STORE_DIR -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
@@ -660,16 +650,6 @@
                                             end
                                         '';
                                     }
-                                    #  {
-                                    #     event = [ "FileType" ];
-                                    #     pattern = [ "qml" ];
-                                    #     callback = lib.generators.mkLuaInline ''
-                                    #         function()
-                                    #             vim.cmd("unlet! b:did_indent")
-                                    #             vim.cmd("runtime! indent/qml.vim")
-                                    #         end
-                                    #     '';
-                                    # }
                                 ];
                                 globals = {
                                     mapleader = " ";
@@ -785,7 +765,6 @@
                                     go.enable = true;
                                     nix.enable = true;
                                     rust.enable = true;
-                                    # qml.enable = true;
                                 };
                                 keymaps = [
                                     {
@@ -885,19 +864,6 @@
                         enable = true;
                         settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
                     };
-                    # quickshell = {
-                    #     enable = true;
-                    #     systemd.enable = true;
-                    #     configs = {
-                    #         "shell.qml" = ../../assets/shell.qml;
-                    #         "Bar.qml" = ../../assets/Bar.qml;
-                    #         "ClockWidget.qml" = ../../assets/ClockWidget.qml;
-                    #         "PowerButton.qml" = ../../assets/PowerButton.qml;
-                    #         "VolumeOSD.qml" = ../../assets/VolumeOSD.qml;
-                    #         "IdleHandler.qml" = ../../assets/IdleHandler.qml;
-                    #         "WifiWidget.qml" = ../../assets/WifiWidget.qml;
-                    #     };
-                    # };
                     ripgrep.enable = true;
                     tmux = {
                         enable = true;
@@ -1031,12 +997,6 @@
                         enable = true;
                         pinentry.package = pkgs.pinentry-qt;
                     };
-                    # mako = {
-                    #     enable = true;
-                    #     settings = {
-                    #         default-timeout = 15000;
-                    #     };
-                    # };
                     ssh-agent.enable = true;
                 };
             };
@@ -1097,7 +1057,6 @@
         };
 
         security = {
-            # pam.services.hyprlock = {};
             rtkit.enable = true;
             sudo.extraConfig = ''
                 Defaults pwfeedback
@@ -1106,7 +1065,6 @@
         };
 
         services = {
-            # displayManager.autoLogin.user = "jan";
             displayManager.ly.enable = true;
             pipewire = {
                 enable = true;
@@ -1145,16 +1103,7 @@
 
         system.stateVersion = "25.05";
 
-        systemd = {
-            sleep.settings.Sleep.HibernateDelaySec = "2h";
-            # user.services.swaybg = {
-            #     after = [ "graphical-session.target" ];
-            #     partOf = [ "graphical-session.target" ];
-            #     requisite = [ "graphical-session.target" ];
-            #     script = "${lib.getExe pkgs.swaybg} -o 'DP-2' -m fill -i ${../../assets/wallpaper-h.png} -o 'DP-3' -m fill -i ${../../assets/wallpaper-v.png}";
-            #     wantedBy = [ "graphical-session.target" ];
-            # };
-        };
+        systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
 
         time.timeZone = "America/Monterrey";
 
