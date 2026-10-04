@@ -1121,6 +1121,7 @@
                 enable = true;
                 authKeyFile = config.sops.secrets."tailscale/authKey".path;
             };
+            udisks2.enable = true;
             upower.enable = true;
             xserver = {
                 enable = true;
