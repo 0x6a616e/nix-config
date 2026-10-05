@@ -1050,6 +1050,37 @@
 
         services = {
             displayManager.ly.enable = true;
+            kanata = {
+                enable = true;
+                keyboards."main" = {
+                    extraDefCfg = "process-unmapped-keys yes";
+                    config = ''
+                        (defsrc
+                            caps a s d f j k l ; esc menu
+                        )
+
+                        (defvar
+                            tap-time 200
+                            hold-time 250
+                        )
+
+                        (defalias
+                            a (tap-hold $tap-time $hold-time a lmet)
+                            s (tap-hold $tap-time $hold-time s lalt)
+                            d (tap-hold $tap-time $hold-time d lsft)
+                            f (tap-hold $tap-time $hold-time f lctl)
+                            j (tap-hold $tap-time $hold-time j lctl)
+                            k (tap-hold $tap-time $hold-time k lsft)
+                            l (tap-hold $tap-time $hold-time l lalt)
+                            ; (tap-hold $tap-time $hold-time ; lmet)
+                        )
+
+                        (deflayer base
+                            esc @a @s @d @f @j @k @l @; grv prtsc
+                        )
+                    '';
+                };
+            };
             pipewire = {
                 enable = true;
                 alsa = {
