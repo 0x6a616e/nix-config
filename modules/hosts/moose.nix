@@ -220,9 +220,9 @@
                             "XF86AudioLowerVolume".action.spawn = ["noctalia" "msg" "volume-down"];
                             "XF86AudioPlay".action.spawn = [ "${lib.getExe pkgs.playerctl}" "play-pause" ];
 
-                            "Mod+Grave".action.toggle-overview = [ ];
+                            "Mod+Tab".action.toggle-overview = [ ];
                             "Mod+Space".action.spawn = [ "noctalia" "msg" "panel-toggle" "launcher" ];
-                            "Mod+Tab".action.spawn = [ "noctalia" "msg" "panel-toggle" "control-center" ];
+                            "Mod+Grave".action.spawn = [ "noctalia" "msg" "panel-toggle" "control-center" ];
 
                             "Print".action.spawn = [ "noctalia" "msg" "screenshot-annotate" ];
                         };
