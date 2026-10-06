@@ -144,10 +144,14 @@
                             rocmSupport = true;
                         };
                         settings = {
+                            color_theme = "catppuccin_mocha";
                             cpu_single_graph = true;
                             gpu_mirror_graph = false;
                             shown_boxes = "cpu mem net proc gpu0";
                             vim_keys = true;
+                        };
+                        themes = {
+                            catppuccin_mocha = builtins.readFile ../../assets/catppuccin_mocha_btop.theme;
                         };
                     };
                     fd.enable = true;
