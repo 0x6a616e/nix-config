@@ -723,7 +723,10 @@
                                 };
                                 utility = {
                                     undotree.enable = true;
-                                    yazi-nvim.enable = true;
+                                    oil-nvim = {
+                                        enable = true;
+                                        gitStatus.enable = true;
+                                    };
                                 };
                                 ui.smartcolumn = {
                                     enable = true;
@@ -838,6 +841,11 @@
                                         key = "K";
                                         action = "vim.lsp.buf.hover";
                                         lua = true;
+                                    }
+                                    {
+                                        mode = "n";
+                                        key = "<leader>-";
+                                        action = ":Oil<CR>";
                                     }
                                     {
                                         mode = "n";
