@@ -870,7 +870,7 @@
                         terminal = "tmux-256color";
                         extraConfig = ''
                             # ask for name on window creation
-                            bind-key c command-prompt "new-window -n '%%'"
+                            bind-key c command-prompt "new-window -n '%%' -c '#{pane_current_path}'"
 
                             # rename starts empty
                             bind-key , command-prompt "rename-window '%%'"
