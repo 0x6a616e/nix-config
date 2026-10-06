@@ -642,6 +642,11 @@
                             vim = {
                                 viAlias = true;
                                 vimAlias = true;
+                                theme = {
+                                    enable = true;
+                                    name = "catppuccin";
+                                    style = "mocha";
+                                };
                                 autocmds = [
                                     {
                                         event = [ "TextYankPost" ];
