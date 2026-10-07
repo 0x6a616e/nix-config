@@ -872,6 +872,50 @@
                         settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
                     };
                     ripgrep.enable = true;
+                    superfile = {
+                        enable = true;
+                        settings = {
+                            editor = "";
+                            dir_editor = "";
+                            auto_check_update = false;
+                            cd_on_quit = false;
+                            default_open_file_preview = true;
+                            show_image_preview = true;
+                            show_panel_footer_info = true;
+                            default_directory = ".";
+                            file_size_use_si = false;
+                            default_sort_type = 0;
+                            sort_order_reversed = false;
+                            case_sensitive_sort = false;
+                            shell_close_on_success = false;
+                            page_scroll_size = 0;
+                            debug = false;
+                            ignore_missing_fields = false;
+                            file_panel_extra_columns = 0;
+                            file_panel_name_percent = 50;
+                            theme = "catppuccin-mocha";
+                            code_previewer = "bat";
+                            nerdfont = true;
+                            show_select_icons = true;
+                            transparent_background = false;
+                            file_preview_width = 0;
+                            enable_file_preview_border = false;
+                            sidebar_width = 20;
+                            sidebar_sections = [ "home" "pinned" "disks" ];
+                            border_top = "─";
+                            border_bottom = "─";
+                            border_left = "│";
+                            border_right = "│";
+                            border_top_left = "╭";
+                            border_top_right = "╮";
+                            border_bottom_left = "╰";
+                            border_bottom_right = "╯";
+                            border_middle_left = "├";
+                            border_middle_right = "┤";
+                            metadata = true;
+                            zoxide_support = true;
+                        };
+                    };
                     tmux = {
                         enable = true;
                         baseIndex = 1;
@@ -939,16 +983,6 @@
                             set-option -ug message-style
                             set-option -ug message-command-style
                         '';
-                    };
-                    yazi = {
-                        enable = true;
-                        enableZshIntegration = true;
-                        shellWrapperName = "yy";
-                        settings = {
-                            mgr = {
-                                show_hidden = true;
-                            };
-                        };
                     };
                     zoxide = {
                         enable = true;
