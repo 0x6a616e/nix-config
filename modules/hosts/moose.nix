@@ -917,7 +917,25 @@
                             zoxide_support = true;
                         };
                     };
-                    tmux = {
+                    tmux = let
+                        session-manager = pkgs.writeShellApplication {
+                            name = "session-manager";
+                            runtimeInputs = [
+                                pkgs.coreutils
+                                pkgs.fzf
+                                pkgs.tmux
+                            ];
+                            bashOptions = [
+                                "nounset"
+                                "pipefail"
+                            ];
+                            text = /* bash */ ''
+                                SESSION="$(tmux ls -F '#{session_name}' -O 'activity' | fzf --print-query | tail -n 1)"
+                                tmux new -d -s "$SESSION" 2> /dev/null
+                                tmux switch -t "$SESSION"
+                            '';
+                        };
+                    in {
                         enable = true;
                         baseIndex = 1;
                         clock24 = true;
@@ -927,6 +945,9 @@
                         shortcut = "a";
                         terminal = "tmux-256color";
                         extraConfig = ''
+                            bind-key g display-popup -w 90% -h 90% -d '#{pane_current_path}' -E "${lib.getExe pkgs.lazygit}"
+                            bind-key s display-popup -w 20% -h 20% -E "${session-manager}/bin/session-manager"
+
                             # ask for name on window creation
                             bind-key c command-prompt "new-window -n '%%' -c '#{pane_current_path}'"
 
