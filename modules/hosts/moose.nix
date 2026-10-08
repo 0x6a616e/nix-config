@@ -913,6 +913,7 @@
                             border_middle_left = "├";
                             border_middle_right = "┤";
                             metadata = true;
+                            enable_md5_checksum = false;
                             zoxide_support = true;
                         };
                     };
