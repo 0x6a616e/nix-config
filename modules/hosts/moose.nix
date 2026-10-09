@@ -16,7 +16,6 @@
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
             inputs.home-manager.nixosModules.home-manager
-            inputs.niri-flake.nixosModules.niri
             inputs.noctalia.nixosModules.default
             inputs.sops-nix.nixosModules.sops
             inputs.umbriel.nixosModules.default
@@ -133,8 +132,6 @@
                         pkgs.nautilus
                         pkgs.rose-pine-cursor
                         pkgs.wl-clipboard
-                        pkgs.xwayland
-                        pkgs.xwayland-satellite
                     ];
                     stateVersion = "25.05";
                 };
@@ -201,107 +198,6 @@
                         enableZshIntegration = true;
                     };
                     nh.enable = true;
-                    niri.settings = {
-                        binds = {
-                            "Mod+K".action.focus-window-or-workspace-up = [ ];
-                            "Mod+J".action.focus-window-or-workspace-down = [ ];
-                            "Mod+Shift+K".action.move-window-up-or-to-workspace-up = [ ];
-                            "Mod+Shift+J".action.move-window-down-or-to-workspace-down = [ ];
-
-                            "Mod+L".action.focus-column-right = [ ];
-                            "Mod+H".action.focus-column-left = [ ];
-                            "Mod+Shift+L".action.move-column-right = [ ];
-                            "Mod+Shift+H".action.move-column-left = [ ];
-                            "Mod+Shift+Alt+L".action.consume-or-expel-window-right = [ ];
-                            "Mod+Shift+Alt+H".action.consume-or-expel-window-left = [ ];
-
-                            "Mod+Shift+backslash".action.switch-preset-column-width = [ ];
-
-                            "Mod+1".action.focus-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
-                            "Mod+2".action.focus-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
-                            "Mod+Shift+1".action.move-window-to-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
-                            "Mod+Shift+2".action.move-window-to-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
-                            "Mod+Shift+Alt+1".action.move-column-to-monitor = "PNP(TRG) ZQ27F240L-CB W00W97R75PV26";
-                            "Mod+Shift+Alt+2".action.move-column-to-monitor = "PNP(TRG) CF25F300L 0R00D9R2QULMT";
-
-                            "XF86AudioRaiseVolume".action.spawn = ["noctalia" "msg" "volume-up"];
-                            "XF86AudioLowerVolume".action.spawn = ["noctalia" "msg" "volume-down"];
-                            "XF86AudioPlay".action.spawn = [ "${lib.getExe pkgs.playerctl}" "play-pause" ];
-
-                            "Mod+Tab".action.toggle-overview = [ ];
-                            "Mod+Space".action.spawn = [ "noctalia" "msg" "panel-toggle" "launcher" ];
-                            "Mod+Grave".action.spawn = [ "noctalia" "msg" "panel-toggle" "control-center" ];
-
-                            "Print".action.spawn = [ "noctalia" "msg" "screenshot-annotate" ];
-                        };
-
-                        cursor = {
-                            hide-when-typing = true;
-                            theme = "BreezeX-RosePine-Linux";
-                            size = 40;
-                        };
-
-                        hotkey-overlay.skip-at-startup = true;
-
-                        input = {
-                            keyboard.xkb.options = "compose:ralt";
-                            mouse.accel-profile = "flat";
-                        };
-
-                        layout = {
-                            default-column-width = {
-                                proportion = 1.;
-                            };
-
-                            focus-ring.active = { color = "#FFFFFF"; };
-
-                            preset-column-widths = [
-                                { proportion = 1. / 2.; }
-                                { proportion = 1.; }
-                            ];
-                        };
-
-                        outputs = {
-                            "PNP(TRG) ZQ27F240L-CB W00W97R75PV26" = {
-                                mode = {
-                                    height = 1440;
-                                    width = 2560;
-                                    refresh = 240.002;
-                                };
-                                focus-at-startup = true;
-                                position = {
-                                    x = 0;
-                                    y = 0;
-                                };
-                            };
-
-                            "PNP(TRG) CF25F300L 0R00D9R2QULMT" = {
-                                mode = {
-                                    height = 1080;
-                                    width = 1920;
-                                    refresh = 239.998;
-                                };
-                                transform.rotation = 90;
-                                position = {
-                                    x = 2560;
-                                    y = 0;
-                                };
-                            };
-                        };
-
-                        overview.backdrop-color = "#000000";
-
-                        prefer-no-csd = true;
-
-                        recent-windows.binds = {
-                            "Alt+Tab".action.next-window = [ ];
-                            "Alt+grave".action.next-window = { filter = "app-id"; };
-                        };
-
-                        spawn-at-startup = [
-                            { argv = [ "noctalia" ]; }
-                        ];
-                    };
                     noctalia = {
                         enable = true;
                         customPalettes = {
@@ -1154,8 +1050,6 @@
             useDHCP = lib.mkDefault true;
         };
 
-        niri-flake.cache.enable = false;
-
         nix.settings = {
             auto-optimise-store = true;
             experimental-features = [ "nix-command" "flakes" ];
@@ -1168,16 +1062,11 @@
             };
             hostPlatform = lib.mkDefault "x86_64-linux";
             overlays = [
-                inputs.niri-flake.overlays.niri
                 self.overlays.default
             ];
         };
 
         programs = {
-            niri = {
-                enable = true;
-                package = pkgs.niri-stable;
-            };
             noctalia = {
                 enable = true;
                 recommendedServices.enable = true;

@@ -12,10 +12,6 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         import-tree.url = "github:vic/import-tree";
-        niri-flake = {
-            url = "github:epireyn/niri-flake";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         noctalia = {
             url = "github:noctalia-dev/noctalia";
