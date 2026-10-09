@@ -19,6 +19,7 @@
             inputs.niri-flake.nixosModules.niri
             inputs.noctalia.nixosModules.default
             inputs.sops-nix.nixosModules.sops
+            inputs.umbriel.nixosModules.default
         ];
 
         boot = {
@@ -113,6 +114,7 @@
                 imports = [
                     inputs.noctalia.homeModules.default
                     inputs.nvf.homeManagerModules.default
+                    inputs.umbriel.homeModules.default
                 ];
 
                 fonts.fontconfig = {
@@ -131,6 +133,7 @@
                         pkgs.nautilus
                         pkgs.rose-pine-cursor
                         pkgs.wl-clipboard
+                        pkgs.xwayland
                         pkgs.xwayland-satellite
                     ];
                     stateVersion = "25.05";
@@ -919,7 +922,7 @@
                         terminal = "tmux-256color";
                         extraConfig = ''
                             bind-key g display-popup -w 90% -h 90% -d '#{pane_current_path}' -E "${lib.getExe pkgs.lazygit}"
-                            bind-key s display-popup -w 20% -h 20% -E "${session-manager}/bin/session-manager"
+                            bind-key s display-popup -w 50% -h 50% -E "${session-manager}/bin/session-manager"
 
                             # ask for name on window creation
                             bind-key c command-prompt "new-window -n '%%' -c '#{pane_current_path}'"
@@ -978,6 +981,97 @@
                             set-option -ug message-style
                             set-option -ug message-command-style
                         '';
+                    };
+                    umbriel = {
+                        enable = true;
+                        settings = {
+                            appearance = {
+                                border_width = 3;
+                                corner_radius = 0;
+                            };
+                            colors = {
+                                border.focused = "#FFFFFF";
+                                overview.badge = "#FFFFFF";
+                            };
+                            general = {
+                                autostart = [ "noctalia" ];
+                                show_cheatsheet = false;
+                            };
+                            input = {
+                                cursor = {
+                                    hide_when_typing = true;
+                                    theme = "BreezeX-RosePine-Linux";
+                                    size = 40;
+                                };
+                                keyboard.options = "compose:ralt";
+                                mouse.accel_profile = "flat";
+                            };
+                            keybinds = {
+                                "Mod+Shift+Backslash" = "window-cycle-primary-extent";
+
+                                "Mod+K" = "window-focus-or-workspace-up";
+                                "Mod+J" = "window-focus-or-workspace-down";
+                                "Mod+Shift+K" = "window-move-or-workspace-up";
+                                "Mod+Shift+J" = "window-move-or-workspace-down";
+
+                                "Mod+H" = "window-focus-left";
+                                "Mod+L" = "window-focus-right";
+                                "Mod+Shift+H" = "column-move-left";
+                                "Mod+Shift+L" = "column-move-right";
+                                "Mod+Shift+Alt+H" = "window-consume-or-expel-left";
+                                "Mod+Shift+Alt+L" = "window-consume-or-expel-right";
+
+                                "Mod+1" = "output-focus-left";
+                                "Mod+2" = "output-focus-right";
+                                "Mod+Shift+1" = "window-move-to-output-left";
+                                "Mod+Shift+2" = "window-move-to-output-right";
+                                "Mod+Shift+Alt+1" = "column-move-to-output-left";
+                                "Mod+Shift+Alt+2" = "column-move-to-output-right";
+
+                                "Mod+Tab" = "overview-toggle";
+
+                                "Mod+T" = "scratchpad-toggle:terminal";
+                                "Mod+Shift+T" = "window-toggle-scratchpad:terminal";
+
+                                "Mod+Grave" = "spawn:noctalia msg panel-toggle control-center";
+                                "Mod+Space" = "spawn:noctalia msg panel-toggle launcher";
+                                "Print" = "spawn:noctalia msg screenshot-annotate";
+
+                                "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
+                                "XF86AudioLowerVolume" = "spawn:noctalia msg volume-down";
+                                "XF86AudioPlay" = "spawn:${lib.getExe pkgs.playerctl} play-pause";
+                            };
+                            layout = {
+                                mode = "scrolling";
+                                extent_presets = [ (1. / 3.) (1. / 2.) (2. / 3.) 1. ];
+                                scrolling.default_extent_fraction = 1.;
+                            };
+                            output = {
+                                DP-1 = {
+                                    focus_at_startup = true;
+                                    mode = "2560x1440@240.002";
+                                    position = [ 0 0 ];
+                                };
+                                DP-2 = {
+                                    mode = "1920x1080@239.998";
+                                    transform = "90";
+                                    position = [ 2560 0 ];
+                                };
+                            };
+                            scratchpad = [
+                                {
+                                    name = "terminal";
+                                    spawn_when_empty = "${lib.getExe pkgs.kitty} --app-id=scratchpad-terminal ${lib.getExe pkgs.tmux} new -As main";
+                                }
+                            ];
+                            window_rule = [
+                                {
+                                    match.app_id = "^scratchpad-terminal$";
+                                    default_scratchpad = "terminal";
+                                    default_scrolling_extent = 2. / 3.;
+                                }
+                            ];
+                        };
                     };
                     zoxide = {
                         enable = true;
@@ -1089,6 +1183,7 @@
                 recommendedServices.enable = true;
             };
             steam.enable = true;
+            umbriel.enable = true;
             zsh.enable = true;
         };
 
