@@ -3,7 +3,6 @@
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
-            inputs.home-manager.nixosModules.home-manager
         ];
 
         boot = {
@@ -42,31 +41,45 @@
                             mountOptions = [ "umask=0077" ];
                         };
                     };
-                    swap = {
-                        size = "16G";
-                        content = {
-                            type = "swap";
-                            discardPolicy = "both";
-                        };
-                    };
-                    root = {
+                    luks = {
                         size = "100%";
                         content = {
-                            type = "btrfs";
-                            extraArgs = [ "-f" ];
-                            subvolumes = {
-                                "/rootfs" = {
-                                    mountpoint = "/";
-                                };
-                                "/nix" = {
-                                    mountOptions = [
-                                        "compress=zstd"
-                                        "noatime"
-                                    ];
-                                    mountpoint = "/nix";
+                            type = "luks";
+                            name = "crypted";
+                            settings.allowDiscards = true;
+                            passwordFile = "/tmp/secret.key";
+                            content = {
+                                type = "gpt";
+                                partitions = {
+                                    swap = {
+                                        size = "32G";
+                                        content = {
+                                            type = "swap";
+                                            discardPolicy = "both";
+                                        };
+                                    };
+                                    root = {
+                                        size = "100%";
+                                        content = {
+                                            type = "btrfs";
+                                            extraArgs = [ "-f" ];
+                                            subvolumes = {
+                                                "/rootfs" = {
+                                                    mountpoint = "/";
+                                                };
+                                                "/nix" = {
+                                                    mountOptions = [
+                                                        "compress=zstd"
+                                                        "noatime"
+                                                    ];
+                                                    mountpoint = "/nix";
+                                                };
+                                            };
+                                            mountpoint = "/partition-root";
+                                        };
+                                    };
                                 };
                             };
-                            mountpoint = "/partition-root";
                         };
                     };
                 };
