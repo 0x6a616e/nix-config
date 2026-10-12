@@ -74,7 +74,6 @@
                                                     mountpoint = "/nix";
                                                 };
                                             };
-                                            mountpoint = "/partition-root";
                                         };
                                     };
                                 };
