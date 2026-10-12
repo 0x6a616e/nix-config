@@ -20,6 +20,7 @@
                         wantedBy = [ "initrd.target" ];
                         after = [ "cryptsetup.target" ];
                         before = [ "local-fs-pre.target" ];
+                        unitConfig.DefaultDependencies = false;
                         serviceConfig.Type = "oneshot";
                         script = ''
                             partprobe /dev/mapper/crypted
