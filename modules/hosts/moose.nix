@@ -136,13 +136,15 @@
                     stateVersion = "25.05";
                 };
 
+                nixpkgs.config = {
+                    allowUnfree = config.nixpkgs.config.allowUnfree;
+                    rocmSupport = config.nixpkgs.config.rocmSupport;
+                };
+
                 programs = {
                     bat.enable = true;
                     btop = {
                         enable = true;
-                        package = pkgs.btop.override {
-                            rocmSupport = true;
-                        };
                         settings = {
                             color_theme = "catppuccin_mocha";
                             cpu_single_graph = true;
