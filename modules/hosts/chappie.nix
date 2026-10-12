@@ -10,6 +10,22 @@
             initrd = {
                 availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci_renesas" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
                 kernelModules = [ ];
+                systemd = {
+                    enable = true;
+                    initrdBin = [
+                        pkgs.parted
+                    ];
+                    services.partprobe-gpt = {
+                        description = "partprobe the luks-crypted device";
+                        wantedBy = [ "initrd.target" ];
+                        after = [ "cryptsetup.target" ];
+                        before = [ "local-fs-pre.target" ];
+                        serviceConfig.Type = "oneshot";
+                        script = ''
+                            partprobe /dev/mapper/crypted
+                        '';
+                    };
+                };
             };
             kernelModules = [ "kvm-amd" ];
             kernelPackages = pkgs.linuxPackages_latest;
@@ -32,7 +48,7 @@
                         priority = 1;
                         name = "ESP";
                         start = "1M";
-                        size = "4G";
+                        size = "1G";
                         type = "EF00";
                         content = {
                             type = "filesystem";
