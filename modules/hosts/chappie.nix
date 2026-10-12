@@ -66,13 +66,6 @@
                             content = {
                                 type = "gpt";
                                 partitions = {
-                                    swap = {
-                                        size = "32G";
-                                        content = {
-                                            type = "swap";
-                                            discardPolicy = "both";
-                                        };
-                                    };
                                     root = {
                                         size = "100%";
                                         content = {
@@ -90,6 +83,13 @@
                                                     mountpoint = "/nix";
                                                 };
                                             };
+                                        };
+                                    };
+                                    swap = {
+                                        size = "32G";
+                                        content = {
+                                            type = "swap";
+                                            discardPolicy = "both";
                                         };
                                     };
                                 };
