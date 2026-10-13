@@ -102,6 +102,7 @@
         };
 
         hardware = {
+            bluetooth.enable = true;
             cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             graphics = {
                 enable = true;
@@ -137,10 +138,18 @@
         };
 
         nixpkgs = {
+            config.allowUnfree = true;
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
-        programs.zsh.enable = true;
+        programs = {
+            # noctalia = {
+            #     enable = true;
+            #     recommendedServices.enable = true;
+            # };
+            # umbriel.enable = true;
+            zsh.enable = true;
+        };
 
         security = {
             rtkit.enable = true;
@@ -151,6 +160,38 @@
         };
 
         services = {
+            displayManager.ly.enable = true;
+            kanata = {
+                enable = true;
+                keyboards."main" = {
+                    extraDefCfg = "process-unmapped-keys yes";
+                    config = ''
+                        (defsrc
+                            caps a s d f j k l ;
+                        )
+
+                        (defvar
+                            tap-time 200
+                            hold-time 250
+                        )
+
+                        (defalias
+                            a (tap-hold $tap-time $hold-time a lmet)
+                            s (tap-hold $tap-time $hold-time s lalt)
+                            d (tap-hold $tap-time $hold-time d lsft)
+                            f (tap-hold $tap-time $hold-time f lctl)
+                            j (tap-hold $tap-time $hold-time j lctl)
+                            k (tap-hold $tap-time $hold-time k lsft)
+                            l (tap-hold $tap-time $hold-time l lalt)
+                            ; (tap-hold $tap-time $hold-time ; lmet)
+                        )
+
+                        (deflayer hrm
+                            esc @a @s @d @f @j @k @l @; 
+                        )
+                    '';
+                };
+            };
             pipewire = {
                 enable = true;
                 alsa = {
@@ -159,6 +200,13 @@
                 };
                 pulse.enable = true;
             };
+            power-profiles-daemon.enable = true;
+            #             tailscale = {
+            #                 enable = true;
+            #                 authKeyFile = config.sops.secrets."tailscale/authKey".path;
+            #             };
+            udisks2.enable = true;
+            upower.enable = true;
             xserver = {
                 enable = true;
                 videoDrivers = [ "amdgpu" ];
@@ -169,7 +217,19 @@
             };
         };
 
+        #         sops = {
+        #             defaultSopsFile = ../../secrets/secrets.yaml;
+        #             age.keyFile = "/etc/sops/age/keys.txt";
+        #             secrets = {
+        #                 "tailscale/authKey" = { };
+        #                 "users/jan/password" = { };
+        #                 "users/jan/password".neededForUsers = true;
+        #             };
+        #         };
+
         system.stateVersion = "25.05";
+
+        systemd.sleep.settings.Sleep.HibernateDelaySec = "1h";
 
         time.timeZone = "America/Monterrey";
 
@@ -181,6 +241,7 @@
                 extraGroups = [ "networkmanager" "wheel" ];
                 shell = pkgs.zsh;
                 password = "12345678";
+#               hashedPasswordFile = config.sops.secrets."users/jan/password".path;
             };
         };
     };
