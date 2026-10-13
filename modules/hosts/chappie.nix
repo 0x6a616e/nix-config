@@ -3,6 +3,10 @@
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
+            inputs.sops-nix.nixosModules.sops
+            # inputs.home-manager.nixosModules.home-manager
+            # inputs.noctalia.nixosModules.default
+            # inputs.umbriel.nixosModules.default
         ];
 
         boot = {
