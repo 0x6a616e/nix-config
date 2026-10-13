@@ -434,11 +434,6 @@
                                     categories = false;
                                     fetch_exchange_rates = false;
                                     panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
-                                    providers = {
-                                        emoji.global = false;
-                                        panels.global = true;
-                                        session.global = true;
-                                    };
                                     dmenu.entry.password-store = {
                                         command = "find $PASSWORD_STORE_DIR -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
                                         label = "Password Store";
