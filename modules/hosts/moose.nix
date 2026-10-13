@@ -1,16 +1,4 @@
 { self, inputs, ... }: {
-    flake.overlays.default = _: prev: {
-        vcr-osd-mono = prev.stdenvNoCC.mkDerivation {
-            pname = "VCR-OSD-Mono";
-            version = "1.0";
-            src = ../../assets/VCR_OSD_MONO_1.001.ttf;
-            dontUnpack = true;
-            installPhase = ''
-                install -Dm644 $src $out/share/fonts/truetype/VCR-OSD-Mono.ttf
-            '';
-        };
-    };
-
     flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
@@ -89,12 +77,6 @@
             };
         };
 
-        fonts.packages = [
-            pkgs.dejavu_fonts
-            pkgs.nerd-fonts.jetbrains-mono
-            pkgs.vcr-osd-mono
-        ];
-
         hardware = {
             amdgpu.opencl.enable = true;
             bluetooth.enable = true;
@@ -109,6 +91,16 @@
             useUserPackages = true;
             users.jan = let
                 homeConfig = config.home-manager.users.jan;
+                vcr-osd-mono = pkgs.stdenvNoCC.mkDerivation {
+                    pname = "VCR-OSD-Mono";
+                    version = "1.0";
+                    src = ../../assets/VCR_OSD_MONO_1.001.ttf;
+                    dontUnpack = true;
+                    installPhase = ''
+                        install -Dm644 $src $out/share/fonts/truetype/VCR-OSD-Mono.ttf
+                    '';
+                };
+
             in {
                 imports = [
                     inputs.noctalia.homeModules.default
@@ -132,6 +124,9 @@
                         pkgs.nautilus
                         pkgs.rose-pine-cursor
                         pkgs.wl-clipboard
+                        pkgs.dejavu_fonts
+                        pkgs.nerd-fonts.jetbrains-mono
+                        vcr-osd-mono
                     ];
                     stateVersion = "25.05";
                 };
@@ -1063,9 +1058,6 @@
                 rocmSupport = true;
             };
             hostPlatform = lib.mkDefault "x86_64-linux";
-            overlays = [
-                self.overlays.default
-            ];
         };
 
         programs = {
