@@ -201,10 +201,10 @@
                 pulse.enable = true;
             };
             power-profiles-daemon.enable = true;
-            #             tailscale = {
-            #                 enable = true;
-            #                 authKeyFile = config.sops.secrets."tailscale/authKey".path;
-            #             };
+            tailscale = {
+                enable = true;
+                authKeyFile = config.sops.secrets."tailscale/authKey".path;
+            };
             udisks2.enable = true;
             upower.enable = true;
             xserver = {
@@ -217,15 +217,15 @@
             };
         };
 
-        #         sops = {
-        #             defaultSopsFile = ../../secrets/secrets.yaml;
-        #             age.keyFile = "/etc/sops/age/keys.txt";
-        #             secrets = {
-        #                 "tailscale/authKey" = { };
-        #                 "users/jan/password" = { };
-        #                 "users/jan/password".neededForUsers = true;
-        #             };
-        #         };
+        sops = {
+            defaultSopsFile = ../../secrets/secrets.yaml;
+            age.keyFile = "/etc/sops/age/keys.txt";
+            secrets = {
+                "tailscale/authKey" = { };
+                "users/jan/password" = { };
+                "users/jan/password".neededForUsers = true;
+            };
+        };
 
         system.stateVersion = "25.05";
 
@@ -240,8 +240,7 @@
                 description = "Jan";
                 extraGroups = [ "networkmanager" "wheel" ];
                 shell = pkgs.zsh;
-                password = "12345678";
-#               hashedPasswordFile = config.sops.secrets."users/jan/password".path;
+                hashedPasswordFile = config.sops.secrets."users/jan/password".path;
             };
         };
     };
