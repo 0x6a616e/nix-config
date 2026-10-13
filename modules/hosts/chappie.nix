@@ -196,6 +196,11 @@
                     '';
                 };
             };
+            logind.settings.Login = {
+                HandlePowerKey = "suspend-then-hibernate";
+                HandleLidSwitch = "suspend-then-hibernate";
+                HandleLidSwitchExternalPower = "suspend-then-hibernate";
+            };
             pipewire = {
                 enable = true;
                 alsa = {
