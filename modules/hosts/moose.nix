@@ -7,6 +7,8 @@
             inputs.noctalia.nixosModules.default
             inputs.sops-nix.nixosModules.sops
             inputs.umbriel.nixosModules.default
+
+            self.nixosModules.fonts
         ];
 
         boot = {
@@ -91,31 +93,12 @@
             useUserPackages = true;
             users.jan = let
                 homeConfig = config.home-manager.users.jan;
-                vcr-osd-mono = pkgs.stdenvNoCC.mkDerivation {
-                    pname = "VCR-OSD-Mono";
-                    version = "1.0";
-                    src = ../../assets/VCR_OSD_MONO_1.001.ttf;
-                    dontUnpack = true;
-                    installPhase = ''
-                        install -Dm644 $src $out/share/fonts/truetype/VCR-OSD-Mono.ttf
-                    '';
-                };
-
             in {
                 imports = [
                     inputs.noctalia.homeModules.default
                     inputs.nvf.homeManagerModules.default
                     inputs.umbriel.homeModules.default
                 ];
-
-                fonts.fontconfig = {
-                    enable = true;
-                    defaultFonts = {
-                        monospace = [ "JetBrainsMono Nerd Font" ];
-                        sansSerif = [ "DejaVu Sans" ];
-                        serif = [ "DejaVu Serif" ];
-                    };
-                };
 
                 home = {
                     username = "jan";
@@ -124,9 +107,6 @@
                         pkgs.nautilus
                         pkgs.rose-pine-cursor
                         pkgs.wl-clipboard
-                        pkgs.dejavu_fonts
-                        pkgs.nerd-fonts.jetbrains-mono
-                        vcr-osd-mono
                     ];
                     stateVersion = "25.05";
                 };
