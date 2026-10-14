@@ -118,11 +118,11 @@
                 };
 
                 programs = {
-                    fzf = {
-                        enable = true;
-                        enableZshIntegration = true;
-                        tmux.enableShellIntegration = true;
-                    };
+                    # fzf = {
+                    #     enable = true;
+                    #     enableZshIntegration = true;
+                    #     tmux.enableShellIntegration = true;
+                    # };
                     git = {
                         enable = true;
                         settings = {
