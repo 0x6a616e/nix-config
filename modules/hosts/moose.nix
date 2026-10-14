@@ -11,6 +11,7 @@
                 firefox
                 fonts
                 git
+                kitty
         ]);
 
         boot = {
@@ -125,14 +126,6 @@
                     #     tmux.enableShellIntegration = true;
                     # };
                     # gpg.enable = true;
-                    kitty = {
-                        enable = true;
-                        themeFile = "Catppuccin-Mocha";
-                        settings = {
-                            window_padding_width = 5;
-                        };
-                        shellIntegration.enableZshIntegration = true;
-                    };
                     lazygit = {
                         enable = true;
                         enableZshIntegration = true;
