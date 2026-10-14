@@ -10,6 +10,7 @@
         ] ++ (with self.nixosModules; [
                 firefox
                 fonts
+                git
         ]);
 
         boot = {
@@ -123,18 +124,6 @@
                     #     enableZshIntegration = true;
                     #     tmux.enableShellIntegration = true;
                     # };
-                    git = {
-                        enable = true;
-                        settings = {
-                            init = {
-                                defaultBranch = "main";
-                            };
-                            user = {
-                                name = "jan";
-                                email = "jan.reyes.contact@gmail.com";
-                            };
-                        };
-                    };
                     gpg.enable = true;
                     kitty = {
                         enable = true;
