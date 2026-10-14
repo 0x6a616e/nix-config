@@ -7,9 +7,10 @@
             inputs.noctalia.nixosModules.default
             inputs.sops-nix.nixosModules.sops
             inputs.umbriel.nixosModules.default
-
-            self.nixosModules.fonts
-        ];
+        ] ++ (with self.nixosModules; [
+                firefox
+                fonts
+        ]);
 
         boot = {
             extraModulePackages = [ ];
@@ -117,33 +118,6 @@
                 };
 
                 programs = {
-                    bat.enable = true;
-                    btop = {
-                        enable = true;
-                        settings = {
-                            color_theme = "catppuccin_mocha";
-                            cpu_single_graph = true;
-                            gpu_mirror_graph = false;
-                            shown_boxes = "cpu mem net proc gpu0";
-                            vim_keys = true;
-                        };
-                        themes = {
-                            catppuccin_mocha = builtins.readFile ../../assets/catppuccin_mocha_btop.theme;
-                        };
-                    };
-                    fd.enable = true;
-                    firefox = {
-                        enable = true;
-                        configPath = ".mozilla/firefox";
-                        profiles.main = {
-                            bookmarks = {
-                                force = true;
-                                settings = [
-                                    { name = "NixOs Search"; url = "https://search.nixos.org/packages?channel=unstable"; keyword = "ns"; }
-                                ];
-                            };
-                        };
-                    };
                     fzf = {
                         enable = true;
                         enableZshIntegration = true;
