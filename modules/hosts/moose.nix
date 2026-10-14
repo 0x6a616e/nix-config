@@ -352,10 +352,10 @@
                             };
                         };
                     };
-                    # password-store = {
-                    #     enable = true;
-                    #     settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
-                    # };
+                    password-store = {
+                        enable = true;
+                        settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
+                    };
                     superfile = {
                         enable = true;
                         settings = {
