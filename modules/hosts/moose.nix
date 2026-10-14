@@ -130,7 +130,6 @@
                         enable = true;
                         enableZshIntegration = true;
                     };
-                    nh.enable = true;
                     noctalia = {
                         enable = true;
                         customPalettes = {
@@ -992,6 +991,7 @@
         };
 
         programs = {
+            nh.enable = true;
             noctalia = {
                 enable = true;
                 recommendedServices.enable = true;
