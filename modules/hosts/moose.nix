@@ -124,7 +124,7 @@
                     #     enableZshIntegration = true;
                     #     tmux.enableShellIntegration = true;
                     # };
-                    gpg.enable = true;
+                    # gpg.enable = true;
                     kitty = {
                         enable = true;
                         themeFile = "Catppuccin-Mocha";
@@ -377,14 +377,14 @@
                                     categories = false;
                                     fetch_exchange_rates = false;
                                     panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
-                                    dmenu.entry.password-store = {
-                                        command = "find $PASSWORD_STORE_DIR -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
-                                        label = "Password Store";
-                                        prefix = "pass";
-                                        glyph = "key";
-                                        global = false;
-                                        exec = "${lib.getExe pkgs.pass} -c '{selection}'";
-                                    };
+                                    # dmenu.entry.password-store = {
+                                    #     command = "find $PASSWORD_STORE_DIR -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
+                                    #     label = "Password Store";
+                                    #     prefix = "pass";
+                                    #     glyph = "key";
+                                    #     global = false;
+                                    #     exec = "${lib.getExe pkgs.pass} -c '{selection}'";
+                                    # };
                                 };
                                 panel = {
                                     clipboard_placement = "attached";
@@ -674,10 +674,10 @@
                             };
                         };
                     };
-                    password-store = {
-                        enable = true;
-                        settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
-                    };
+                    # password-store = {
+                    #     enable = true;
+                    #     settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
+                    # };
                     ripgrep.enable = true;
                     superfile = {
                         enable = true;
@@ -954,10 +954,10 @@
                 };
 
                 services = {
-                    gpg-agent = {
-                        enable = true;
-                        pinentry.package = pkgs.pinentry-qt;
-                    };
+                    # gpg-agent = {
+                    #     enable = true;
+                    #     pinentry.package = pkgs.pinentry-qt;
+                    # };
                     ssh-agent.enable = true;
                 };
             };
