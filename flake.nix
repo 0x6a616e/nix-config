@@ -29,7 +29,10 @@
             url = "github:noctalia-dev/umbriel";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        wrappers.url = "github:nix-community/nix-wrapper-modules";
+        wrappers = {
+            url = "github:nix-community/nix-wrapper-modules";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
