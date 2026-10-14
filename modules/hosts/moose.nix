@@ -126,10 +126,6 @@
                     #     tmux.enableShellIntegration = true;
                     # };
                     # gpg.enable = true;
-                    lazygit = {
-                        enable = true;
-                        enableZshIntegration = true;
-                    };
                     noctalia = {
                         enable = true;
                         customPalettes = {
