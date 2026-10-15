@@ -15,7 +15,7 @@
                 lockscreen_widgets = {
                     enabled = true;
                     schema_version = 2;
-                    widget_order = [ "lockscreen-login-box@DP-1" "lockscreen-login-box@DP-2" "lockscreen-widget-0000000000000001" ];
+                    widget_order = [ "lockscreen-login-box@DP-2" "lockscreen-login-box@DP-1" "lockscreen-widget-0000000000000001" ];
 
                     grid = {
                         cell_size = 16;
@@ -52,13 +52,13 @@
                             };
                         };
                         "lockscreen-login-box@DP-2" = {
-                            box_height = 128.0;
-                            box_width = 768.0;
-                            cx = 640.0;
-                            cy = 784.0;
-                            output = "DP-1";
-                            placement_height = 1440.0;
-                            placement_width = 2560.0;
+                            box_height = 196.0;
+                            box_width = 810.0;
+                            cx = 540.0;
+                            cy = 1738.0;
+                            output = "DP-2";
+                            placement_height = 1920.0;
+                            placement_width = 1080.0;
                             rotation = 0.0;
                             type = "login_box";
                             settings = {
@@ -70,12 +70,12 @@
                                 input_radius = 6.0;
                                 layout = "regular";
                                 show_caps_lock = true;
-                                show_keyboard_layout = false;
+                                show_keyboard_layout = true;
                                 show_login_button = true;
-                                show_media = false;
+                                show_media = true;
                                 show_session_buttons = true;
-                                show_unlock_hint = false;
-                                show_weather = false;
+                                show_unlock_hint = true;
+                                show_weather = true;
                             };
                         };
                         "lockscreen-widget-0000000000000001" = {
