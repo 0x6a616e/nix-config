@@ -124,7 +124,6 @@
                     #     enableZshIntegration = true;
                     #     tmux.enableShellIntegration = true;
                     # };
-                    # gpg.enable = true;
                     nvf = {
                         enable = true;
                         settings = {
