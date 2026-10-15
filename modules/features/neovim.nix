@@ -1,7 +1,7 @@
 { inputs, moduleWithSystem, ... }: {
     flake.nixosModules.neovim = moduleWithSystem({ self', ... }: {
-        environment.systemPackages = [
-            self'.packages.neovim
+        environment.systemPackages = with self'.packages; [
+            neovim
         ];
     });
 
