@@ -13,6 +13,7 @@
                 kitty
                 noctalia
                 neovim
+                tmux
         ]);
 
         boot = {
@@ -128,140 +129,51 @@
                         enable = true;
                         settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
                     };
-                    superfile = {
-                        enable = true;
-                        settings = {
-                            editor = "";
-                            dir_editor = "";
-                            auto_check_update = false;
-                            cd_on_quit = false;
-                            default_open_file_preview = true;
-                            show_image_preview = true;
-                            show_panel_footer_info = true;
-                            default_directory = ".";
-                            file_size_use_si = false;
-                            default_sort_type = 0;
-                            sort_order_reversed = false;
-                            case_sensitive_sort = false;
-                            shell_close_on_success = false;
-                            page_scroll_size = 0;
-                            debug = false;
-                            ignore_missing_fields = false;
-                            file_panel_extra_columns = 0;
-                            file_panel_name_percent = 50;
-                            theme = "catppuccin-mocha";
-                            code_previewer = "bat";
-                            nerdfont = true;
-                            show_select_icons = true;
-                            transparent_background = false;
-                            file_preview_width = 0;
-                            enable_file_preview_border = false;
-                            sidebar_width = 20;
-                            sidebar_sections = [ "home" "pinned" "disks" ];
-                            border_top = "─";
-                            border_bottom = "─";
-                            border_left = "│";
-                            border_right = "│";
-                            border_top_left = "╭";
-                            border_top_right = "╮";
-                            border_bottom_left = "╰";
-                            border_bottom_right = "╯";
-                            border_middle_left = "├";
-                            border_middle_right = "┤";
-                            metadata = true;
-                            enable_md5_checksum = false;
-                            zoxide_support = true;
-                        };
-                    };
-                    tmux = let
-                        session-manager = pkgs.writeShellApplication {
-                            name = "session-manager";
-                            runtimeInputs = [
-                                pkgs.coreutils
-                                pkgs.fzf
-                                pkgs.tmux
-                            ];
-                            bashOptions = [
-                                "nounset"
-                                "pipefail"
-                            ];
-                            text = /* bash */ ''
-                                SESSION="$(tmux ls -F '#{session_name}' -O 'activity' | fzf --print-query | tail -n 1)"
-                                tmux new -d -s "$SESSION" 2> /dev/null
-                                tmux switch -t "$SESSION"
-                            '';
-                        };
-                    in {
-                        enable = true;
-                        baseIndex = 1;
-                        clock24 = true;
-                        historyLimit = 10000;
-                        keyMode = "vi";
-                        mouse = true;
-                        shortcut = "a";
-                        terminal = "tmux-256color";
-                        extraConfig = ''
-                            bind-key g display-popup -w 90% -h 90% -d '#{pane_current_path}' -E "${lib.getExe pkgs.lazygit}"
-                            bind-key s display-popup -w 50% -h 50% -E "${session-manager}/bin/session-manager"
-
-                            # ask for name on window creation
-                            bind-key c command-prompt "new-window -n '%%' -c '#{pane_current_path}'"
-
-                            # rename starts empty
-                            bind-key , command-prompt "rename-window '%%'"
-
-                            # move trough windows with ctrl and vim keys
-                            bind -n C-l next-window
-                            bind -n C-h previous-window
-
-                            # split panes using | and -
-                            bind - split-window -v -c "#{pane_current_path}"
-                            bind | split-window -h -c "#{pane_current_path}"
-                            unbind '"'
-                            unbind %
-
-                            # switch panes using Alt-arrow without prefix
-                            bind -n M-h select-pane -L -Z
-                            bind -n M-l select-pane -R -Z
-                            bind -n M-k select-pane -U -Z
-                            bind -n M-j select-pane -D -Z
-
-                            # don't rename windows automatically
-                            set-option -g allow-rename off
-
-                            # renumber windows when closing
-                            set-option -g renumber-windows on
-
-                            ## DESIGN TWEAKS
-                            # don't do anything when a 'bell' rings
-                            set -g visual-activity off
-                            set -g visual-bell off
-                            set -g visual-silence off
-                            setw -g monitor-activity off
-                            set -g bell-action none
-
-                            # statusbar
-                            set -g status-position bottom
-                            set -g status-justify left
-                            set -g status-style 'fg=yellow'
-
-                            set -g status-left "[#S] "
-                            set -g status-left-length 50
-
-                            set -g status-right ""
-                            set -g status-right-length 50
-
-                            setw -g window-status-current-style 'bg=yellow fg=black'
-                            setw -g window-status-current-format ' #I #W #F '
-
-                            setw -g window-status-style 'fg=yellow'
-                            setw -g window-status-format ' #I #[fg=white]#W #[fg=yellow]#F '
-
-                            set-option -ug message-format
-                            set-option -ug message-style
-                            set-option -ug message-command-style
-                        '';
-                    };
+                    # superfile = {
+                    #     enable = true;
+                    #     settings = {
+                    #         editor = "";
+                    #         dir_editor = "";
+                    #         auto_check_update = false;
+                    #         cd_on_quit = false;
+                    #         default_open_file_preview = true;
+                    #         show_image_preview = true;
+                    #         show_panel_footer_info = true;
+                    #         default_directory = ".";
+                    #         file_size_use_si = false;
+                    #         default_sort_type = 0;
+                    #         sort_order_reversed = false;
+                    #         case_sensitive_sort = false;
+                    #         shell_close_on_success = false;
+                    #         page_scroll_size = 0;
+                    #         debug = false;
+                    #         ignore_missing_fields = false;
+                    #         file_panel_extra_columns = 0;
+                    #         file_panel_name_percent = 50;
+                    #         theme = "";
+                    #         code_previewer = "";
+                    #         nerdfont = true;
+                    #         show_select_icons = true;
+                    #         transparent_background = false;
+                    #         file_preview_width = 0;
+                    #         enable_file_preview_border = false;
+                    #         sidebar_width = 20;
+                    #         sidebar_sections = [ "home" "pinned" "disks" ];
+                    #         border_top = "─";
+                    #         border_bottom = "─";
+                    #         border_left = "│";
+                    #         border_right = "│";
+                    #         border_top_left = "╭";
+                    #         border_top_right = "╮";
+                    #         border_bottom_left = "╰";
+                    #         border_bottom_right = "╯";
+                    #         border_middle_left = "├";
+                    #         border_middle_right = "┤";
+                    #         metadata = true;
+                    #         enable_md5_checksum = false;
+                    #         zoxide_support = true;
+                    #     };
+                    # };
                     umbriel = {
                         enable = true;
                         settings = {
