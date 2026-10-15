@@ -12,6 +12,7 @@
                 package = pkgs.tmux;
                 flags."-f" = "${config.constructFiles.configFile.path}";
                 constructFiles.configFile = {
+                    relPath = "tmux.conf";
                     content = let
                         session-manager = pkgs.writeShellApplication {
                             name = "session-manager";
@@ -86,7 +87,6 @@
 
                         bind-key s display-popup -w 50% -h 50% -E "${lib.getExe session-manager}"
                     '';
-                    relPath = "tmux.conf";
                 };
             };
         });
