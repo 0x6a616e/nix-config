@@ -631,10 +631,10 @@
                 };
 
                 services = {
-                    # gpg-agent = {
-                    #     enable = true;
-                    #     pinentry.package = pkgs.pinentry-qt;
-                    # };
+                    gpg-agent = {
+                        enable = true;
+                        pinentry.package = pkgs.pinentry-all;
+                    };
                     ssh-agent.enable = true;
                 };
             };
