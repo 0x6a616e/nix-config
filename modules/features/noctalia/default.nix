@@ -109,12 +109,10 @@
                 enable = true;
                 recommendedServices.enable = true;
                 package = self'.packages.noctalia.wrap {
-                    settings = {
-                        test = lib.mkMerge [
-                            (lib.mkIf (hostname == "moose") mooseSettings)
-                            (lib.mkIf (hostname == "chappie") chappieSettings)
-                        ];
-                    };
+                    settings = lib.mkMerge [
+                        (lib.mkIf (hostname == "moose") mooseSettings)
+                        (lib.mkIf (hostname == "chappie") chappieSettings)
+                    ];
                 };
             };
         }
