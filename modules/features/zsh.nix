@@ -1,14 +1,14 @@
 { inputs, moduleWithSystem, ... }: {
     flake.nixosModules.zsh = moduleWithSystem({ self', ... }: {
         nixpkgs.overlays = [
-            {
+            (_: _: {
                 zsh = self'.packages.zsh;
-            }
+            })
         ];
 
         programs.zsh = {
             enable = true;
-            autosuggestion.enable = true;
+            autosuggestions.enable = true;
             syntaxHighlighting.enable = true;
         };
     });
