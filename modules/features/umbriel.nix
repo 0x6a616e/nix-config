@@ -25,6 +25,7 @@
 
             environment.systemPackages = [
                 pkgs.nautilus
+                pkgs.rose-pine-cursor
             ];
 
             programs.umbriel = {
@@ -49,9 +50,6 @@
                 inherit pkgs;
                 package = inputs'.umbriel.packages.default;
                 passthru.providedSessions = config.package.providedSessions;
-                runtimePkgs = [
-                    pkgs.rose-pine-cursor
-                ];
                 flags."-c" = "${config.constructFiles.generatedConfig.path}";
                 settings = {
                     appearance = {
