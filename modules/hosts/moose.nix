@@ -3,7 +3,6 @@
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
-            inputs.home-manager.nixosModules.home-manager
             inputs.sops-nix.nixosModules.sops
         ] ++ (with self.nixosModules; [
                 firefox
@@ -14,6 +13,7 @@
                 neovim
                 tmux
                 umbriel
+                zsh
         ]);
 
         boot = {
@@ -94,135 +94,135 @@
             };
         };
 
-        home-manager = {
-            useUserPackages = true;
-            users.jan = let
-                homeConfig = config.home-manager.users.jan;
-            in {
-                home = {
-                    username = "jan";
-                    homeDirectory = "/home/jan";
-                    stateVersion = "25.05";
-                };
-
-                nixpkgs.config = {
-                    allowUnfree = config.nixpkgs.config.allowUnfree;
-                    rocmSupport = config.nixpkgs.config.rocmSupport;
-                };
-
-                programs = {
-                    # fzf = {
-                    #     enable = true;
-                    #     enableZshIntegration = true;
-                    #     tmux.enableShellIntegration = true;
-                    # };
-                    password-store = {
-                        enable = true;
-                        settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
-                    };
-                    # superfile = {
-                    #     enable = true;
-                    #     settings = {
-                    #         editor = "";
-                    #         dir_editor = "";
-                    #         auto_check_update = false;
-                    #         cd_on_quit = false;
-                    #         default_open_file_preview = true;
-                    #         show_image_preview = true;
-                    #         show_panel_footer_info = true;
-                    #         default_directory = ".";
-                    #         file_size_use_si = false;
-                    #         default_sort_type = 0;
-                    #         sort_order_reversed = false;
-                    #         case_sensitive_sort = false;
-                    #         shell_close_on_success = false;
-                    #         page_scroll_size = 0;
-                    #         debug = false;
-                    #         ignore_missing_fields = false;
-                    #         file_panel_extra_columns = 0;
-                    #         file_panel_name_percent = 50;
-                    #         theme = "";
-                    #         code_previewer = "";
-                    #         nerdfont = true;
-                    #         show_select_icons = true;
-                    #         transparent_background = false;
-                    #         file_preview_width = 0;
-                    #         enable_file_preview_border = false;
-                    #         sidebar_width = 20;
-                    #         sidebar_sections = [ "home" "pinned" "disks" ];
-                    #         border_top = "─";
-                    #         border_bottom = "─";
-                    #         border_left = "│";
-                    #         border_right = "│";
-                    #         border_top_left = "╭";
-                    #         border_top_right = "╮";
-                    #         border_bottom_left = "╰";
-                    #         border_bottom_right = "╯";
-                    #         border_middle_left = "├";
-                    #         border_middle_right = "┤";
-                    #         metadata = true;
-                    #         enable_md5_checksum = false;
-                    #         zoxide_support = true;
-                    #     };
-                    # };
-                    zoxide = {
-                        enable = true;
-                        enableZshIntegration = true;
-                        options = [ "--cmd cd" ];
-                    };
-                    zsh = {
-                        enable = true;
-                        autosuggestion.enable = true;
-                        dotDir = homeConfig.home.homeDirectory;
-                        history = {
-                            append = true;
-                            path = "${homeConfig.home.homeDirectory}/.local/share/zsh/.zsh_history";
-                            extended = true;
-                            ignoreAllDups = true;
-                            ignoreSpace = true;
-                            save = 10000;
-                            share = true;
-                            size = 10000;
-                        };
-                        initContent = /* bash */ ''
-                            PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
-                        '';
-                        sessionVariables = {
-                            EDITOR = "nvim";
-                            NEWLINE = "\n";
-                            ZVM_LINE_INIT_MODE ="n";
-                            ZVM_SYSTEM_CLIPBOARD_ENABLED = true;
-                        };
-                        setOptions = [ "prompt_subst" ];
-                        shellAliases = {
-                            cp = "cp -i";
-                            grep = "grep --color=auto";
-                            ls = "ls -lah --color=always --group-directories-first";
-                            mkdir = "mkdir -p";
-                            mv = "mv -i";
-                            nix-run-unfree = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure";
-                            rm = "rm -I --preserve-root";
-                        };
-                        syntaxHighlighting.enable = true;
-                        plugins = [
-                            {
-                                name = "vi-mode";
-                                src = pkgs.zsh-vi-mode;
-                                file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-                            }
-                        ];
-                    };
-                };
-
-                services = {
-                    gpg-agent = {
-                        enable = true;
-                        pinentry.package = pkgs.pinentry-all;
-                    };
-                    ssh-agent.enable = true;
-                };
-            };
-        };
+        # home-manager = {
+        #     useUserPackages = true;
+        #     users.jan = let
+        #         homeConfig = config.home-manager.users.jan;
+        #     in {
+        #         home = {
+        #             username = "jan";
+        #             homeDirectory = "/home/jan";
+        #             stateVersion = "25.05";
+        #         };
+        #
+        #         nixpkgs.config = {
+        #             allowUnfree = config.nixpkgs.config.allowUnfree;
+        #             rocmSupport = config.nixpkgs.config.rocmSupport;
+        #         };
+        #
+        #         programs = {
+        #             # fzf = {
+        #             #     enable = true;
+        #             #     enableZshIntegration = true;
+        #             #     tmux.enableShellIntegration = true;
+        #             # };
+        #             password-store = {
+        #                 enable = true;
+        #                 settings.PASSWORD_STORE_DIR = "${homeConfig.home.homeDirectory}/.password-store";
+        #             };
+        #             # superfile = {
+        #             #     enable = true;
+        #             #     settings = {
+        #             #         editor = "";
+        #             #         dir_editor = "";
+        #             #         auto_check_update = false;
+        #             #         cd_on_quit = false;
+        #             #         default_open_file_preview = true;
+        #             #         show_image_preview = true;
+        #             #         show_panel_footer_info = true;
+        #             #         default_directory = ".";
+        #             #         file_size_use_si = false;
+        #             #         default_sort_type = 0;
+        #             #         sort_order_reversed = false;
+        #             #         case_sensitive_sort = false;
+        #             #         shell_close_on_success = false;
+        #             #         page_scroll_size = 0;
+        #             #         debug = false;
+        #             #         ignore_missing_fields = false;
+        #             #         file_panel_extra_columns = 0;
+        #             #         file_panel_name_percent = 50;
+        #             #         theme = "";
+        #             #         code_previewer = "";
+        #             #         nerdfont = true;
+        #             #         show_select_icons = true;
+        #             #         transparent_background = false;
+        #             #         file_preview_width = 0;
+        #             #         enable_file_preview_border = false;
+        #             #         sidebar_width = 20;
+        #             #         sidebar_sections = [ "home" "pinned" "disks" ];
+        #             #         border_top = "─";
+        #             #         border_bottom = "─";
+        #             #         border_left = "│";
+        #             #         border_right = "│";
+        #             #         border_top_left = "╭";
+        #             #         border_top_right = "╮";
+        #             #         border_bottom_left = "╰";
+        #             #         border_bottom_right = "╯";
+        #             #         border_middle_left = "├";
+        #             #         border_middle_right = "┤";
+        #             #         metadata = true;
+        #             #         enable_md5_checksum = false;
+        #             #         zoxide_support = true;
+        #             #     };
+        #             # };
+        #             # zoxide = {
+        #             #     enable = true;
+        #             #     enableZshIntegration = true;
+        #             #     options = [ "--cmd cd" ];
+        #             # };
+        #             zsh = {
+        #                 enable = true;
+        #                 autosuggestion.enable = true;
+        #                 dotDir = homeConfig.home.homeDirectory;
+        #                 history = {
+        #                     append = true;
+        #                     path = "${homeConfig.home.homeDirectory}/.local/share/zsh/.zsh_history";
+        #                     extended = true;
+        #                     ignoreAllDups = true;
+        #                     ignoreSpace = true;
+        #                     save = 10000;
+        #                     share = true;
+        #                     size = 10000;
+        #                 };
+        #                 initContent = /* bash */ ''
+        #                     PS1="%B%T%b %F{cyan}%0~%f$NEWLINE%F{cyan}~>%f ";
+        #                 '';
+        #                 sessionVariables = {
+        #                     EDITOR = "nvim";
+        #                     NEWLINE = "\n";
+        #                     ZVM_LINE_INIT_MODE ="n";
+        #                     ZVM_SYSTEM_CLIPBOARD_ENABLED = true;
+        #                 };
+        #                 setOptions = [ "prompt_subst" ];
+        #                 shellAliases = {
+        #                     cp = "cp -i";
+        #                     grep = "grep --color=auto";
+        #                     ls = "ls -lah --color=always --group-directories-first";
+        #                     mkdir = "mkdir -p";
+        #                     mv = "mv -i";
+        #                     nix-run-unfree = "NIXPKGS_ALLOW_UNFREE=1 nix run --impure";
+        #                     rm = "rm -I --preserve-root";
+        #                 };
+        #                 syntaxHighlighting.enable = true;
+        #                 plugins = [
+        #                     {
+        #                         name = "vi-mode";
+        #                         src = pkgs.zsh-vi-mode;
+        #                         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        #                     }
+        #                 ];
+        #             };
+        #         };
+        #
+        #         services = {
+        #             gpg-agent = {
+        #                 enable = true;
+        #                 pinentry.package = pkgs.pinentry-all;
+        #             };
+        #             ssh-agent.enable = true;
+        #         };
+        #     };
+        # };
 
         i18n = {
             defaultLocale = "en_US.UTF-8";
@@ -262,7 +262,6 @@
         programs = {
             nh.enable = true;
             steam.enable = true;
-            zsh.enable = true;
         };
 
         security = {
