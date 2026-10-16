@@ -22,7 +22,7 @@
             ];
             zshAliases = {
                 cp = "cp -i";
-                grep = "greo --color=auto";
+                grep = "grep --color=auto";
                 ls = "ls -lah --color=always --group-directories-first";
                 mkdir = "mkdir -p";
                 mv = "mv -i";
