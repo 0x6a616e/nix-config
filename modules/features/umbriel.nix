@@ -50,6 +50,27 @@
                 inherit pkgs;
                 package = inputs'.umbriel.packages.default;
                 passthru.providedSessions = config.package.providedSessions;
+                drv.postInstall = ''
+                    stock="${inputs'.umbriel.packages.default}"
+
+                    copy_and_patch() {
+                        file="$1"
+                        if [ -L "$file" ]; then
+                            target="$(readlink -f "$file")"
+                            rm "$file"
+                            cp "$target" "$file"
+                        fi
+
+                        if [ -f "$file" ]; then
+                            substituteInPlace "$file" \
+                                --replace-fail "$stock" "$out"
+                        fi
+                    }
+
+                    copy_and_patch "$out/share/wayland-sessions/umbriel.desktop"
+                    copy_and_patch "$out/bin/start-umbriel"
+                    copy_and_patch "$out/share/systemd/user/umbriel.service"
+                '';
                 flags."-c" = "${config.constructFiles.generatedConfig.path}";
                 settings = {
                     appearance = {
