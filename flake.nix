@@ -7,10 +7,6 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         flake-parts.url = "github:hercules-ci/flake-parts";
-        home-manager = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
         import-tree.url = "github:vic/import-tree";
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         noctalia = {
@@ -37,7 +33,6 @@
 
     outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
         imports = [
-            inputs.home-manager.flakeModules.home-manager
             (inputs.import-tree ./modules)
         ];
     };
