@@ -16,6 +16,10 @@
     perSystem = { pkgs, ... }: {
         packages.zsh = inputs.wrappers.wrappers.zsh.wrap ({ lib, ... }: {
             inherit pkgs;
+            runtimePkgs = [
+                pkgs.fzf
+                pkgs.zoxide
+            ];
             zshAliases = {
                 cp = "cp -i";
                 grep = "greo --color=auto";
