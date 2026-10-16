@@ -4,10 +4,17 @@
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
             inputs.sops-nix.nixosModules.sops
-            # inputs.home-manager.nixosModules.home-manager
-            # inputs.noctalia.nixosModules.default
-            # inputs.umbriel.nixosModules.default
-        ];
+        ] ++ (with self.nixosModules; [
+                firefox
+                fonts
+                git
+                kitty
+                noctalia
+                neovim
+                tmux
+                umbriel
+                zsh
+        ]);
 
         boot = {
             extraModulePackages = [ ];
@@ -146,14 +153,7 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
-        programs = {
-            # noctalia = {
-            #     enable = true;
-            #     recommendedServices.enable = true;
-            # };
-            # umbriel.enable = true;
-            zsh.enable = true;
-        };
+        programs.nh.enable = true;
 
         security = {
             rtkit.enable = true;
@@ -197,9 +197,9 @@
                 };
             };
             logind.settings.Login = {
-                HandlePowerKey = "suspend-then-hibernate";
-                HandleLidSwitch = "suspend-then-hibernate";
-                HandleLidSwitchExternalPower = "suspend-then-hibernate";
+                HandlePowerKey = "sleep";
+                HandleLidSwitch = "sleep";
+                HandleLidSwitchExternalPower = "sleep";
             };
             pipewire = {
                 enable = true;
