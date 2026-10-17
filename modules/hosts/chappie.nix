@@ -43,10 +43,7 @@
             kernelPackages = pkgs.linuxPackages_latest;
             loader = {
                 efi.canTouchEfiVariables = true;
-                systemd-boot = {
-                    enable = true;
-                    consoleMode = "max";
-                };
+                systemd-boot.enable = true;
             };
         };
 
