@@ -8,6 +8,7 @@
                         focus_at_startup = true;
                         mode = "2560x1440@240.002";
                         position = [ 0 0 ];
+                        layout.scrolling.default_extent_fraction = 1. / 3.;
                     };
                     DP-2 = {
                         mode = "1920x1080@239.998";
