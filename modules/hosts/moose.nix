@@ -5,7 +5,6 @@
             inputs.disko.nixosModules.disko
             inputs.sops-nix.nixosModules.sops
         ] ++ (with self.nixosModules; [
-                firefox
                 fonts
                 git
                 kitty
@@ -80,6 +79,10 @@
                 };
             };
         };
+
+        environment.systemPackages = [
+            pkgs.firefox
+        ];
 
         hardware = {
             amdgpu.opencl.enable = true;
