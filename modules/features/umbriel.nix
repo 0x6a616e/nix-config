@@ -17,6 +17,13 @@
                 };
             };
             chappieSettings = {
+                output = {
+                    DP-1 = {
+                        focus_at_startup = true;
+                        mode = "1920x1080@60.020000";
+                        position = [ 0 0 ];
+                    };
+                };
             };
         in {
             imports = [
@@ -93,6 +100,7 @@
                         };
                         keyboard.options = "compose:ralt";
                         mouse.accel_profile = "flat";
+                        touchpad.natural_scroll = true;
                     };
                     keybinds = {
                         "Mod+Shift+Backslash" = "window-cycle-primary-extent";
@@ -124,7 +132,14 @@
 
                         "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
                         "XF86AudioLowerVolume" = "spawn:noctalia msg volume-down";
+                        "XF86AudioMute" = "spawn:noctalia msg volume-mute";
                         "XF86AudioPlay" = "spawn:${lib.getExe pkgs.playerctl} play-pause";
+                        "XF86AudioMicMute" = "spawn:noctalia msg mic-mute";
+
+                        "XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down";
+                        "XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up";
+
+                        "XF86NotificationCenter" = "spawn:noctalia msg panel-toggle control-center notifications";
                     };
                     layout = {
                         mode = "scrolling";

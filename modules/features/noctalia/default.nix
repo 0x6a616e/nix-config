@@ -3,15 +3,7 @@
         { self' , ... }: { config, ... }: let 
             hostname = config.networking.hostName;
             mooseSettings = {
-                lockscreen = {
-                    blur_intensity = 0.0;
-                    fingerprint = false;
-                    monitors = [ "DP-1" ];
-                    tint_intensity = 0.0;
-                    transition = [ "fade" ];
-                    wallpaper = "${../../../assets/lockscreen.png}";
-                };
-
+                lockscreen.monitors = [ "DP-1" ];
                 lockscreen_widgets = {
                     enabled = true;
                     schema_version = 2;
@@ -103,6 +95,69 @@
                 };
             };
             chappieSettings = {
+                lockscreen.monitors = [ "eDP-1" ];
+                lockscreen_widgets = {
+                    enabled = true;
+                    schema_version = 2;
+                    widget_order = [ "lockscreen-login-box@eDP-1" "lockscreen-widget-0000000000000001" ];
+
+                    grid = {
+                        cell_size = 16;
+                        major_interval = 4;
+                        visible = true;
+                    };
+
+                    widget = {
+                        "lockscreen-login-box@eDP-1" = {
+                            box_height = 128.0;
+                            box_width = 832.0;
+                            cx = 480.0;
+                            cy = 604.0;
+                            output = "eDP-1";
+                            placement_height = 1080.0;
+                            placement_width = 1920.0;
+                            rotation = 0.0;
+                            type = "login_box";
+                            settings = {
+                                background_color = "surface_variant";
+                                background_opacity = 0.88;
+                                background_radius = 12.0;
+                                center_password_text = false;
+                                input_opacity = 1.0;
+                                input_radius = 6.0;
+                                layout = "regular";
+                                show_caps_lock = true;
+                                show_keyboard_layout = false;
+                                show_login_button = true;
+                                show_media = false;
+                                show_session_buttons = true;
+                                show_unlock_hint = false;
+                                show_weather = false;
+                            };
+                        };
+                        "lockscreen-widget-0000000000000001" = {
+                            box_height = 128.0;
+                            box_width = 832.0;
+                            cx = 482.0;
+                            cy = 476.0;
+                            output = "eDP-1";
+                            placement_height = 1080.0;
+                            placement_width = 1920.0;
+                            rotation = 0.0;
+                            type = "clock";
+                            settings = {
+                                background = false;
+                                background_opacity = 1.0;
+                                background_padding = 0;
+                                background_radius = 0;
+                                center_text = true;
+                                clock_style = "digital";
+                                font_family = "";
+                                shadow = true;
+                            };
+                        };
+                    };
+                };
             };
         in {
             imports = [
@@ -197,6 +252,14 @@
                                 timeout = 660.0;
                             };
                         };
+                    };
+
+                    lockscreen = {
+                        blur_intensity = 0.0;
+                        fingerprint = false;
+                        tint_intensity = 0.0;
+                        transition = [ "fade" ];
+                        wallpaper = "${../../../assets/lockscreen.png}";
                     };
 
                     osd.kinds.lock_keys = false;
