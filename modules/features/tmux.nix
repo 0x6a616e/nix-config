@@ -33,6 +33,20 @@
                                 fi
                             '';
                         };
+                        project-manager = pkgs.writeShellApplication {
+                            name = "project-manager";
+                            runtimeInputs = [
+                                pkgs.fd
+                                pkgs.fzf
+                                pkgs.tmux
+                            ];
+                            text = /* bash */ ''
+                                PROJECT_FOLDER=$HOME/Projects/
+                                PROJECT=$(fd -t d -d 1 -C "$PROJECT_FOLDER" --format "{.}" | fzf --prompt="Project > ")
+                                tmux new -d -s "$PROJECT" -c "$PROJECT_FOLDER$PROJECT/" 2> /dev/null
+                                tmux switch -t "$PROJECT"
+                            '';
+                        };
                     in ''
                         set -g base-index 1
                         set -g bell-action none
@@ -88,6 +102,8 @@
                         bind-key g display-popup -w 90% -h 90% -d "#{pane_current_path}" -E "${lib.getExe pkgs.lazygit}"
 
                         bind-key s display-popup -w 50% -h 50% -E "${lib.getExe session-manager}"
+
+                        bind-key p display-popup -w 50% -h 50% -E "${lib.getExe project-manager}"
                     '';
                 };
             };
