@@ -81,6 +81,7 @@
         };
 
         environment.systemPackages = [
+            pkgs.devenv
             pkgs.firefox
         ];
 
