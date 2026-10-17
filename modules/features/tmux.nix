@@ -26,9 +26,11 @@
                                 "pipefail"
                             ];
                             text = /* bash */ ''
-                                SESSION="$(tmux ls -F '#{session_name}' -O 'activity' | fzf --print-query | tail -n 1)"
-                                tmux new -d -s "$SESSION" 2> /dev/null
-                                tmux switch -t "$SESSION"
+                                SESSION="$(tmux ls -F '#{session_name}' -O 'activity' | fzf --prompt="Session > " --print-query | tail -n 1)"
+                                if [[ -n "$SESSION" ]]; then
+                                    tmux new -d -s "$SESSION" 2> /dev/null
+                                    tmux switch -t "$SESSION"
+                                fi
                             '';
                         };
                     in ''
