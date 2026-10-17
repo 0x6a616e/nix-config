@@ -40,11 +40,17 @@
                                 pkgs.fzf
                                 pkgs.tmux
                             ];
+                            bashOptions = [
+                                "nounset"
+                                "pipefail"
+                            ];
                             text = /* bash */ ''
                                 PROJECT_FOLDER=$HOME/Projects/
                                 PROJECT=$(fd -t d -d 1 -C "$PROJECT_FOLDER" --format "{.}" | fzf --prompt="Project > ")
-                                tmux new -d -s "$PROJECT" -c "$PROJECT_FOLDER$PROJECT/" 2> /dev/null
-                                tmux switch -t "$PROJECT"
+                                if [[ -n "$PROJECT" ]]; then
+                                    tmux new -d -s "$PROJECT" -c "$PROJECT_FOLDER$PROJECT/" 2> /dev/null
+                                    tmux switch -t "$PROJECT"
+                                fi
                             '';
                         };
                     in ''
