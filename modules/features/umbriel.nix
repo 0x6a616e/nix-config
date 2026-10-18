@@ -103,9 +103,11 @@
                         keyboard.options = "compose:ralt";
                         mouse.accel_profile = "flat";
                         touchpad.natural_scroll = true;
+                        window_drag_toggle = "floating";
                     };
                     keybinds = {
-                        "Mod+Shift+Backslash" = "window-cycle-primary-extent";
+                        "Mod+Shift+Bracketleft" = "window-cycle-primary-extent-back";
+                        "Mod+Shift+Bracketright" = "window-cycle-primary-extent";
 
                         "Mod+K" = "window-focus-or-workspace-up";
                         "Mod+J" = "window-focus-or-workspace-down";
@@ -118,13 +120,6 @@
                         "Mod+Shift+L" = "column-move-right";
                         "Mod+Shift+Alt+H" = "window-consume-or-expel-left";
                         "Mod+Shift+Alt+L" = "window-consume-or-expel-right";
-
-                        "Mod+1" = "output-focus-left";
-                        "Mod+2" = "output-focus-right";
-                        "Mod+Shift+1" = "window-move-to-output-left";
-                        "Mod+Shift+2" = "window-move-to-output-right";
-                        "Mod+Shift+Alt+1" = "column-move-to-output-left";
-                        "Mod+Shift+Alt+2" = "column-move-to-output-right";
 
                         "Mod+Tab" = "overview-toggle";
 
