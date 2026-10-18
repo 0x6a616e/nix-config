@@ -262,8 +262,6 @@
                         wallpaper = "${../../../assets/lockscreen.png}";
                     };
 
-                    osd.kinds.lock_keys = false;
-
                     shell = {
                         corner_radius_scale = 0.0;
                         font_family = "VCR OSD Mono";
