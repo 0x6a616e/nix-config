@@ -34,6 +34,7 @@
             environment.systemPackages = [
                 pkgs.nautilus
                 pkgs.rose-pine-cursor
+                pkgs.wl-clipboard
             ];
 
             programs.umbriel = {

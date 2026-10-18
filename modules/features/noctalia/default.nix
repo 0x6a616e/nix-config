@@ -274,7 +274,7 @@
                             fetch_exchange_rates = false;
                             panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
                             dmenu.entry.password-store = {
-                                command = "find '$HOME/.password-store' -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
+                                command = "find \"$HOME/.password-store\" -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
                                 label = "Password Store";
                                 prefix = "pass";
                                 glyph = "key";
