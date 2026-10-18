@@ -273,14 +273,14 @@
                             categories = false;
                             fetch_exchange_rates = false;
                             panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
-                            # dmenu.entry.password-store = {
-                            #     command = "find $PASSWORD_STORE_DIR -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
-                            #     label = "Password Store";
-                            #     prefix = "pass";
-                            #     glyph = "key";
-                            #     global = false;
-                            #     exec = "${lib.getExe pkgs.pass} -c '{selection}'";
-                            # };
+                            dmenu.entry.password-store = {
+                                command = "find '$HOME/.password-store' -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
+                                label = "Password Store";
+                                prefix = "pass";
+                                glyph = "key";
+                                global = false;
+                                exec = "${lib.getExe pkgs.pass} -c '{selection}'";
+                            };
                         };
                         panel = {
                             clipboard_placement = "attached";
