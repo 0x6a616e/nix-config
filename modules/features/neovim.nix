@@ -134,9 +134,14 @@
                             bash.enable = true;
                             clang.enable = true;
                             go.enable = true;
+                            markdown = {
+                                enable = true;
+                                extensions.markview-nvim.enable = true;
+                            };
                             nix.enable = true;
                             python.enable = true;
                             rust.enable = true;
+                            tex.enable = true;
                         };
                         keymaps = [
                             {
