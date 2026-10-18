@@ -106,8 +106,8 @@
                         window_drag_toggle = "floating";
                     };
                     keybinds = {
-                        "Mod+Shift+Bracketleft" = "window-cycle-primary-extent-back";
-                        "Mod+Shift+Bracketright" = "window-cycle-primary-extent";
+                        "Mod+Shift+bracketleft" = "window-cycle-primary-extent-back";
+                        "Mod+Shift+bracketright" = "window-cycle-primary-extent";
 
                         "Mod+K" = "window-focus-or-workspace-up";
                         "Mod+J" = "window-focus-or-workspace-down";
