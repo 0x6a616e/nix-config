@@ -153,7 +153,10 @@
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
 
-        programs.nh.enable = true;
+        programs = {
+            gnupg.agent.enable = true;
+            nh.enable = true;
+        };
 
         security = {
             rtkit.enable = true;
