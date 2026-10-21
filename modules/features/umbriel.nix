@@ -141,7 +141,10 @@
                     layout = {
                         mode = "scrolling";
                         extent_presets = [ (1. / 3.) (1. / 2.) (2. / 3.) 1. ];
-                        scrolling.default_extent_fraction = 1.;
+                        scrolling = {
+                            center_focused = "on_overflow";
+                            default_extent_fraction = 1.;
+                        };
                     };
                 };
                 constructFiles = {
