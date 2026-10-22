@@ -57,6 +57,7 @@
                 source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
                 source <(${lib.getExe pkgs.fzf} --zsh)
                 eval "$(${lib.getExe pkgs.zoxide} init zsh --cmd cd)"
+                eval "$(${lib.getExe pkgs.devenv} hook zsh)"
             '';
         });
     };
