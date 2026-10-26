@@ -201,7 +201,7 @@
                 };
             };
             logind.settings.Login = {
-                HandlePowerKey = "sleep";
+                HandlePowerKey = "lock";
                 HandleLidSwitch = "sleep";
                 HandleLidSwitchExternalPower = "sleep";
             };
