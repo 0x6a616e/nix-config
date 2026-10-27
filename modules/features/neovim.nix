@@ -134,6 +134,7 @@
                             bash.enable = true;
                             clang.enable = true;
                             go.enable = true;
+                            java.enable = true;
                             markdown = {
                                 enable = true;
                                 extensions.markview-nvim.enable = true;
