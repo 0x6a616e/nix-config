@@ -340,9 +340,7 @@
 
                     widget.workspaces.style = "minimal";
                 };
-                constructFiles = let
-                    configFile = tomlFormat.generate "" config.settings;
-                in {
+                constructFiles = {
                     configHome = {
                         relPath = "configHome";
                         builder = "mkdir -p $2";
@@ -352,7 +350,9 @@
                         relPath = "${config.constructFiles.configHome.relPath}/noctalia/palettes/my-palette.json";
                     };
                     generatedConfig = {
-                        content = builtins.readFile configFile;
+                        content = let
+                            configFile = tomlFormat.generate "" config.settings;
+                        in builtins.readFile configFile;
                         relPath = "${config.constructFiles.configHome.relPath}/noctalia/config.toml";
                     };
                 };
