@@ -123,20 +123,20 @@
 
                         "Mod+Tab" = "overview-toggle";
 
-                        "Mod+Grave" = "spawn:noctalia msg panel-toggle control-center";
-                        "Mod+Space" = "spawn:noctalia msg panel-toggle launcher";
-                        "Print" = "spawn:noctalia msg screenshot-annotate";
+                        "Mod+Grave" = "spawn noctalia msg panel-toggle control-center";
+                        "Mod+Space" = "spawn noctalia msg panel-toggle launcher";
+                        "Print" = "spawn noctalia msg screenshot-annotate";
 
-                        "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
-                        "XF86AudioLowerVolume" = "spawn:noctalia msg volume-down";
-                        "XF86AudioMute" = "spawn:noctalia msg volume-mute";
-                        "XF86AudioPlay" = "spawn:${lib.getExe pkgs.playerctl} play-pause";
-                        "XF86AudioMicMute" = "spawn:noctalia msg mic-mute";
+                        "XF86AudioRaiseVolume" = "spawn noctalia msg volume-up";
+                        "XF86AudioLowerVolume" = "spawn noctalia msg volume-down";
+                        "XF86AudioMute" = "spawn noctalia msg volume-mute";
+                        "XF86AudioPlay" = "spawn ${lib.getExe pkgs.playerctl} play-pause";
+                        "XF86AudioMicMute" = "spawn noctalia msg mic-mute";
 
-                        "XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down";
-                        "XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up";
+                        "XF86MonBrightnessDown" = "spawn noctalia msg brightness-down";
+                        "XF86MonBrightnessUp" = "spawn noctalia msg brightness-up";
 
-                        "XF86NotificationCenter" = "spawn:noctalia msg panel-toggle control-center notifications";
+                        "XF86NotificationCenter" = "spawn noctalia msg panel-toggle control-center notifications";
                     };
                     layout = {
                         mode = "scrolling";

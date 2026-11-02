@@ -27,7 +27,7 @@
                             rotation = 0.0;
                             type = "login_box";
                             settings = {
-                                background_color = "surface_variant";
+                                background_color = "surface_container";
                                 background_opacity = 0.88;
                                 background_radius = 12.0;
                                 center_password_text = false;
@@ -54,7 +54,7 @@
                             rotation = 0.0;
                             type = "login_box";
                             settings = {
-                                background_color = "surface_variant";
+                                background_color = "surface_container";
                                 background_opacity = 0.88;
                                 background_radius = 12.0;
                                 center_password_text = false;
@@ -119,7 +119,7 @@
                             rotation = 0.0;
                             type = "login_box";
                             settings = {
-                                background_color = "surface_variant";
+                                background_color = "surface_container";
                                 background_opacity = 0.88;
                                 background_radius = 12.0;
                                 center_password_text = false;
@@ -212,7 +212,7 @@
                         };
                     };
 
-                    config_version = 15;
+                    config_version = 18;
 
                     control_center = {
                         hidden_tabs = [ "weather" "screen-time" ];
@@ -270,6 +270,7 @@
                         launcher = {
                             categories = false;
                             fetch_exchange_rates = false;
+                            layout = "simple";
                             panels.ignored = [ "polkit" "setup-wizard" "test" "launcher" "wallpaper" ];
                             dmenu.entry.password-store = {
                                 command = "find \"$HOME/.password-store\" -regex '.*gpg' -printf '%P\\n' | sed 's/\.gpg$//'";
