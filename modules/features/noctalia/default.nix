@@ -331,6 +331,9 @@
                             enable_community_templates = false;
                         };
                     };
+
+                    osd.kinds.lock_keys = false;
+
                     wallpaper = {
                         enabled = true;
                         fill_color = "#000000";
