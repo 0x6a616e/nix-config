@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.mooseConfiguration = { config, lib, modulesPath, pkgs, ... }: {
+    flake.nixosModules.laptopConfiguration = { modulesPath, lib, config, pkgs, ... }: {
         imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
             inputs.disko.nixosModules.disko
@@ -14,26 +14,38 @@
                 tmux
                 umbriel
                 zsh
-        ]);
-
+            ]);
         boot = {
             extraModulePackages = [ ];
             initrd = {
-                availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+                availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci_renesas" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
                 kernelModules = [ ];
+                systemd = {
+                    enable = true;
+                    initrdBin = [ pkgs.parted ];
+                    services.partprobe-gpt = {
+                        description = "partprobe the luks-crypted device";
+                        wantedBy = [ "initrd.target" ];
+                        after = [ "cryptsetup.target" ];
+                        before = [ "local-fs-pre.target" ];
+                        unitConfig.DefaultDependencies = false;
+                        serviceConfig.Type = "oneshot";
+                        script = ''
+                            partprobe /dev/mapper/crypted
+                        '';
+                    };
+                };
             };
             kernelModules = [ "kvm-amd" ];
             kernelPackages = pkgs.linuxPackages_latest;
             loader = {
                 efi.canTouchEfiVariables = true;
-                timeout = 30;
                 systemd-boot.enable = true;
             };
         };
-
         disko.devices.disk.main = {
             type = "disk";
-            device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL21T0HCLR-00BH1_S641NF0X437278";
+            device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B768684BF89";
             content = {
                 type = "gpt";
                 partitions = {
@@ -41,7 +53,7 @@
                         priority = 1;
                         name = "ESP";
                         start = "1M";
-                        size = "4G";
+                        size = "1G";
                         type = "EF00";
                         content = {
                             type = "filesystem";
@@ -50,39 +62,49 @@
                             mountOptions = [ "umask=0077" ];
                         };
                     };
-                    swap = {
-                        size = "32G";
-                        content = {
-                            type = "swap";
-                            discardPolicy = "both";
-                        };
-                    };
-                    root = {
+                    luks = {
                         size = "100%";
                         content = {
-                            type = "btrfs";
-                            extraArgs = [ "-f" ];
-                            subvolumes = {
-                                "/rootfs" = {
-                                    mountpoint = "/";
-                                };
-                                "/nix" = {
-                                    mountOptions = [
-                                        "compress=zstd"
-                                        "noatime"
-                                    ];
-                                    mountpoint = "/nix";
+                            type = "luks";
+                            name = "crypted";
+                            settings.allowDiscards = true;
+                            content = {
+                                type = "gpt";
+                                partitions = {
+                                    root = {
+                                        size = "100%";
+                                        content = {
+                                            type = "btrfs";
+                                            extraArgs = [ "-f" ];
+                                            subvolumes = {
+                                                "/rootfs" = {
+                                                    mountpoint = "/";
+                                                };
+                                                "/nix" = {
+                                                    mountOptions = [
+                                                        "compress=zstd"
+                                                        "noatime"
+                                                    ];
+                                                    mountpoint = "/nix";
+                                                };
+                                            };
+                                        };
+                                    };
+                                    swap = {
+                                        size = "32G";
+                                        content = {
+                                            type = "swap";
+                                            discardPolicy = "both";
+                                        };
+                                    };
                                 };
                             };
-                            mountpoint = "/partition-root";
                         };
                     };
                 };
             };
         };
-
         hardware = {
-            amdgpu.opencl.enable = true;
             bluetooth.enable = true;
             cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             graphics = {
@@ -90,7 +112,6 @@
                 enable32Bit = true;
             };
         };
-
         i18n = {
             defaultLocale = "en_US.UTF-8";
             extraLocaleSettings = {
@@ -105,29 +126,20 @@
                 LC_TIME = "es_MX.UTF-8";
             };
         };
-
         networking = {
-            hostName = "moose";
-            hostId = "7e031ea3";
+            hostName = "laptop";
+            hostId = "bb89ad8f";
             networkmanager.enable = true;
             useDHCP = lib.mkDefault true;
         };
-
         nix.settings = {
             auto-optimise-store = true;
             experimental-features = [ "nix-command" "flakes" ];
         };
-
         nixpkgs = {
-            config = {
-                allowUnfree = true;
-                rocmSupport = true;
-            };
+            config.allowUnfree = true;
             hostPlatform = lib.mkDefault "x86_64-linux";
         };
-
-        programs.steam.enable = true;
-
         security = {
             rtkit.enable = true;
             sudo.extraConfig = ''
@@ -135,7 +147,6 @@
                 Defaults lecture=always
             '';
         };
-
         services = {
             displayManager.ly.enable = true;
             kanata = {
@@ -144,7 +155,7 @@
                     extraDefCfg = "process-unmapped-keys yes";
                     config = ''
                         (defsrc
-                            caps a s d f j k l ; esc menu rctl
+                            caps a s d f j k l ;
                         )
 
                         (defvar
@@ -161,19 +172,18 @@
                             k (tap-hold $tap-time $hold-time k lsft)
                             l (tap-hold $tap-time $hold-time l lalt)
                             ; (tap-hold $tap-time $hold-time ; lmet)
-                            to-hrm (layer-switch hrm)
-                            to-base (layer-switch base)
                         )
 
                         (deflayer hrm
-                            esc @a @s @d @f @j @k @l @; grv prtsc @to-base
-                        )
-
-                        (deflayer base
-                            _ _ _ _ _ _ _ _ _ _ prtsc @to-hrm
+                            esc @a @s @d @f @j @k @l @; 
                         )
                     '';
                 };
+            };
+            logind.settings.Login = {
+                HandlePowerKey = "lock";
+                HandleLidSwitch = "sleep";
+                HandleLidSwitchExternalPower = "sleep";
             };
             pipewire = {
                 enable = true;
@@ -199,7 +209,6 @@
                 };
             };
         };
-
         sops = {
             defaultSopsFile = ../../secrets/secrets.yaml;
             age.keyFile = "/etc/sops/age/keys.txt";
@@ -209,13 +218,9 @@
                 "users/jan/password".neededForUsers = true;
             };
         };
-
         system.stateVersion = "25.05";
-
-        systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
-
+        systemd.sleep.settings.Sleep.HibernateDelaySec = "1h";
         time.timeZone = "America/Monterrey";
-
         users = {
             mutableUsers = false;
             users.jan = {

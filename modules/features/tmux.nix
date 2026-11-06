@@ -4,7 +4,6 @@
             tmux
         ];
     });
-
     perSystem = { pkgs, ... }: {
         packages.tmux = inputs.wrappers.lib.wrapPackage ({ config, lib, ... }: {
             config = {

@@ -5,14 +5,12 @@
                 zsh = self'.packages.zsh;
             })
         ];
-
         programs.zsh = {
             enable = true;
             autosuggestions.enable = true;
             syntaxHighlighting.enable = true;
         };
     });
-
     perSystem = { pkgs, ... }: {
         packages.zsh = inputs.wrappers.wrappers.zsh.wrap ({ lib, ... }: {
             inherit pkgs;
@@ -38,10 +36,8 @@
             '';
             zshrc.content = /* bash */ ''
                 autoload -U compinit && compinit
-
                 HISTSIZE="10000"
                 SAVEHIST="10000"
-
                 set_opts=(
                     HIST_FCNTL_LOCK APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_ALL_DUPS
                     HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY NO_HIST_EXPIRE_DUPS_FIRST
@@ -51,9 +47,7 @@
                     setopt "$opt"
                 done
                 unset opt set_opts
-
                 PS1="%B%T%b %F{cyan}%0~%f"$'\n'"%F{cyan}~>%f ";
-
                 source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
                 source <(${lib.getExe pkgs.fzf} --zsh)
                 eval "$(${lib.getExe pkgs.zoxide} init zsh --cmd cd)"

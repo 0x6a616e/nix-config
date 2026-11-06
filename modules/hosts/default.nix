@@ -3,13 +3,11 @@
         myInstaller = inputs.nixpkgs.lib.nixosSystem {
             modules = [ self.nixosModules.myInstaller ];
         };
-
-        moose = inputs.nixpkgs.lib.nixosSystem {
-            modules = [ self.nixosModules.mooseConfiguration ];
+        desktop = inputs.nixpkgs.lib.nixosSystem {
+            modules = [ self.nixosModules.desktopConfiguration ];
         };
-
-        chappie = inputs.nixpkgs.lib.nixosSystem {
-            modules = [ self.nixosModules.chappieConfiguration ];
+        laptop = inputs.nixpkgs.lib.nixosSystem {
+            modules = [ self.nixosModules.laptopConfiguration ];
         };
     };
 }

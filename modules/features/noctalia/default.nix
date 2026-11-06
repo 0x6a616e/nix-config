@@ -1,159 +1,157 @@
-{ inputs, moduleWithSystem, lib, ... }: {
+{ inputs, moduleWithSystem, ... }: {
     flake.nixosModules.noctalia = moduleWithSystem(
         { self' , ... }: { config, ... }: let 
             hostname = config.networking.hostName;
-            mooseSettings = {
-                lockscreen.monitors = [ "DP-1" ];
-                lockscreen_widgets = {
-                    enabled = true;
-                    schema_version = 2;
-                    widget_order = [ "lockscreen-login-box@DP-2" "lockscreen-login-box@DP-1" "lockscreen-widget-0000000000000001" ];
-
-                    grid = {
-                        cell_size = 16;
-                        major_interval = 4;
-                        visible = true;
-                    };
-
-                    widget = {
-                        "lockscreen-login-box@DP-1" = {
-                            box_height = 128.0;
-                            box_width = 768.0;
-                            cx = 640.0;
-                            cy = 784.0;
-                            output = "DP-1";
-                            placement_height = 1440.0;
-                            placement_width = 2560.0;
-                            rotation = 0.0;
-                            type = "login_box";
-                            settings = {
-                                background_color = "surface_container";
-                                background_opacity = 0.88;
-                                background_radius = 12.0;
-                                center_password_text = false;
-                                input_opacity = 1.0;
-                                input_radius = 6.0;
-                                layout = "regular";
-                                show_caps_lock = true;
-                                show_keyboard_layout = false;
-                                show_login_button = true;
-                                show_media = false;
-                                show_session_buttons = true;
-                                show_unlock_hint = false;
-                                show_weather = false;
-                            };
+            deviceSettings = {
+                desktop = {
+                    lockscreen.monitors = [ "DP-1" ];
+                    lockscreen_widgets = {
+                        enabled = true;
+                        schema_version = 2;
+                        widget_order = [ "lockscreen-login-box@DP-2" "lockscreen-login-box@DP-1" "lockscreen-widget-0000000000000001" ];
+                        grid = {
+                            cell_size = 16;
+                            major_interval = 4;
+                            visible = true;
                         };
-                        "lockscreen-login-box@DP-2" = {
-                            box_height = 196.0;
-                            box_width = 810.0;
-                            cx = 540.0;
-                            cy = 1738.0;
-                            output = "DP-2";
-                            placement_height = 1920.0;
-                            placement_width = 1080.0;
-                            rotation = 0.0;
-                            type = "login_box";
-                            settings = {
-                                background_color = "surface_container";
-                                background_opacity = 0.88;
-                                background_radius = 12.0;
-                                center_password_text = false;
-                                input_opacity = 1.0;
-                                input_radius = 6.0;
-                                layout = "regular";
-                                show_caps_lock = true;
-                                show_keyboard_layout = true;
-                                show_login_button = true;
-                                show_media = true;
-                                show_session_buttons = true;
-                                show_unlock_hint = true;
-                                show_weather = true;
+                        widget = {
+                            "lockscreen-login-box@DP-1" = {
+                                box_height = 128.0;
+                                box_width = 768.0;
+                                cx = 640.0;
+                                cy = 784.0;
+                                output = "DP-1";
+                                placement_height = 1440.0;
+                                placement_width = 2560.0;
+                                rotation = 0.0;
+                                type = "login_box";
+                                settings = {
+                                    background_color = "surface_container";
+                                    background_opacity = 0.88;
+                                    background_radius = 12.0;
+                                    center_password_text = false;
+                                    input_opacity = 1.0;
+                                    input_radius = 6.0;
+                                    layout = "regular";
+                                    show_caps_lock = true;
+                                    show_keyboard_layout = false;
+                                    show_login_button = true;
+                                    show_media = false;
+                                    show_session_buttons = true;
+                                    show_unlock_hint = false;
+                                    show_weather = false;
+                                };
                             };
-                        };
-                        "lockscreen-widget-0000000000000001" = {
-                            box_height = 128.0;
-                            box_width = 768.0;
-                            cx = 640.0;
-                            cy = 656.0;
-                            output = "DP-1";
-                            placement_height = 1440.0;
-                            placement_width = 2560.0;
-                            rotation = 0.0;
-                            type = "clock";
-                            settings = {
-                                background = false;
-                                background_opacity = 1.0;
-                                background_padding = 0;
-                                background_radius = 0;
-                                center_text = true;
-                                clock_style = "digital";
-                                font_family = "";
-                                shadow = true;
+                            "lockscreen-login-box@DP-2" = {
+                                box_height = 196.0;
+                                box_width = 810.0;
+                                cx = 540.0;
+                                cy = 1738.0;
+                                output = "DP-2";
+                                placement_height = 1920.0;
+                                placement_width = 1080.0;
+                                rotation = 0.0;
+                                type = "login_box";
+                                settings = {
+                                    background_color = "surface_container";
+                                    background_opacity = 0.88;
+                                    background_radius = 12.0;
+                                    center_password_text = false;
+                                    input_opacity = 1.0;
+                                    input_radius = 6.0;
+                                    layout = "regular";
+                                    show_caps_lock = true;
+                                    show_keyboard_layout = true;
+                                    show_login_button = true;
+                                    show_media = true;
+                                    show_session_buttons = true;
+                                    show_unlock_hint = true;
+                                    show_weather = true;
+                                };
+                            };
+                            "lockscreen-widget-0000000000000001" = {
+                                box_height = 128.0;
+                                box_width = 768.0;
+                                cx = 640.0;
+                                cy = 656.0;
+                                output = "DP-1";
+                                placement_height = 1440.0;
+                                placement_width = 2560.0;
+                                rotation = 0.0;
+                                type = "clock";
+                                settings = {
+                                    background = false;
+                                    background_opacity = 1.0;
+                                    background_padding = 0;
+                                    background_radius = 0;
+                                    center_text = true;
+                                    clock_style = "digital";
+                                    font_family = "";
+                                    shadow = true;
+                                };
                             };
                         };
                     };
                 };
-            };
-            chappieSettings = {
-                lockscreen.monitors = [ "eDP-1" ];
-                lockscreen_widgets = {
-                    enabled = true;
-                    schema_version = 2;
-                    widget_order = [ "lockscreen-login-box@eDP-1" "lockscreen-widget-0000000000000001" ];
-
-                    grid = {
-                        cell_size = 16;
-                        major_interval = 4;
-                        visible = true;
-                    };
-
-                    widget = {
-                        "lockscreen-login-box@eDP-1" = {
-                            box_height = 128.0;
-                            box_width = 832.0;
-                            cx = 480.0;
-                            cy = 604.0;
-                            output = "eDP-1";
-                            placement_height = 1080.0;
-                            placement_width = 1920.0;
-                            rotation = 0.0;
-                            type = "login_box";
-                            settings = {
-                                background_color = "surface_container";
-                                background_opacity = 0.88;
-                                background_radius = 12.0;
-                                center_password_text = false;
-                                input_opacity = 1.0;
-                                input_radius = 6.0;
-                                layout = "regular";
-                                show_caps_lock = true;
-                                show_keyboard_layout = false;
-                                show_login_button = true;
-                                show_media = false;
-                                show_session_buttons = true;
-                                show_unlock_hint = false;
-                                show_weather = false;
-                            };
+                laptop = {
+                    lockscreen.monitors = [ "eDP-1" ];
+                    lockscreen_widgets = {
+                        enabled = true;
+                        schema_version = 2;
+                        widget_order = [ "lockscreen-login-box@eDP-1" "lockscreen-widget-0000000000000001" ];
+                        grid = {
+                            cell_size = 16;
+                            major_interval = 4;
+                            visible = true;
                         };
-                        "lockscreen-widget-0000000000000001" = {
-                            box_height = 128.0;
-                            box_width = 832.0;
-                            cx = 482.0;
-                            cy = 476.0;
-                            output = "eDP-1";
-                            placement_height = 1080.0;
-                            placement_width = 1920.0;
-                            rotation = 0.0;
-                            type = "clock";
-                            settings = {
-                                background = false;
-                                background_opacity = 1.0;
-                                background_padding = 0;
-                                background_radius = 0;
-                                center_text = true;
-                                clock_style = "digital";
-                                font_family = "";
-                                shadow = true;
+                        widget = {
+                            "lockscreen-login-box@eDP-1" = {
+                                box_height = 128.0;
+                                box_width = 832.0;
+                                cx = 480.0;
+                                cy = 604.0;
+                                output = "eDP-1";
+                                placement_height = 1080.0;
+                                placement_width = 1920.0;
+                                rotation = 0.0;
+                                type = "login_box";
+                                settings = {
+                                    background_color = "surface_container";
+                                    background_opacity = 0.88;
+                                    background_radius = 12.0;
+                                    center_password_text = false;
+                                    input_opacity = 1.0;
+                                    input_radius = 6.0;
+                                    layout = "regular";
+                                    show_caps_lock = true;
+                                    show_keyboard_layout = false;
+                                    show_login_button = true;
+                                    show_media = false;
+                                    show_session_buttons = true;
+                                    show_unlock_hint = false;
+                                    show_weather = false;
+                                };
+                            };
+                            "lockscreen-widget-0000000000000001" = {
+                                box_height = 128.0;
+                                box_width = 832.0;
+                                cx = 482.0;
+                                cy = 476.0;
+                                output = "eDP-1";
+                                placement_height = 1080.0;
+                                placement_width = 1920.0;
+                                rotation = 0.0;
+                                type = "clock";
+                                settings = {
+                                    background = false;
+                                    background_opacity = 1.0;
+                                    background_padding = 0;
+                                    background_radius = 0;
+                                    center_text = true;
+                                    clock_style = "digital";
+                                    font_family = "";
+                                    shadow = true;
+                                };
                             };
                         };
                     };
@@ -163,28 +161,21 @@
             imports = [
                 inputs.noctalia.nixosModules.default
             ];
-
             programs.noctalia = {
                 enable = true;
                 recommendedServices.enable = true;
                 package = self'.packages.noctalia.wrap {
-                    settings = lib.mkMerge [
-                        (lib.mkIf (hostname == "moose") mooseSettings)
-                        (lib.mkIf (hostname == "chappie") chappieSettings)
-                    ];
+                    settings = deviceSettings.${hostname};
                 };
             };
         }
     );
-
-    perSystem = { pkgs, inputs', ... }: {
-        packages.noctalia = inputs.wrappers.lib.wrapPackage ({ config, ... }: let
+    perSystem = { inputs', pkgs, ... }: {
+        packages.noctalia = inputs.wrappers.lib.wrapPackage ({ config, lib, ... }: let
             tomlFormat = pkgs.formats.toml { };
         in {
             options = {
-                settings = lib.mkOption {
-                    inherit (tomlFormat) type;
-                };
+                settings = lib.mkOption { inherit (tomlFormat) type; };
             };
             config = {
                 inherit pkgs;
@@ -196,7 +187,6 @@
                     accessibility = {
                         ui_scale = 1.1500000096857548;
                     };
-
                     bar = {
                         default = {
                             capsule = true;
@@ -211,26 +201,21 @@
                             thickness = 40;
                         };
                     };
-
                     config_version = 18;
-
                     control_center = {
                         hidden_tabs = [ "weather" "screen-time" ];
                         shortcuts = [];
                         width = 1200;
-
                         calendar = {
                             show_events_card = false;
                             show_week_numbers = true;
                         };
                     };
-
                     desktop_widgets = {
                         enabled = false;
                         schema_version = 2;
                         widget_order = [];
                     };
-
                     idle = {
                         behavior_order = [ "lock" "screen-off" "sleep" ];
                         pre_action_fade_seconds = 0;
@@ -253,7 +238,6 @@
                             };
                         };
                     };
-
                     lockscreen = {
                         blur_intensity = 0.0;
                         fingerprint = false;
@@ -261,7 +245,6 @@
                         transition = [ "fade" ];
                         wallpaper = "${../../../assets/lockscreen.png}";
                     };
-
                     shell = {
                         corner_radius_scale = 0.0;
                         font_family = "VCR OSD Mono";
@@ -336,9 +319,7 @@
                         fill_color = "#000000";
                         default.path = "${../../../assets/wallpaper.jpeg}";
                     };
-
                     weather.enabled = false;
-
                     widget.workspaces.style = "minimal";
                 };
                 constructFiles = {

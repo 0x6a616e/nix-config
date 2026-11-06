@@ -1,12 +1,11 @@
 { inputs, moduleWithSystem, ... }: {
     flake.nixosModules.neovim = moduleWithSystem({ self', pkgs, ... }: {
-        environment.systemPackages = with self'.packages; [
-            neovim
+        environment.systemPackages = [
             pkgs.ripgrep
             pkgs.tree-sitter
+            self'.packages.neovim
         ];
     });
-
     perSystem = { pkgs, ... }: {
         packages.neovim = (inputs.nvf.lib.neovimConfiguration {
             inherit pkgs;

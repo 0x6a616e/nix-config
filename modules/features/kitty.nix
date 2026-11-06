@@ -1,10 +1,9 @@
-{ moduleWithSystem, inputs, ... }: {
+{ inputs, moduleWithSystem, ... }: {
     flake.nixosModules.kitty = moduleWithSystem({ self', ... }: {
-        environment.systemPackages = with  self'.packages; [
+        environment.systemPackages = with self'.packages; [
             kitty
         ];
     });
-
     perSystem = { pkgs, ... }: {
         packages.kitty = inputs.wrappers.wrappers.kitty.wrap {
             inherit pkgs;

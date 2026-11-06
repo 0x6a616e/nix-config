@@ -1,28 +1,30 @@
 { inputs, moduleWithSystem, ... }: {
     flake.nixosModules.umbriel = moduleWithSystem(
-        { self', ... }: { config, lib, pkgs, ... }: let
+        { self', ... }: { config, pkgs, ... }: let
             hostname = config.networking.hostName;
-            mooseSettings = {
-                output = {
-                    DP-1 = {
-                        focus_at_startup = true;
-                        mode = "2560x1440@240.002";
-                        position = [ 0 0 ];
-                        layout.scrolling.default_extent_fraction = 2. / 3.;
-                    };
-                    DP-2 = {
-                        mode = "1920x1080@239.998";
-                        transform = "90";
-                        position = [ 2560 0 ];
+            deviceSettings = {
+                desktop = {
+                    output = {
+                        DP-1 = {
+                            focus_at_startup = true;
+                            mode = "2560x1440@240.002";
+                            position = [ 0 0 ];
+                            layout.scrolling.default_extent_fraction = 2. / 3.;
+                        };
+                        DP-2 = {
+                            mode = "1920x1080@239.998";
+                            transform = "90";
+                            position = [ 2560 0 ];
+                        };
                     };
                 };
-            };
-            chappieSettings = {
-                output = {
-                    DP-1 = {
-                        focus_at_startup = true;
-                        mode = "1920x1080@60.020000";
-                        position = [ 0 0 ];
+                laptop = {
+                    output = {
+                        DP-1 = {
+                            focus_at_startup = true;
+                            mode = "1920x1080@60.020000";
+                            position = [ 0 0 ];
+                        };
                     };
                 };
             };
@@ -30,24 +32,19 @@
             imports = [
                 inputs.umbriel.nixosModules.default
             ];
-
             environment.systemPackages = [
                 pkgs.rose-pine-cursor
             ];
-
             programs.umbriel = {
                 enable = true;
                 package = self'.packages.umbriel.wrap {
-                    settings = lib.mkMerge [
-                        (lib.mkIf (hostname == "moose") mooseSettings)
-                        (lib.mkIf (hostname == "chappie") chappieSettings)
-                    ];
+                    settings = deviceSettings.${hostname};
                 };
             };
         }
     );
-    perSystem = { pkgs, inputs', ... }: {
-        packages.umbriel = inputs.wrappers.lib.wrapPackage ({ lib, config, ... }: let
+    perSystem = { inputs', pkgs, ... }: {
+        packages.umbriel = inputs.wrappers.lib.wrapPackage ({ config, lib, ... }: let
             tomlFormat = pkgs.formats.toml { };
         in {
             options = {
@@ -59,7 +56,6 @@
                 passthru.providedSessions = config.package.providedSessions;
                 drv.postInstall = ''
                     stock="${inputs'.umbriel.packages.default}"
-
                     copy_and_patch() {
                         file="$1"
                         if [ -L "$file" ]; then
@@ -73,7 +69,6 @@
                                 --replace-fail "$stock" "$out"
                         fi
                     }
-
                     copy_and_patch "$out/share/wayland-sessions/umbriel.desktop"
                     copy_and_patch "$out/bin/start-umbriel"
                     copy_and_patch "$out/share/systemd/user/umbriel.service"
@@ -106,34 +101,27 @@
                     keybinds = {
                         "Mod+Shift+bracketleft" = "window-cycle-primary-extent-back";
                         "Mod+Shift+bracketright" = "window-cycle-primary-extent";
-
                         "Mod+K" = "window-focus-or-workspace-up";
                         "Mod+J" = "window-focus-or-workspace-down";
                         "Mod+Shift+K" = "window-move-or-workspace-up";
                         "Mod+Shift+J" = "window-move-or-workspace-down";
-
                         "Mod+H" = "window-focus-left";
                         "Mod+L" = "window-focus-right";
                         "Mod+Shift+H" = "column-move-left";
                         "Mod+Shift+L" = "column-move-right";
                         "Mod+Shift+Alt+H" = "window-consume-or-expel-left";
                         "Mod+Shift+Alt+L" = "window-consume-or-expel-right";
-
                         "Mod+Tab" = "overview-toggle";
-
                         "Mod+Grave" = "spawn noctalia msg panel-toggle control-center";
                         "Mod+Space" = "spawn noctalia msg panel-toggle launcher";
                         "Print" = "spawn noctalia msg screenshot-annotate";
-
                         "XF86AudioRaiseVolume" = "spawn noctalia msg volume-up";
                         "XF86AudioLowerVolume" = "spawn noctalia msg volume-down";
                         "XF86AudioMute" = "spawn noctalia msg volume-mute";
                         "XF86AudioPlay" = "spawn ${lib.getExe pkgs.playerctl} play-pause";
                         "XF86AudioMicMute" = "spawn noctalia msg mic-mute";
-
                         "XF86MonBrightnessDown" = "spawn noctalia msg brightness-down";
                         "XF86MonBrightnessUp" = "spawn noctalia msg brightness-up";
-
                         "XF86NotificationCenter" = "spawn noctalia msg panel-toggle control-center notifications";
                     };
                     layout = {

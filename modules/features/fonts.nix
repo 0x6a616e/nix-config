@@ -1,5 +1,5 @@
 { moduleWithSystem, ... }: {
-    flake.nixosModules.fonts = moduleWithSystem({ pkgs, self', ... }: {
+    flake.nixosModules.fonts = moduleWithSystem({ self', pkgs, ... }: {
         fonts = {
             fontconfig = {
                 enable = true;
@@ -16,7 +16,6 @@
             ];
         };
     });
-
     perSystem = { pkgs, ... }: {
         packages.vcr-osd-mono = pkgs.stdenvNoCC.mkDerivation {
             pname = "VCR-OSD-Mono";
