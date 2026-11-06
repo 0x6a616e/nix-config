@@ -10,6 +10,7 @@
                 kitty
                 noctalia
                 neovim
+                shared
                 tmux
                 umbriel
                 zsh
@@ -108,11 +109,6 @@
             };
         };
 
-        environment.systemPackages = [
-            pkgs.devenv
-            pkgs.firefox
-        ];
-
         hardware = {
             bluetooth.enable = true;
             cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -152,11 +148,6 @@
         nixpkgs = {
             config.allowUnfree = true;
             hostPlatform = lib.mkDefault "x86_64-linux";
-        };
-
-        programs = {
-            gnupg.agent.enable = true;
-            nh.enable = true;
         };
 
         security = {
