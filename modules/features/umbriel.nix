@@ -111,6 +111,7 @@
                         "Mod+Shift+L" = "column-move-right";
                         "Mod+Shift+Alt+H" = "window-consume-or-expel-left";
                         "Mod+Shift+Alt+L" = "window-consume-or-expel-right";
+                        "Mod+F" = "window-toggle-fullscreen";
                         "Mod+Tab" = "overview-toggle";
                         "Mod+Grave" = "spawn noctalia msg panel-toggle control-center";
                         "Mod+Space" = "spawn noctalia msg panel-toggle launcher";
