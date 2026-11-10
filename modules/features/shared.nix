@@ -2,6 +2,7 @@
     flake.nixosModules.shared = { pkgs, ... }: {
         environment.systemPackages = with pkgs; [
             devenv
+            discord
             firefox
             loupe
             nautilus
