@@ -9,5 +9,8 @@
         laptop = inputs.nixpkgs.lib.nixosSystem {
             modules = [ self.nixosModules.laptopConfiguration ];
         };
+        server = inputs.nixpkgs.lib.nixosSystem {
+            modules = [ self.nixosModules.serverConfiguration ];
+        };
     };
 }
