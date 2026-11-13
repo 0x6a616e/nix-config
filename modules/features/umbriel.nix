@@ -29,7 +29,7 @@
                 };
                 server = {
                     output = {
-                        DP-1 = {
+                        HDMI-A-1 = {
                             focus_at_startup = true;
                             mode = "2560x1440@120.000000";
                             position = [ 0 0 ];
