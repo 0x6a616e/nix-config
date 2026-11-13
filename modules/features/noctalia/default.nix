@@ -173,7 +173,7 @@
                                 box_width = 768.0;
                                 cx = 640.0;
                                 cy = 784.0;
-                                output = "DP-1";
+                                output = "HDMI-A-1";
                                 placement_height = 1440.0;
                                 placement_width = 2560.0;
                                 rotation = 0.0;
@@ -200,7 +200,7 @@
                                 box_width = 768.0;
                                 cx = 640.0;
                                 cy = 656.0;
-                                output = "DP-1";
+                                output = "HDMI-A-1";
                                 placement_height = 1440.0;
                                 placement_width = 2560.0;
                                 rotation = 0.0;
