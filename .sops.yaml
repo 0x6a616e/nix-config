@@ -1,9 +1,11 @@
 keys:
-  - &moose age1ejxfm8gla8gfpqkuteftf3kqweyquen4yk894z4pg3rgw6yxle3s5dv0ng
-  - &chappie age1x55ul47ujgyju0cgnaxjckp3f768qy28e6lhhfeajf6m0pvw3dxqktwk6j
+  - &desktop age1ejxfm8gla8gfpqkuteftf3kqweyquen4yk894z4pg3rgw6yxle3s5dv0ng
+  - &laptop age1x55ul47ujgyju0cgnaxjckp3f768qy28e6lhhfeajf6m0pvw3dxqktwk6j
+  - &server age1qyceuq82643s58ksapghjtn78w8w2t6623g2fuj938jnuwdkgpaqv30544
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
-        - *moose
-        - *chappie
+        - *desktop
+        - *laptop
+        - *server
