@@ -156,7 +156,69 @@
                         };
                     };
                 };
-                server = { };
+                server = {
+                    lockscreen.monitors = [ "HDMI-A-1" ];
+                    lockscreen_widgets = {
+                        enabled = true;
+                        schema_version = 2;
+                        widget_order = [ "lockscreen-login-box@HDMI-A-1" "lockscreen-widget-0000000000000001" ];
+                        grid = {
+                            cell_size = 16;
+                            major_interval = 4;
+                            visible = true;
+                        };
+                        widget = {
+                            "lockscreen-login-box@HDMI-A-1" = {
+                                box_height = 128.0;
+                                box_width = 768.0;
+                                cx = 640.0;
+                                cy = 784.0;
+                                output = "DP-1";
+                                placement_height = 1440.0;
+                                placement_width = 2560.0;
+                                rotation = 0.0;
+                                type = "login_box";
+                                settings = {
+                                    background_color = "surface_container";
+                                    background_opacity = 0.88;
+                                    background_radius = 12.0;
+                                    center_password_text = false;
+                                    input_opacity = 1.0;
+                                    input_radius = 6.0;
+                                    layout = "regular";
+                                    show_caps_lock = true;
+                                    show_keyboard_layout = false;
+                                    show_login_button = true;
+                                    show_media = false;
+                                    show_session_buttons = true;
+                                    show_unlock_hint = false;
+                                    show_weather = false;
+                                };
+                            };
+                            "lockscreen-widget-0000000000000001" = {
+                                box_height = 128.0;
+                                box_width = 768.0;
+                                cx = 640.0;
+                                cy = 656.0;
+                                output = "DP-1";
+                                placement_height = 1440.0;
+                                placement_width = 2560.0;
+                                rotation = 0.0;
+                                type = "clock";
+                                settings = {
+                                    background = false;
+                                    background_opacity = 1.0;
+                                    background_padding = 0;
+                                    background_radius = 0;
+                                    center_text = true;
+                                    clock_style = "digital";
+                                    font_family = "";
+                                    shadow = true;
+                                };
+                            };
+                        };
+                    };
+                };
             };
         in {
             imports = [

@@ -27,7 +27,16 @@
                         };
                     };
                 };
-                server = { };
+                server = {
+                    output = {
+                        DP-1 = {
+                            focus_at_startup = true;
+                            mode = "2560x1440@120.000000";
+                            position = [ 0 0 ];
+                            layout.scrolling.default_extent_fraction = 2. / 3.;
+                        };
+                    };
+                };
             };
         in {
             imports = [
