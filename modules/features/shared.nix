@@ -7,6 +7,7 @@
             loupe
             nautilus
             papers
+            pass
             resources
             showtime
             vlc
