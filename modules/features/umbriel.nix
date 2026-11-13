@@ -27,6 +27,7 @@
                         };
                     };
                 };
+                server = { };
             };
         in {
             imports = [
