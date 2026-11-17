@@ -146,6 +146,12 @@
             settings = {
                 auto-optimise-store = true;
                 experimental-features = [ "nix-command" "flakes" ];
+                substituters = [
+                    "ssh-ng://builder"
+                ];
+                trusted-public-keys = [
+                    "builder:OmmlELzpy3j0VhpzTMpNpjShFgZS6wkwzZqopHcCqb4="
+                ];
             };
         };
         nixpkgs = {
