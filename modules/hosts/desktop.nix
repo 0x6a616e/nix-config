@@ -107,9 +107,27 @@
             networkmanager.enable = true;
             useDHCP = lib.mkDefault true;
         };
-        nix.settings = {
-            auto-optimise-store = true;
-            experimental-features = [ "nix-command" "flakes" ];
+        nix = {
+            buildMachines = [{
+                hostName = "builder";
+                mandatoryFeatures = [ ];
+                maxJobs = 8;
+                protocol = "ssh-ng";
+                speedFactor = 1;
+                supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+                system = "x86_64-linux";
+            }];
+            distributedBuilds = true;
+            settings = {
+                auto-optimise-store = true;
+                experimental-features = [ "nix-command" "flakes" ];
+                substituters = [
+                    "ssh-ng://builder"
+                ];
+                trusted-public-keys = [
+                    "builder:OmmlELzpy3j0VhpzTMpNpjShFgZS6wkwzZqopHcCqb4="
+                ];
+            };
         };
         nixpkgs = {
             config = {
