@@ -109,6 +109,7 @@
         nix.settings = {
             auto-optimise-store = true;
             experimental-features = [ "nix-command" "flakes" ];
+            secret-key-files = [ config.sops.secrets."nix-cache-priv-key".path ];
         };
         nixpkgs = {
             config.allowUnfree = true;
@@ -199,6 +200,7 @@
             defaultSopsFile = ../../secrets/secrets.yaml;
             age.keyFile = "/etc/sops/age/keys.txt";
             secrets = {
+                "nix-cache-priv-key" = { };
                 "tailscale/authKey" = { };
                 "users/jan/password" = { };
                 "users/jan/password".neededForUsers = true;
